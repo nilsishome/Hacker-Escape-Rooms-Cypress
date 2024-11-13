@@ -41,6 +41,7 @@ async function generateRoom() {
     const createRoom = document.createElement("div");
     createRoom.innerHTML = `
     <h2>${room.title}</h2>
+    <img src="${room.image}" alt="placeholder"/>
     `;
     challenges__container.appendChild(createRoom);
   })
