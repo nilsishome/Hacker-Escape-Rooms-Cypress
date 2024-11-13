@@ -685,6 +685,47 @@
   display: block;
 }
 
+/* Temporary CSS selector */
+body {
+  background-color: #011827;
+}
+
+.filter {
+  border: 3px solid #c4c4c4;
+  width: 90%;
+  margin: 0 auto;
+}
+.filter h4 {
+  margin-left: 2%;
+  font-weight: normal;
+}
+.filter ul {
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+  list-style-type: none;
+  padding: 0;
+}
+.filter ul li {
+  margin-top: 1rem;
+}
+.filter ul li h5 {
+  margin: 0 0 0 1rem;
+  width: fit-content;
+}
+.filter ul .filter__type {
+  grid-column: 1;
+}
+.filter ul .filter__rating {
+  grid-column: 2;
+}
+.filter ul .filter__tag {
+  grid-column: 3;
+}
+.filter ul .filter__keyword {
+  grid-column: 2;
+  margin-top: 2rem;
+}
+
 * {
   max-width: 100%;
   box-sizing: border-box;

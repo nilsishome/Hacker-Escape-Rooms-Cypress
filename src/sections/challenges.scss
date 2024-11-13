@@ -1,0 +1,49 @@
+@use "./lib.scss" as *;
+
+/* Temporary CSS selector */
+body {
+    background-color: $dark;
+}
+
+.filter {
+    border: 3px solid #c4c4c4;
+    width: 90%;
+    margin: 0 auto;
+
+    h4 {
+        margin-left: 2%;
+        font-weight: normal;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(1fr, 3);
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            margin-top: 1rem;
+            h5 {
+                margin: 0 0 0 1rem;
+                width: fit-content;
+            }
+        }
+
+        .filter__type {
+            grid-column: 1;
+        }
+
+        .filter__rating {
+            grid-column: 2;
+        }
+
+        .filter__tag {
+            grid-column: 3;
+        }
+
+        .filter__keyword {
+            grid-column: 2;
+            margin-top: 2rem;
+        }
+    }
+}
