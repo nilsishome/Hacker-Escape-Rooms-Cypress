@@ -33,6 +33,16 @@ async function challengesApi() {
 }
 
 async function generateRoom() {
-  const roomData = await challengesApi();
-  
+  const data = await challengesApi();
+  const roomData = data.challenges;
+  const challenges__container = document.querySelector("#challenges__container");
+
+  roomData.forEach(room => {
+    const createRoom = document.createElement("div");
+    createRoom.innerHTML = `
+    <h2>${room.title}</h2>
+    `;
+    challenges__container.appendChild(createRoom);
+  })
 }
+generateRoom();
