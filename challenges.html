@@ -47,21 +47,28 @@
     </header>
 
     <section class="filter">
-      <h4>Filter challenges</h4>
-      <ul>
-        <li class="filter__type">
-          <h5>By type</h5>
-        </li>
-        <li class="filter__rating">
-          <h5>By ratings</h5>
-        </li>
-        <li class="filter__tag">
-          <h5>By tags</h5>
-        </li>
-        <li class="filter__keyword">
-          <h5>Or type to search for keyword</h5>
-        </li>
-      </ul>
+      <form>
+        <h4>Filter challenges</h4>
+        <ul>
+          <li class="filter__type">
+            <h5>By type</h5>
+            <input type="checkbox" id="online-challenges" name="online-challenges" />
+            <label for="online-challenges">Include online challenges</label><br />
+            <input type="checkbox" id="on-site-challenges" name="on-site-challenges" />
+            <label for="on-site-challenges">Include on-site challenges</label>
+          </li>
+          <li class="filter__rating">
+            <h5>By ratings</h5>
+          </li>
+          <li class="filter__tag">
+            <h5>By tags</h5>
+          </li>
+          <li class="filter__keyword">
+            <h5>Or type to search for keyword</h5>
+            <input type="text" id ="filter__text" name="filter__text" placeholder="Start typing to filter" />
+          </li>
+        </ul>
+      </form>
     </section>
 
     <script src="./javascript/index.js"></script>
