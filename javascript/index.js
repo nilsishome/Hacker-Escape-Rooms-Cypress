@@ -22,7 +22,7 @@ function hideMenu() {
   document.body.style.overflow = "";
 }
 
-//Testing out to connect to the API
+//Connection to API, this function can now be called wherever we need it.
 
 async function challengesApi() {
   const response = await fetch(
@@ -32,14 +32,14 @@ async function challengesApi() {
   console.log(data);
   return data;
 }
-
+ //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
   const roomData = data.challenges;
   const challenges__container = document.querySelector("#challenges__container");
-
+   //forEach loop that loops through the challenges array which is located in the data from the API.
   roomData.forEach((room) => {
-    //Creating a room with the same structure as in previous hardcoded HTML at index.html.
+    //Creating a room with the same "structure" as in previous hardcoded HTML at index.html.
     const challengesRoom = document.createElement("div");
     challengesRoom.classList.add("challenges__room");
     challenges__container.appendChild(challengesRoom);
@@ -92,7 +92,7 @@ async function generateRoom() {
     //creating button for each room
     const button = document.createElement("button");
     button.type = "button";
-
+    //In this if-statement, the text and class of a button gets set based on the data from API ("online" and "onsite").
     if (room.type === "onsite") {
       button.textContent = "Book this room"
       button.classList.add("room__button--onsite")
