@@ -1,6 +1,7 @@
 @use "./lib.scss" as *;
 
 .filter {
+    /* Made the filter window only visible in desktop mode, for now */
     display: none;
 
     @include breakpoint($large-screen-breakpoint)
@@ -26,8 +27,12 @@
 
                 & h5 {
                     font-size: 0.7rem;
-                    margin: 0 0 1rem 1rem;
+                    margin: 0 0 0.3rem 1rem;
                     width: fit-content;
+                }
+
+                & button {
+                    margin-left: 1rem;
                 }
 
                 & input[type=checkbox] {
@@ -42,7 +47,7 @@
                     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
                     font-size: 0.7rem;
                     padding-left: 0.5rem;
-                    margin-left: 1rem;
+                    margin: 0.3rem 0 0 1rem;
                     width: 13rem;
                     height: 1.5rem;
                 }
@@ -57,7 +62,27 @@
             }
 
             & .filter__rating {
+                display: grid;
+                grid-template-columns: 3;
+                grid-template-rows: 2;
                 grid-column: 2;
+
+                & h5 {
+                    grid-row: 1;
+                }
+
+                & .filter__first-rate {
+                    grid-row: 2;
+                }
+
+                & p {
+                    grid-row: 2;
+                    margin: 0.1rem;
+                }
+
+                & .filter__second-rate {
+                    grid-row: 2;
+                }
             }
 
             & .filter__tag {
