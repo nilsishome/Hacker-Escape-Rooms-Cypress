@@ -37,13 +37,27 @@ async function generateRoom() {
   const roomData = data.challenges;
   const challenges__container = document.querySelector("#challenges__container");
 
-  roomData.forEach(room => {
-    const createRoom = document.createElement("div");
-    createRoom.innerHTML = `
-    <h2>${room.title}</h2>
-    <img src="${room.image}" alt="placeholder"/>
-    `;
-    challenges__container.appendChild(createRoom);
+  roomData.forEach((room) => {
+    //Creating a room container for each room as in the previous HTML.
+    const roomContainer = document.createElement("div");
+    roomContainer.classList.add("room");
+    challenges__container.appendChild(roomContainer);
+    //Creating a div for the room inside the container
+    const roomDiv = document.createElement("div");
+    roomDiv.classList.add("room");
+    roomContainer.appendChild(roomDiv);
+    //creating an image for the room, using the rooms title as description
+    const img = document.createElement("img");
+    img.classList.add("room__img");
+    img.src = room.image;
+    img.alt = `Picture of the room ${room.title}`;
+    roomDiv.appendChild(img);
+
+    const heading = document.createElement("h3");
+    heading.classList = ("room__heading");
+    heading.textContent = (`${room.title} (${room.type})`)
+    roomDiv.appendChild(heading);
+
   })
 }
 generateRoom();
