@@ -39,30 +39,30 @@ async function generateRoom() {
   const challenges__container = document.querySelector("#challenges__container");
 
   roomData.forEach((room) => {
-    //Creating a room container for each room as in the previous HTML.
-    const roomContainer = document.createElement("div");
-    roomContainer.classList.add("room");
-    challenges__container.appendChild(roomContainer);
+    //Creating a room with the same structure as in previous hardcoded HTML at index.html.
+    const challengesRoom = document.createElement("div");
+    challengesRoom.classList.add("challenges__room");
+    challenges__container.appendChild(challengesRoom);
     //Creating a div for the room inside the container
-    const roomDiv = document.createElement("div");
-    roomDiv.classList.add("room");
-    roomContainer.appendChild(roomDiv);
+    const rooms = document.createElement("div");
+    rooms.classList.add("room");
+    challengesRoom.appendChild(rooms);
     //creating an image for the room, using the rooms title as description
     const img = document.createElement("img");
     img.classList.add("room__img");
     img.src = room.image;
     img.alt = `Picture of the room ${room.title}`;
-    roomDiv.appendChild(img);
-
+    rooms.appendChild(img);
+    //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add = ("room__heading");
     heading.textContent = (`${room.title} (${room.type})`)
-    roomDiv.appendChild(heading);
-    
-    const starDiv = document.createElement("div");
-    starDiv.classList.add("room_stars");
-    roomDiv.appendChild(starDiv);
-
+    rooms.appendChild(heading);
+    //adding first the div for the star pictures
+    const roomStars = document.createElement("div");
+    roomStars.classList.add("room__stars");
+    rooms.appendChild(roomStars);
+    //Making a for-loop that generates stars based on rating number from API-data.
     for (let i = 1; i <= 5; i++){
     const starImg = document.createElement("img");
     if (i <= room.rating) {
@@ -72,13 +72,36 @@ async function generateRoom() {
       starImg.src = "./img/starunfilled.png";
       starImg.alt = "Unfilled star for rating of the room."
     }
-    starDiv.appendChild(starImg);
+    roomStars.appendChild(starImg);
     }
-
+    //Adding the number of participants per room
     const participants = document.createElement("p");
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
-    roomDiv.appendChild(participants);
+    rooms.appendChild(participants);
+
+    //adding the description for each room
+    const roomInfo = document.createElement("p");
+    roomInfo.classList.add("room__info");
+    roomInfo.textContent = room.description;
+    rooms.appendChild(roomInfo);
+   //Creating the div to hold the button
+    const roomActions = document.createElement("div");
+    roomActions.classList.add("challenges__actions");
+    rooms.appendChild(roomActions);
+    //creating button for each room
+    const button = document.createElement("button");
+    button.type = "button";
+
+    if (room.type === "onsite") {
+      button.textContent = "Book this room"
+      button.classList.add("room__button--onsite")
+    } else if (room.type === "online") {
+      button.textContent = "Take challenge online"
+      button.classList.add("room__button--online")
+    }
+    roomActions.appendChild(button);
+
   })
 }
 generateRoom();
