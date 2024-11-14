@@ -29,6 +29,7 @@ async function challengesApi() {
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
   );
   const data = await response.json();
+  console.log(data);
   return data;
 }
 
@@ -54,10 +55,30 @@ async function generateRoom() {
     roomDiv.appendChild(img);
 
     const heading = document.createElement("h3");
-    heading.classList = ("room__heading");
+    heading.classList.add = ("room__heading");
     heading.textContent = (`${room.title} (${room.type})`)
     roomDiv.appendChild(heading);
+    
+    const starDiv = document.createElement("div");
+    starDiv.classList.add("room_stars");
+    roomDiv.appendChild(starDiv);
 
+    for (let i = 1; i <= 5; i++){
+    const starImg = document.createElement("img");
+    if (i <= room.rating) {
+      starImg.src = "./img/starfilled.png";
+      starImg.alt = "Filled star for rating of the room."
+    } else {
+      starImg.src = "./img/starunfilled.png";
+      starImg.alt = "Unfilled star for rating of the room."
+    }
+    starDiv.appendChild(starImg);
+    }
+
+    const participants = document.createElement("p");
+    participants.classList.add("room__participants");
+    participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
+    roomDiv.appendChild(participants);
   })
 }
 generateRoom();
