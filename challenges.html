@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Hacker Escape Rooms Challenges</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="overlay__blur"></div>
-      <div class="header__container">
-        <img
-          class="header__logo"
-          src="./icons/MobileLogo.png"
-          alt="Hacker Escape rooms logo."
-        />
-        <h1 class="header__title">Hacker Escape Rooms</h1>
-        <div class="header__menu-icon">
-          <button class="header__menu-button">
-            <img src="./icons/mobilemenu.png" alt="Menu icon" />
-          </button>
-        </div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hacker Escape Rooms Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="overlay__blur"></div>
+    <div class="header__container">
+      <img class="header__logo" src="./icons/MobileLogo.png" alt="Hacker Escape rooms logo." />
+      <h1 class="header__title">Hacker Escape Rooms</h1>
+      <div class="header__menu-icon">
+        <button class="header__menu-button">
+          <img src="./icons/mobilemenu.png" alt="Menu icon" />
+        </button>
       </div>
-      <nav class="header__navigation">
-        <div class="header__navigation-icon">
-          <button class="header__navigation-close">
-            <img src="./icons/mobilemenuclose.png" />
-          </button>
-        </div>
-        <ul class="header__menu">
-          <li class="header__menu-item">
-            <a href="index.html" class="header__menu-link">Play online</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="index.html" class="header__menu-link">Play on-site</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">The story</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" class="header__menu-link">Contact us</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <script src="./javascript/index.js"></script>
-  </body>
+    </div>
+    <nav class="header__navigation">
+      <div class="header__navigation-icon">
+        <button class="header__navigation-close">
+          <img src="./icons/mobilemenuclose.png" />
+        </button>
+      </div>
+      <ul class="header__menu">
+        <li class="header__menu-item">
+          <a href="index.html" class="header__menu-link">Play online</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="index.html" class="header__menu-link">Play on-site</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">The story</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">Contact us</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section class="Booking-form">
+    <form>
+      <h4>Book room "Title of room"</h4>
+      <h6> Name </h6>
+      <input type="text" id="name-text" name="name-text">
+      <h6>E-mail</h6>
+      <input type="text" id="email-text" name="email-text">
+      <h6>What time?</h6>
+      <input id="booking-time" type="time" name="booking-time" value="13:30"> 
+      <form>
+        <label for="selection-participants">How many participants</label>
+        <input name="participants" id="participants" list="participants">
+      </form>
+      <datalist id="participants">
+        <option>2 participants</option>
+        <option>3 participants</option>
+        <option>4 participants</option>
+        <option>5 participants</option>
+        <option>6 participants</option>
+      </datalist>
+    </form>
+
+  <button class="booking_button">Submit booking</button>
+  </section>
+
+
+
+  <script src="./javascript/index.js"></script>
+</body>
+
 </html>

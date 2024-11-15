@@ -1,0 +1,41 @@
+
+.Booking-form{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #c4c4c4;
+        width:50%;
+        height:50%;
+        padding:10px;
+        margin:0 auto;
+        
+        h6 {
+            font-size: 0.7rem;
+            margin: 0 0 0.3rem 1rem;
+            width: fit-content;
+            
+        }
+        
+        input[type=text] {
+            margin-left: 1rem;
+            width: 0.65rem;
+            margin-bottom:2rem;
+        }
+
+        .booking_button{
+            color:white;
+            background-color:#008CBA;
+            border:none;
+            border-radius:0.2rem;
+            position: absolute;
+           
+
+        }
+      
+    }
+
+
+
+
+
+
