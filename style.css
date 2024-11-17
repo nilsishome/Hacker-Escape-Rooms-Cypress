@@ -685,6 +685,10 @@
   display: block;
 }
 
+#hidden {
+  display: none;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -713,6 +717,7 @@
 
 .modal__p-text {
   font-size: 0.8rem;
+  font-weight: 500;
   color: black;
   margin: 0 0 0 30px;
 }
@@ -744,6 +749,33 @@
   font-weight: 600;
   bottom: 8%;
   right: 7%;
+}
+
+.modal__button_close {
+  position: fixed;
+  height: 40px;
+  width: 50px;
+  background-color: rgba(255, 0, 0, 0.6);
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  top: 10%;
+  right: 7%;
+}
+
+::-webkit-datetime-edit-month-field {
+  color: grey;
+  margin: 0 1em 0 1em;
+}
+
+::-webkit-datetime-edit-day-field {
+  color: grey;
+  margin: 0 1em 0 1em;
+}
+
+::-webkit-datetime-edit-year-field {
+  color: grey;
+  margin: 1em 0 0 1em;
 }
 
 * {
