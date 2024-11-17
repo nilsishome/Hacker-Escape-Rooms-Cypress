@@ -22,8 +22,8 @@
     margin: auto;
     padding: 20px;
     border: 2px solid #999;
-    width: 90%;
-    height: 90%;
+    width: 40%;
+    height: 60%;
 }
 
 .modal__title {
@@ -63,20 +63,20 @@
     border-radius: 5px;
     color: white;
     font-weight: 600;
-    bottom: 8%;
-    right: 7%;
+    bottom: 22%;
+    right: 31%;
 }
 
 .modal__button_close {
-    position: fixed;
+    position:fixed;
     height: 40px;
     width: 50px;
     background-color: rgba(255,0,0,0.6);
     border-radius: 5px;
     color: white;
     font-weight: 600;
-    top: 10%;
-    right: 7%;
+    top: 22%;
+    right: 31%;
 }
 
 
