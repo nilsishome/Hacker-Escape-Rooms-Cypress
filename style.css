@@ -771,6 +771,7 @@ h4 {
   left: 59%;
   top: 70%;
   border: none;
+}
 
 .filter {
   /* Made the filter window only visible in desktop mode, for now */
