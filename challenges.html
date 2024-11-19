@@ -86,8 +86,26 @@
             <input type="text" id ="filter__text" name="filter__text" placeholder="Start typing to filter" />
           </li>
         </ul>
-      </form>
+      </form> 
     </section>
+  
+    <section>
+      <div class="modal">
+        <div class="modal__content">
+          <span>
+            <h3 class="modal__title">Book room "Title of room" (step 1)</h3>
+            <p class="modal__p-text">What date would you like to come?</p>
+            <p class="modal__p-date">Date</p>
+            <input class="modal__input" type="date" data-date-format="YYYY MM DD">
+            <button class="modal__button">Search available times</button>
+            <button class="modal__button_close">X</button>
+          </span>
+        </div>
+      </div>
+    </section>
+    
+
+   
     <!--In section challanges, DOM elements gets created from javascript-->
     <section class="challenges">
       <div id="challenges__container"></div>
@@ -121,5 +139,6 @@
     </section>
     <script src="./javascript/index.js"></script>
     <script src="./javascript/challenges.js"></script>
+      <script src="./javascript/bookroom1.js"></script>
   </body>
 </html>
