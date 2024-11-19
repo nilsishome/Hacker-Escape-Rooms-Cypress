@@ -1,3 +1,5 @@
+import { filterByRating } from "./filter.js";
+
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
 const closeButton = document.querySelector(".header__navigation-close");
@@ -31,7 +33,6 @@ async function challengesApi() {
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
   );
   const data = await response.json();
-  console.log(data);
   return data;
 }
  //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
@@ -117,3 +118,4 @@ async function generateRoom() {
   })
 }
 generateRoom();
+filterByRating();
