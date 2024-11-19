@@ -961,6 +961,7 @@ h4 {
   box-shadow: 0px 0px 10px 0px #b6bdb5;
   border-radius: 0.4rem;
   width: 13rem;
+  overflow: hidden;
 }
 .challenges .room {
   display: flex;
