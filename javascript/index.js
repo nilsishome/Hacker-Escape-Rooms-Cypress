@@ -1,3 +1,6 @@
+import { filterByText } from "./textFilter.js";
+filterByText();
+
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
 const closeButton = document.querySelector(".header__navigation-close");
