@@ -1,5 +1,5 @@
 import { filterByText } from "./textFilter.js";
-filterByText();
+
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -119,7 +119,8 @@ async function generateRoom() {
 
   })
 }
-
-
 //Starts the function
 generateRoom();
+
+//Calls the textfilter
+filterByText();
