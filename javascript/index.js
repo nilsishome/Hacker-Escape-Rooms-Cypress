@@ -61,12 +61,17 @@ async function generateRoom() {
     const rooms = document.createElement("div");
     rooms.classList.add("room");
     challengesRoom.appendChild(rooms);
+
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("room__image-container");
+    rooms.appendChild(imageContainer);
+
     //creating an image for the room, using the rooms title as description
     const img = document.createElement("img");
     img.classList.add("room__img");
     img.src = room.image;
     img.alt = `Picture of the room ${room.title}`;
-    rooms.appendChild(img);
+    imageContainer.appendChild(img);
     //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add("room__heading");
@@ -75,7 +80,7 @@ async function generateRoom() {
     //adding first the div for the star pictures
     const roomStars = document.createElement("div");
     roomStars.classList.add("room__stars");
-    rooms.appendChild(roomStars);
+    imageContainer.appendChild(roomStars);
     //Making a for-loop that generates stars based on rating number from API-data.
     for (let i = 1; i <= 5; i++) {
       const starImg = document.createElement("img");
@@ -92,7 +97,7 @@ async function generateRoom() {
     const participants = document.createElement("p");
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
-    roomStars.appendChild(participants);
+    rooms.appendChild(participants);
 
     //adding the description for each room
     const roomInfo = document.createElement("p");

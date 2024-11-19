@@ -962,26 +962,71 @@ h4 {
   border-radius: 0.4rem;
   width: 13rem;
 }
+.challenges .room__image-container {
+  position: relative;
+  width: 100%;
+}
+.challenges .room__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.challenges .room__stars {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0;
+}
 .challenges .room__heading {
   font-size: 1rem;
   font-weight: 400;
-  margin: 0;
-  padding-left: 0.5rem;
-}
-.challenges .room__stars {
-  display: flex;
-  align-items: center;
-  padding: 0 0 0 0.6rem;
-  gap: 0.3rem;
+  margin: 0.3rem 0rem 0rem 0.3rem;
 }
 .challenges .room__participants {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
   margin-right: 0.2rem;
   font-size: 0.57rem;
-  padding: 0.2rem;
-  text-align: center;
+  margin: 0.3rem 0rem 0rem 0.35rem;
+}
+.challenges .room__info {
+  font-size: 0.64rem;
+  padding: 0.5rem 0.5rem 0 0.6rem;
+  margin: 0;
+}
+.challenges .challenges__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+.challenges .room__button--onsite {
+  background-color: #e3170a;
+  font-size: 0.6rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.42rem 1.15rem;
+  margin-top: 0.3rem;
+}
+.challenges .room__button--onsite:hover {
+  cursor: pointer;
+}
+.challenges .room__button--online {
+  background-color: #e3170a;
+  font-size: 0.6rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.42rem 1.15rem;
+  margin-top: 0.3rem;
+}
+.challenges .room__button--online:hover {
+  cursor: pointer;
 }
 
 * {
