@@ -116,4 +116,7 @@ async function generateRoom() {
 
   })
 }
+
+
+//Starts the function
 generateRoom();
