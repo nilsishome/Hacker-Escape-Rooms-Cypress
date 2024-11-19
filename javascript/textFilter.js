@@ -6,7 +6,9 @@ export function filterByText() {
 
   if (searchInput) {
     searchInput.addEventListener("input", () => {
-      console.log("This is a test");
+      const searchText = searchInput.value.toLowerCase();
+      const allChallenges = document.querySelectorAll(".challenges__room");
+      console.log(searchText, allChallenges)
     });
   }
 }
