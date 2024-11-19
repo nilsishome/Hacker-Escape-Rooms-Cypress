@@ -70,7 +70,7 @@ async function generateRoom() {
     rooms.appendChild(img);
     //adding heading for each room
     const heading = document.createElement("h3");
-    heading.classList.add = ("room__heading");
+    heading.classList.add("room__heading");
     heading.textContent = (`${room.title} (${room.type})`)
     rooms.appendChild(heading);
     //adding first the div for the star pictures
@@ -122,5 +122,7 @@ async function generateRoom() {
 //Starts the function
 generateRoom();
 
-//Calls the textfilter
-filterByText();
+//Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
+if (document.querySelector("#challenges__container")) {
+  filterByText();
+}
