@@ -114,29 +114,44 @@
      <div class="overlay"></div>
   <section class ="Bookroom_modal">
     <div class = "book_modal">
-      <form>
+      <form class = "book_form">
         <h4>Book room "Title of room"</h4>
-        <p class = "book_p-name"> Name </p>
-        <input type="text" id="name-text" name="name-text">
-        <p class ="book_p-email">E-mail</p>
-        <input type="text" id="email-text" name="email-text">
-        <p class="book_p-time">What time?</p>
-        <input id="booking-time" type="time" name="booking-time" value="13:30"> 
-        <form>
-          <label for="selection-participants" class ="participants-text">How many participants</label>
-          <input name="participants" id="participants" list="participants">
-        </form>
-        <datalist id="participants">
-          <option>2 participants</option>
-          <option>3 participants</option>
-          <option>4 participants</option>
-          <option>5 participants</option>
-          <option>6 participants</option>
-        </datalist>
+
+        <label for="name" class ="book_name">Name</label>
+        <input type="text" id="name-text" name="name">
+
+        <label for ="email" class ="book_email">E-mail</label>
+        <input type="email" id="email-text" name="email">
+
+        <label for ="time" class ="book_time">What time?</label>
+        <!-- this is just for testing-->
+        <select id="time_options">
+          <option class ="time-numbers">13:30-14:30</option> 
+          <option class ="time-numbers">14:30-15:30</option> 
+          <option class ="time-numbers">15:30-16:30</option> 
+          <option class ="time-numbers">16:30-17:30</option> 
+          <option class ="time-numbers">17:30-18:30</option> 
+
+        </select>
+        
+        <!--<input id="booking-time" type="time" name="time"> commented out in case needed later-->
+      
+        <label for="selection-participants" class ="participants-text">How many participants</label>
+        
+        <select id="participants_number">
+          <option>2 participants</option> 
+          <option>3 participants</option> 
+          <option>4 participants</option> 
+          <option>5 participants</option> 
+          <option>6 participants</option> 
+
+        </select>
+        
+        <button type ="submit" class="booking_button">Submit booking</button>
       </form>
-      <button class="booking_button">Submit booking</button>
     </div>
     </section>
+    <script src ="./javascript/bookroom2.js"></script>
     <script src="./javascript/index.js"></script>
     <script src="./javascript/challenges.js"></script>
     <script src="./javascript/bookroom1.js"></script>

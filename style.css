@@ -822,7 +822,7 @@ h4 {
   width: 250px;
 }
 
-#booking-time, #participants {
+#booking-time, #time_options, #participants_number {
   position: relative;
   margin-left: 10px;
   bottom: 2px;
@@ -833,7 +833,7 @@ h4 {
   width: 150px;
 }
 
-.book_p-name, .book_p-email {
+.book_name, .book_email {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 0 30px;
@@ -843,7 +843,7 @@ h4 {
   margin-left: 10px;
 }
 
-.book_p-time, .participants-text {
+.book_time, .participants-text {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 0 30px;
