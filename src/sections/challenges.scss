@@ -302,6 +302,30 @@ h4{
           border-radius: 0.4rem;
           width: 13rem;
       }
+
+      .room__heading {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        padding-left: 0.5rem;
+        
+      }
+      .room__stars {
+        display: flex;
+        align-items: center;
+        padding: 0 0 0 0.6rem;
+        gap: 0.3rem;
+      }
+      .room__participants{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 0.2rem;
+        font-size: 0.57rem;
+        
+        padding: 0.2rem;
+        text-align: center;
+      }
   
   
   }
