@@ -962,6 +962,11 @@ h4 {
   border-radius: 0.4rem;
   width: 13rem;
 }
+.challenges .room {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .challenges .room__image-container {
   position: relative;
   width: 100%;
@@ -983,17 +988,19 @@ h4 {
 .challenges .room__heading {
   font-size: 1rem;
   font-weight: 400;
-  margin: 0.3rem 0rem 0rem 0.3rem;
+  padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
 }
 .challenges .room__participants {
-  margin-right: 0.2rem;
   font-size: 0.57rem;
-  margin: 0.3rem 0rem 0rem 0.35rem;
+  padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
 }
 .challenges .room__info {
   font-size: 0.64rem;
   padding: 0.5rem 0.5rem 0 0.6rem;
   margin: 0;
+  flex-grow: 1;
 }
 .challenges .challenges__actions {
   display: flex;
