@@ -986,6 +986,12 @@ h4 {
   gap: 0.2rem;
   padding: 0;
 }
+.challenges .room__type-icon {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  color: rgb(65, 65, 65);
+}
 .challenges .room__heading {
   font-size: 1rem;
   font-weight: 400;

@@ -72,6 +72,18 @@ async function generateRoom() {
     img.src = room.image;
     img.alt = `Picture of the room ${room.title}`;
     imageContainer.appendChild(img);
+    //Creating a div to hold the icons
+    const iconContainer = document.createElement("div");
+    iconContainer.classList.add("room__type-icon");
+    //create icon depending on which room type
+    const roomIcon = document.createElement("i");
+    if (room.type === "online") {
+      roomIcon.classList.add("fa-solid", "fa-laptop");
+    } else {
+      roomIcon.classList.add("fa-solid", "fa-house");
+    }
+    iconContainer.appendChild(roomIcon);
+    imageContainer.appendChild(iconContainer);
     //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add("room__heading");
