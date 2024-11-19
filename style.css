@@ -685,7 +685,6 @@
   display: block;
 }
 
-
 #hidden {
   display: none;
 }
@@ -777,6 +776,7 @@
 ::-webkit-datetime-edit-year-field {
   color: grey;
   margin: 1em 0 0 1em;
+}
 
 .overlay {
   position: fixed;
@@ -945,7 +945,6 @@ h4 {
     grid-column: 2;
     margin-top: 2rem;
   }
-
 }
 
 * {
