@@ -351,8 +351,8 @@
 .content .room__heading {
   font-size: 1rem;
   font-weight: 400;
-  margin: 0;
   padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
 }
 .content .room__image-container {
   position: relative;
@@ -380,8 +380,8 @@
 }
 .content .room__participants {
   font-size: 0.57rem;
-  margin: 0;
   padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
 }
 .content .room__info {
   font-size: 0.64rem;
