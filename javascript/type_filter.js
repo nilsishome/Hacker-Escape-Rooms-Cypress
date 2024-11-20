@@ -14,9 +14,9 @@ export default function filterType() {
                 if (challenge.style.display === "none") {
                     challenge.style.display = "";
                 } 
-                //
+                // Else "hide" the onsite cards
                 else {
-                    if (challenge.getAttribute("class") === "challenges__room online") {
+                    if (challenge.getAttribute("id") === "online") {
                         challenge.style.display = "";
                     } else {
                         challenge.style.display = 'none';
