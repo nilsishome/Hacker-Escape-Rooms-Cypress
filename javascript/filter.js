@@ -1,7 +1,9 @@
 // Creates a function that filters the room cards by rating
 export async function filterByRating() {
     // Need the rating values from API
-    const response = await fetch("https://lernia-sjj-assignments.vercel.app/api/challenges");
+    const response = await fetch(
+        "https://lernia-sjj-assignments.vercel.app/api/challenges"
+    );
     const data = await response.json();
 
     // firstRate is the value of the first rating
