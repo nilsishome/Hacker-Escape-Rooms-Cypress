@@ -1,5 +1,6 @@
 export default function filterType() {
     const onlineChallenges = document.querySelector("#online-challenges");
+    const onsiteChallenges = document.querySelector("#on-site-challenges");
 
     // Checking if filter button can be worked with
     if (onlineChallenges) {
@@ -24,5 +25,25 @@ export default function filterType() {
                 }
             })
         });
-    }
+    };
+
+    // Almost the same code as above. This is for including onsite cards
+    if (onsiteChallenges) {
+        onsiteChallenges.addEventListener("change", () => {
+            const allChallenges = document.querySelectorAll(".challenges__room");
+
+            allChallenges.forEach((challenge) => {
+                if (challenge.style.display === "none") {
+                    challenge.style.display = "";
+                } 
+                else {
+                    if (challenge.getAttribute("id") === "onsite") {
+                        challenge.style.display = "";
+                    } else {
+                        challenge.style.display = 'none';
+                    }
+                }
+            })
+        });
+    };
 };
