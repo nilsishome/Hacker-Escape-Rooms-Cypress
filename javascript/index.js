@@ -89,7 +89,7 @@ async function generateRoom() {
     imageContainer.appendChild(iconContainer);
     //adding heading for each room
     const heading = document.createElement("h3");
-    heading.classList.add = ("room__heading");
+    heading.classList.add("room__heading");
     heading.textContent = (`${room.title} (${room.type})`)
     rooms.appendChild(heading);
     //adding first the div for the star pictures
