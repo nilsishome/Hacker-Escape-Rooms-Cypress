@@ -1,57 +1,74 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Hacker Escape Rooms Challenges</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Hacker Escape Rooms Challenges</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-</head>
-
-<body>
-  <header class="header">
-    <div class="overlay__blur"></div>
-    <div class="header__container">
-      <img class="header__logo" src="./icons/MobileLogo.png" alt="Hacker Escape rooms logo." />
-      <h1 class="header__title">Hacker Escape Rooms</h1>
-      <div class="header__menu-icon">
-        <button class="header__menu-button">
-          <img src="./icons/mobilemenu.png" alt="Menu icon" />
-        </button>
+  <body>
+    <header class="header">
+      <div class="overlay__blur"></div>
+      <div class="header__container">
+        <img
+          class="header__logo"
+          src="./icons/MobileLogo.png"
+          alt="Hacker Escape rooms logo."
+        />
+        <h1 class="header__title">Hacker Escape Rooms</h1>
+        <div class="header__menu-icon">
+          <button class="header__menu-button">
+            <img src="./icons/mobilemenu.png" alt="Menu icon" />
+          </button>
+        </div>
       </div>
-    </div>
-    <nav class="header__navigation">
-      <div class="header__navigation-icon">
-        <button class="header__navigation-close">
-          <img src="./icons/mobilemenuclose.png" />
-        </button>
-      </div>
-      <ul class="header__menu">
-        <li class="header__menu-item">
-          <a href="index.html" class="header__menu-link">Play online</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="index.html" class="header__menu-link">Play on-site</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#" class="header__menu-link">The story</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="#" class="header__menu-link">Contact us</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+      <nav class="header__navigation">
+        <div class="header__navigation-icon">
+          <button class="header__navigation-close">
+            <img src="./icons/mobilemenuclose.png" />
+          </button>
+        </div>
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a href="index.html" class="header__menu-link">Play online</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="index.html" class="header__menu-link">Play on-site</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">The story</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">Contact us</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <section class="filter">
       <form>
         <h4>Filter challenges</h4>
         <ul>
           <li class="filter__type">
             <h5>By type</h5>
-            <input type="checkbox" id="online-challenges" name="online-challenges" />
-            <label for="online-challenges">Include online challenges</label><br />
-            <input type="checkbox" id="on-site-challenges" name="on-site-challenges" />
+            <input
+              type="checkbox"
+              id="online-challenges"
+              name="online-challenges"
+            />
+            <label for="online-challenges">Include online challenges</label
+            ><br />
+            <input
+              type="checkbox"
+              id="on-site-challenges"
+              name="on-site-challenges"
+            />
             <label for="on-site-challenges">Include on-site challenges</label>
           </li>
           <li class="filter__rating">
@@ -83,12 +100,17 @@
           </li>
           <li class="filter__keyword">
             <h5>Or type to search for keyword</h5>
-            <input type="text" id ="filter__text" name="filter__text" placeholder="Start typing to filter" />
+            <input
+              type="text"
+              id="filter__text"
+              name="filter__text"
+              placeholder="Start typing to filter"
+            />
           </li>
         </ul>
-      </form> 
+      </form>
     </section>
-  
+
     <section>
       <div class="modal">
         <div class="modal__content">
@@ -96,46 +118,55 @@
             <h3 class="modal__title">Book room "Title of room" (step 1)</h3>
             <p class="modal__p-text">What date would you like to come?</p>
             <p class="modal__p-date">Date</p>
-            <input class="modal__input" type="date" data-date-format="YYYY MM DD">
+            <input
+              class="modal__input"
+              type="date"
+              data-date-format="YYYY MM DD"
+            />
             <button class="modal__button">Search available times</button>
             <button class="modal__button_close">X</button>
           </span>
         </div>
       </div>
     </section>
-    
 
-   
     <!--In section challanges, DOM elements gets created from javascript-->
     <section class="challenges">
       <div id="challenges__container"></div>
     </section>
-  
-     <div class="overlay"></div>
-  <section class ="Bookroom_modal">
-    <div class = "book_modal">
-      <form>
-        <h4>Book room "Title of room"</h4>
-        <p class = "book_p-name"> Name </p>
-        <input type="text" id="name-text" name="name-text">
-        <p class ="book_p-email">E-mail</p>
-        <input type="text" id="email-text" name="email-text">
-        <p class="book_p-time">What time?</p>
-        <input id="booking-time" type="time" name="booking-time" value="13:30"> 
+
+    <div class="overlay"></div>
+    <section class="Bookroom_modal">
+      <div class="book_modal">
         <form>
-          <label for="selection-participants" class ="participants-text">How many participants</label>
-          <input name="participants" id="participants" list="participants">
+          <h4>Book room "Title of room"</h4>
+          <p class="book_p-name">Name</p>
+          <input type="text" id="name-text" name="name-text" />
+          <p class="book_p-email">E-mail</p>
+          <input type="text" id="email-text" name="email-text" />
+          <p class="book_p-time">What time?</p>
+          <input
+            id="booking-time"
+            type="time"
+            name="booking-time"
+            value="13:30"
+          />
+          <form>
+            <label for="selection-participants" class="participants-text"
+              >How many participants</label
+            >
+            <input name="participants" id="participants" list="participants" />
+          </form>
+          <datalist id="participants">
+            <option>2 participants</option>
+            <option>3 participants</option>
+            <option>4 participants</option>
+            <option>5 participants</option>
+            <option>6 participants</option>
+          </datalist>
         </form>
-        <datalist id="participants">
-          <option>2 participants</option>
-          <option>3 participants</option>
-          <option>4 participants</option>
-          <option>5 participants</option>
-          <option>6 participants</option>
-        </datalist>
-      </form>
-      <button class="booking_button">Submit booking</button>
-    </div>
+        <button class="booking_button">Submit booking</button>
+      </div>
     </section>
     <script type="module" src="./javascript/index.js"></script>
     <script src="./javascript/challenges.js"></script>
