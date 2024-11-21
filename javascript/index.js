@@ -112,6 +112,11 @@ async function generateRoom() {
       decimalStar.classList.add("fa-solid", "fa-star-half-stroke");
       roomStars.appendChild(decimalStar);
     }
+    for (let i = 0; i < emptyStar; i++) {
+      const unfilledStar = document.createElement("i");
+      unfilledStar.classList.add("fa-regular", "fa-star");
+      roomStars.appendChild(unfilledStar);
+    }
     //Adding the number of participants per room
     const participants = document.createElement("p");
     participants.classList.add("room__participants");
