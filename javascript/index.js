@@ -1,4 +1,4 @@
-import { filterByRating } from "./filter.js";
+import { filterByRating, resetForm } from "./filter.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -57,6 +57,8 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+    // This adds rating value from API as a DOM-element value
+    challengesRoom.rating = room.rating;
     container.appendChild(challengesRoom);
     //Creating a div for the room inside the container
     const rooms = document.createElement("div");
@@ -135,5 +137,6 @@ async function generateRoom() {
     roomActions.appendChild(button);
   });
 }
+resetForm();
 generateRoom();
 filterByRating();
