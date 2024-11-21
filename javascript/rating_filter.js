@@ -1,23 +1,41 @@
+/*
+ * [ ] Make rating checkboxes act like radio selection, only one at a time
+ */
+
 // Creates a function that filters the room cards by rating
 export async function filterByRating() {
 
+  const filterRating = document.querySelector(".filter__rating");
   const firstRating = document.querySelector(".filter__first-rate");
   const secondRating = document.querySelector(".filter__second-rate");
 
-  // rateInput is the absolute first radiobox input on the page
-  const rateInput = document.querySelectorAll("input[type='radio']");
+  const rateInput = filterRating.querySelectorAll("input[type='checkbox']");
 
-  // For loop that iterates through ALL starInputs, instead of only the first one
-  for (let i = 0; i < rateInput.length; i++) {
-    rateInput[i].addEventListener("input", () => {
+  rateInput.forEach((input) => {
+    input.addEventListener("input", () => {
       // firstRate is the value of the first rateInput
       const firstRate = firstRating.querySelector(
-        "input[type='radio']:checked"
+        "input[type='checkbox']:checked"
       );
       // secondRate is the value of the second rateInput
       const secondRate = secondRating.querySelector(
-        "input[type='radio']:checked"
+        "input[type='checkbox']:checked"
       );
+
+      function selectOnlyThis(id) {
+        for (var i = 1;i <= 4; i++)
+        {
+            input[i].checked = false;
+        }
+        document.getElementById(id).checked = true;
+      }
+
+      input.addEventListener("click", () => {
+        selectOnlyThis(input);
+      });
+
+      console.log(firstRate.value + "\n" + secondRate.value);
+
       // allChallenges is representing each room
       const allChallenges = document.querySelectorAll(".challenges__room");
       
@@ -40,7 +58,7 @@ export async function filterByRating() {
         });
       }
     });
-  }
+  });
 }
 
 // This function resets the checkboxes and radioboxes in probably all browsers 
