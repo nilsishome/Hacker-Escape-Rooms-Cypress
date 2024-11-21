@@ -930,14 +930,18 @@ h4 {
   }
   .filter ul .filter__rating .filter__first-rate {
     grid-row: 2;
+    margin-left: 1rem;
   }
   .filter ul .filter__rating i {
-    position: absolute;
+    color: red;
+    cursor: pointer;
     font-size: 0.8rem;
+    margin-right: -0.15rem;
   }
   .filter ul .filter__rating p {
     grid-row: 2;
     margin: 0.1rem;
+    width: fit-content;
   }
   .filter ul .filter__rating .filter__second-rate {
     grid-row: 2;
