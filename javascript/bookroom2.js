@@ -4,7 +4,8 @@ const formEl = document.querySelector(".book_form");
 
 formEl.addEventListener("submit", async event => {
     event.preventDefault(); //prevents reloading the page when submit
-    
+    const roomTitle = document.getElementsByClassName(".modal__title");
+    roomTitle.innerHTML = "test"
 
     const data = new FormData(formEl);
     const payload = new URLSearchParams(data);
@@ -12,20 +13,17 @@ formEl.addEventListener("submit", async event => {
     //const data = Object.fromEntries(formData);//
     console.log([...payload]);
 
-    
-
-    
     const userInput_name = document.getElementById("name-text").value;
     const userInput_email = document.getElementById("email-text").value;
-    const time_input = document.getElementById("time_options").value;
+    const userInput_time = document.getElementById("time_options").value;
     const userInput_participants = document.getElementById("participants_number").value;
-
+    
 
     const userInput = {
       challenge: 12 ,
       name: userInput_name,
       email: userInput_email,
-      date: time_input, 
+      date: userInput_time,
       time: new Date().toISOString(),
       participants: parseInt(userInput_participants,10),
     };
@@ -50,10 +48,32 @@ formEl.addEventListener("submit", async event => {
         console.log("Participants_number", userInput_participants);
    });
 
-   
+    // Listen for the custom event
+    document.addEventListener('arrayEvent', (event) => {
+      const { message, data } = event.detail; // Extract the message and array
+      
+      console.log(message); // Log the message
+      console.log('Received array:',data); // Log the array
+      newTime = data;
+      console.log("this is the new time "+newTime)
+      availableTimeNow(newTime)
+  // alert(`Received array: ${data.join(', ')}`);
+});
 
+// const availableTime = [newTime];
 
-  
-  
+function availableTimeNow(newTime) {
+  console.log(newTime,"hello1");
+  userInput_time = document.getElementById("time_options");
+  // userInput_time.innerHTML ='<option value=""></options>';
 
-  
+  newTime.forEach((newTime) => {
+    console.log(newTime,"hello2");
+    const option = document.createElement("option");
+    option.value = newTime;
+    option.textContent = newTime;
+    userInput_time.appendChild(option);
+    
+  });
+}
+availableTime(newTime);
