@@ -10,11 +10,23 @@ export default function filterType() {
             const allChallenges = document.querySelectorAll(".challenges__room");
             // Go through that variable
             allChallenges.forEach((challenge) => {
-                // If button has been clicked already this will change 
-                // back all the on site elements to show again
-                if (challenge.style.display === "none") {
+                // If online filter has been unchecked but onsite filter is checked 
+                // Show only onsite challenges
+                if (!onlineChallenges.checked && onsiteChallenges.checked) {
+                    if (challenge.getAttribute("id") === "onsite") {
+                        challenge.style.display = "";
+                    } else {
+                        challenge.style.display = 'none';
+                    }
+                }
+                // Show the hidden challenges if online filter is unchecked
+                else if (!onlineChallenges.checked) {
                     challenge.style.display = "";
                 } 
+                // All the challenges will appear if both checkboxes are checked
+                else if (onlineChallenges.checked && onsiteChallenges.checked) {
+                    challenge.style.display = "";
+                }
                 // Else "hide" the onsite cards
                 else {
                     if (challenge.getAttribute("id") === "online") {
@@ -33,7 +45,17 @@ export default function filterType() {
             const allChallenges = document.querySelectorAll(".challenges__room");
 
             allChallenges.forEach((challenge) => {
-                if (challenge.style.display === "none") {
+                if (!onsiteChallenges.checked && onlineChallenges.checked) {
+                    if (challenge.getAttribute("id") === "online") {
+                        challenge.style.display = "";
+                    } else {
+                        challenge.style.display = 'none';
+                    }
+                }
+                else if (!onsiteChallenges.checked) {
+                    challenge.style.display = "";
+                } 
+                else if (onlineChallenges.checked && onsiteChallenges.checked) {
                     challenge.style.display = "";
                 } 
                 else {
