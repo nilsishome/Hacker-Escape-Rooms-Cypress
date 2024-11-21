@@ -92,26 +92,29 @@ async function generateRoom() {
     heading.classList.add("room__heading");
     heading.textContent = (`${room.title} (${room.type})`)
     rooms.appendChild(heading);
-    //adding first the div for the star pictures
+    //Creating a div to hold the stars.
     const roomStars = document.createElement("div");
     roomStars.classList.add("room__stars");
     imageContainer.appendChild(roomStars);
-
+    //Rounds down the rating to nearst "whole number" for filled stars
     const fullStar = Math.floor(room.rating);
+    //Checks if the rating has a decimal for a half star between 0.1 - 0.9.
     const halfStar = room.rating % 1 !== 0;
+    //Counts the number of empty stars by taking 5 minus the rating, then rounds up.
     const emptyStar = 5 - Math.ceil(room.rating);
-    //Making a for-loop that generates stars based on rating number from API-data.
+    //Making a for-loop that generates stars with fontawesome icons based on the room.rating from fullstar.
     for (let i = 0; i < fullStar; i++) {
       const star = document.createElement("i");
       star.classList.add("fa-solid", "fa-star");
       roomStars.appendChild(star);
     }
-
+    //if the rating has a decimal, a half star will be added.
     if (halfStar) {
       const decimalStar = document.createElement("i");
       decimalStar.classList.add("fa-solid", "fa-star-half-stroke");
       roomStars.appendChild(decimalStar);
     }
+    //A loop that fills the rest of the stars as empty.
     for (let i = 0; i < emptyStar; i++) {
       const unfilledStar = document.createElement("i");
       unfilledStar.classList.add("fa-regular", "fa-star");
