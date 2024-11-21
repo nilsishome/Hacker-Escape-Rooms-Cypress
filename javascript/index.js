@@ -101,9 +101,11 @@ async function generateRoom() {
     const halfStar = room.rating % 1 !== 0;
     const emptyStar = 5 - Math.ceil(room.rating);
     //Making a for-loop that generates stars based on rating number from API-data.
-   console.log(fullStar);
-   console.log(halfStar);
-   console.log(emptyStar);
+    for (let i = 0; i < fullStar; i++) {
+      const star = document.createElement("i");
+      star.classList.add("fa-solid", "fa-star");
+      roomStars.appendChild(star);
+    }
     //Adding the number of participants per room
     const participants = document.createElement("p");
     participants.classList.add("room__participants");
