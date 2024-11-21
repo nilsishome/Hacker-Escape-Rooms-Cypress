@@ -96,18 +96,14 @@ async function generateRoom() {
     const roomStars = document.createElement("div");
     roomStars.classList.add("room__stars");
     imageContainer.appendChild(roomStars);
+
+    const fullStar = Math.floor(room.rating);
+    const halfStar = room.rating % 1 !== 0;
+    const emptyStar = 5 - Math.ceil(room.rating);
     //Making a for-loop that generates stars based on rating number from API-data.
-    for (let i = 1; i <= 5; i++) {
-      const starImg = document.createElement("img");
-      if (i <= room.rating) {
-        starImg.src = "./img/starfilled.png";
-        starImg.alt = "Filled star for rating of the room.";
-      } else {
-        starImg.src = "./img/starunfilled.png";
-        starImg.alt = "Unfilled star for rating of the room.";
-      }
-      roomStars.appendChild(starImg);
-    }
+   console.log(fullStar);
+   console.log(halfStar);
+   console.log(emptyStar);
     //Adding the number of participants per room
     const participants = document.createElement("p");
     participants.classList.add("room__participants");
