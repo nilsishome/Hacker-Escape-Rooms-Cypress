@@ -1,4 +1,4 @@
-import { filterByRating, resetForm } from "./filter.js";
+import { filterByRating, resetForm } from "./rating_filter.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
