@@ -205,10 +205,37 @@ h4{
 
     @include breakpoint($large-screen-breakpoint)
     {
-        display: block;
-        border: 3px solid #c4c4c4;
-        width: 90%;
-        margin: 0 auto;
+        display: grid;
+
+        & .filter__button {
+            @include blueButton;
+            width: 8rem;
+            height: 2.2rem;
+            font-weight: 400;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        & .filter__form {
+            display: none;
+            position: relative;
+            border: 3px solid #c4c4c4;
+            width: 90%;
+            margin: 0 auto;
+
+            & img {
+                width: 1.5rem;
+                position: absolute;
+                top: 0.4rem;
+                right: 0.4rem;
+            }
+        }
+
+        & h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 1.5rem auto;
+        }
 
         & h4 {
             margin-left: 2%;
