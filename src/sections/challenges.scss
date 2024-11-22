@@ -345,7 +345,7 @@ h4{
         position: absolute;
         top: 0.7rem;
         right: 0.7rem;
-        color: rgb(65, 65, 65);
+        color: $red;
       }
 
       .room__heading {
@@ -386,5 +386,11 @@ h4{
           cursor:pointer;
         }
       }
-  
+  }
+  .filter__message {
+    text-align: center;
+    font-size: 1rem;
+    grid-column: 2;
+    margin-top: 5rem;
+    padding: 1rem;
   }
