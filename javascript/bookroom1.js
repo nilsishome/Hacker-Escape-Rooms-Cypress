@@ -6,6 +6,7 @@ const searchTimesBtn = document.querySelector(".modal__button");
 const roomTitle = document.querySelector(".modal__title");
 const room2Title = document.querySelector(".modal__title2");
 const participantOption = document.querySelector("#participants_number");
+const timeOption = document.querySelector("#time_options");
 
 export function bookRoom() {
     const bookRoomButton = document.querySelectorAll(".room__button--onsite");
@@ -36,22 +37,13 @@ export function bookRoom() {
                 option.textContent = `${i} participants`;
                 participantOption.appendChild(option);
             }
-
         })
     })
 }
 
 
 
-//Event-listners.
-closeBooking1.addEventListener("click", hideWindow);
 
-//Menu-functions.
-function hideWindow() {
-windowBooking1.setAttribute("id","hidden")
-}
-
-searchTimesBtn.addEventListener("click", getDate);
 
 let inputChallenge = 1 // 
 
@@ -60,7 +52,7 @@ let inputChallenge = 1 //
 
 //Takes date and gets slot data 
 function getDate() {
-console.log(inputDate.value)
+console.log("input date"+inputDate.value)
 if (inputDate.value==""){
     console.log("No date selected") // Error message if no date is selected
     return
@@ -79,6 +71,7 @@ fetch(apiCall)
 })
 .then(data => {
     console.log(data);  // Handle the data from the API
+    slotTimes = data;
     data.slots.forEach(slot => {
     console.log(slot)}) // Output available slots on that date
     slotTimes = data.slots;
@@ -102,8 +95,7 @@ fetch(apiCall)
 
 
 
-// Add a click event listener
-
+/* // Add a click event listener
 windowBooking1.addEventListener('click', () => {
     // Create a custom event with the array in the detail property
     const event = new CustomEvent('arrayEvent', {
@@ -112,13 +104,9 @@ windowBooking1.addEventListener('click', () => {
             data: slotTimes, // Include the array
         },
     });
-
     // Dispatch the event on the document
     document.dispatchEvent(event);
-});
-
-
-
+}); */
 
 searchTimesBtn.addEventListener("click",() => {
     windowBooking1.style.disply ="none";
@@ -129,3 +117,12 @@ overlay.addEventListener("click",() => {
 
 })
 
+//Event-listners.
+closeBooking1.addEventListener("click", hideWindow);
+
+//Menu-functions.
+function hideWindow() {
+windowBooking1.setAttribute("id","hidden")
+}
+
+searchTimesBtn.addEventListener("click", getDate);
