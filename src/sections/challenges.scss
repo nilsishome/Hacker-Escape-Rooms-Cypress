@@ -376,5 +376,11 @@ h4{
           cursor:pointer;
         }
       }
-  
+  }
+  .filter__message {
+    text-align: center;
+    font-size: 1rem;
+    grid-column: 2;
+    margin-top: 5rem;
+    padding: 1rem;
   }
