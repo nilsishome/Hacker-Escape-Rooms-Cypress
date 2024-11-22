@@ -6,25 +6,41 @@ export async function filterByRating() {
   const firstStars = firstRating.querySelectorAll("i");
   const secondStars = secondRating.querySelectorAll("i");
 
-  // The ratings default values
+  // The rating values of the two existing starfields
   let firstRate = 0;
   let secondRate = 5;
+
+  // These values make the stars 'disappear' if you double click on them
+  // If these values get the same value as the index of the stars, all stars will be removed
+  // (it will make sense later)
+  let lastFirstStarIdx = -1;
+  let lastSecondStarIdx = -1;
 
   if (firstStars && secondStars) {
     // This is the value and style transformation of the first stars
     firstStars.forEach((star, idx1) => {
       star.addEventListener("click", () => {
-        firstRate = idx1 + 1;
-        if (idx1 === 0) firstRate = idx1;
-        firstStars.forEach((star, idx2) => {
-          if (idx1 >= idx2) {
-            star.classList.remove("fa-regular");
-            star.classList.add("fa-solid");
-          } else {
+        if (lastFirstStarIdx === idx1) {
+          firstStars.forEach((star) => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
-          }
-        });
+          });
+          // These values resets the firstStar rating
+          firstRate = 0;
+          lastFirstStarIdx = -1;
+        } else {
+          firstRate = idx1 + 1;
+          firstStars.forEach((star, idx2) => {
+            if (idx1 >= idx2) {
+              star.classList.remove("fa-regular");
+              star.classList.add("fa-solid");
+            } else {
+              star.classList.remove("fa-solid");
+              star.classList.add("fa-regular");
+            }
+          });
+          lastFirstStarIdx = idx1;
+        }
         updateFilter();
       });
     });
@@ -32,16 +48,27 @@ export async function filterByRating() {
     // This is the value and style transformation of the second stars
     secondStars.forEach((star, idx1) => {
       star.addEventListener("click", () => {
-        secondRate = idx1 + 1;
-        secondStars.forEach((star, idx2) => {
-          if (idx1 >= idx2) {
-            star.classList.remove("fa-regular");
-            star.classList.add("fa-solid");
-          } else {
+        if (lastSecondStarIdx === idx1) {
+          secondStars.forEach((star) => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
-          }
-        });
+          });
+          // These values resets the secondStar rating
+          secondRate = 5;
+          lastSecondStarIdx = -1;
+        } else {
+          secondRate = idx1 + 1;
+          secondStars.forEach((star, idx2) => {
+            if (idx1 >= idx2) {
+              star.classList.remove("fa-regular");
+              star.classList.add("fa-solid");
+            } else {
+              star.classList.remove("fa-solid");
+              star.classList.add("fa-regular");
+            }
+          });
+          lastSecondStarIdx = idx1;
+        }
         updateFilter();
       });
     });
