@@ -134,42 +134,97 @@
     <section class="challenges">
       <div id="challenges__container"></div>
     </section>
+  
+     <div class="overlay"></div>
+  <section class ="Bookroom_modal">
+    <div class = "book_modal">
+      <form class = "book_form">
+        <h4 class ="modal__title2">Book room "Title of room"</h4>
 
-    <div class="overlay"></div>
-    <section class="Bookroom_modal">
-      <div class="book_modal">
-        <form>
-          <h4>Book room "Title of room"</h4>
-          <p class="book_p-name">Name</p>
-          <input type="text" id="name-text" name="name-text" />
-          <p class="book_p-email">E-mail</p>
-          <input type="text" id="email-text" name="email-text" />
-          <p class="book_p-time">What time?</p>
-          <input
-            id="booking-time"
-            type="time"
-            name="booking-time"
-            value="13:30"
-          />
-          <form>
-            <label for="selection-participants" class="participants-text"
-              >How many participants</label
-            >
-            <input name="participants" id="participants" list="participants" />
-          </form>
-          <datalist id="participants">
-            <option>2 participants</option>
-            <option>3 participants</option>
-            <option>4 participants</option>
-            <option>5 participants</option>
-            <option>6 participants</option>
-          </datalist>
-        </form>
-        <button class="booking_button">Submit booking</button>
-      </div>
+        <label for="name" class ="book_name">Name</label>
+        <input type="text" id="name-text" name="name">
+
+        <label for ="email" class ="book_email">E-mail</label>
+        <input type="email" id="email-text" name="email">
+
+        <label for ="time" class ="book_time">What time?</label>
+        <!-- this is just for testing-->
+        <select id="time_options">
+          <option value=""></option> 
+
+        </select>
+        
+        <!--<input id="booking-time" type="time" name="time"> commented out in case needed later-->
+      
+        <label for="selection-participants" class ="participants-text">How many participants</label>
+        
+        <select id="participants_number">
+          <option value="2"> 2 participants</option> 
+          <option value="3"> 3 participants</option> 
+          <option value="4"> 4 participants</option> 
+          <option value="5"> 5 participants</option> 
+          <option value="6"> 6 participants</option> 
+
+        </select>
+        
+        <button type ="submit" class="booking_button">Submit booking</button>
+      </form>
+    </div>
     </section>
-    <script src="./javascript/index.js" type="module"></script>
+
+    <footer class="footer">
+      <div class="footer__company">
+        <h3 class="footer__heading footer__heading--company">
+          [Esc] Hacker Escape Rooms
+        </h3>
+        <p class="footer__text">
+          Quodsi haberent magnalia inter potentiam et divitias, et non illam
+          quidem haec eo spectant haec quoque vos omnino desit illud quo solo
+          felicitatis libertatisque perficiuntur.
+        </p>
+      </div>
+      <div class="footer__contact">
+        <h3 class="footer__heading footer__heading--contact">Site map</h3>
+        <ul class="footer__menu footer__menu--contact">
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">The story</a>
+          </li>
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Contact us</a>
+          </li>
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Legal</a>
+          </li>
+        </ul>
+        <ul class="footer__menu footer__menu--play">
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Play online</a>
+          </li>
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Play on-site</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__media">
+        <h3 class="footer__heading footer__heading--media">Follow us on</h3>
+        <ul class="footer__menu footer__menu--media">
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Facebook</a>
+          </li>
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Instagram</a>
+          </li>
+          <li class="footer__menu-item">
+            <a href="#" class="footer__menu-link">Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script type="module" src="./javascript/index.js"></script>
+
+
     <script src="./javascript/challenges.js"></script>
     <script src="./javascript/bookroom1.js"></script>
+    <script src="./javascript/bookroom2.js"></script>
   </body>
 </html>
