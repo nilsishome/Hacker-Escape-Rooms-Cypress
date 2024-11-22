@@ -1,4 +1,5 @@
 import { filterByRating, resetForm } from "./rating_filter.js";
+import filterType from "./type_filter.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -59,6 +60,12 @@ async function generateRoom() {
     );
     // This adds rating value from API as a DOM-element value
     challengesRoom.rating = room.rating;
+    // Adding an id for easier finding
+    if (room.type === "online") {
+      challengesRoom.setAttribute("id", "online");
+    } else {
+      challengesRoom.setAttribute("id", "onsite");
+    }
     container.appendChild(challengesRoom);
     //Creating a div for the room inside the container
     const rooms = document.createElement("div");
@@ -140,3 +147,4 @@ async function generateRoom() {
 resetForm();
 generateRoom();
 filterByRating();
+filterType();
