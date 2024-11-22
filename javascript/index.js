@@ -1,4 +1,7 @@
+
+import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
+
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -95,7 +98,7 @@ async function generateRoom() {
     //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add("room__heading");
-    heading.textContent = `${room.title} (${room.type})`;
+    heading.textContent = (`${room.title} (${room.type})`)
     rooms.appendChild(heading);
     //adding first the div for the star pictures
     const roomStars = document.createElement("div");
@@ -142,7 +145,14 @@ async function generateRoom() {
     roomActions.appendChild(button);
   });
 }
+//Starts the function
 generateRoom();
+
+//Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
+if (document.querySelector("#challenges__container")) {
+  filterByText();
+}
 
 filterType();
     
+
