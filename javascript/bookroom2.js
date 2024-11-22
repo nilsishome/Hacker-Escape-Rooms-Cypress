@@ -54,7 +54,7 @@ formEl.addEventListener("submit", async event => {
       
       console.log(message); // Log the message
       console.log('Received array:',data); // Log the array
-      newTime = data;
+      const newTime = data;
       console.log("this is the new time "+newTime)
       availableTimeNow(newTime)
   // alert(`Received array: ${data.join(', ')}`);
@@ -76,4 +76,3 @@ function availableTimeNow(newTime) {
     
   });
 }
-availableTime(newTime);

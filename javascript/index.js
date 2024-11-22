@@ -1,7 +1,7 @@
 
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
-
+import { bookRoom } from "./bookroom1.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -121,7 +121,7 @@ async function generateRoom() {
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
     rooms.appendChild(participants);
-
+ 
     //adding the description for each room
     const roomInfo = document.createElement("p");
     roomInfo.classList.add("room__info");
@@ -146,8 +146,11 @@ async function generateRoom() {
   });
 }
 //Starts the function
-generateRoom();
-
+async function awaitChallenges() {
+await generateRoom();
+bookRoom();
+}
+awaitChallenges();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();

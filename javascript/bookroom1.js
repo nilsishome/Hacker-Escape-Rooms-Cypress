@@ -5,12 +5,44 @@ const inputDate = document.querySelector(".modal__input")
 const searchTimesBtn = document.querySelector(".modal__button");
 const roomTitle = document.querySelector(".modal__title");
 const room2Title = document.querySelector(".modal__title2");
-if(roomTitle && room2Title){
-    room2Title.className = roomTitle.className;
-    room2Title.textContent = roomTitle.innerHTML= "Book room" 
-    
+const participantOption = document.querySelector("#participants_number");
+
+export function bookRoom() {
+    const bookRoomButton = document.querySelectorAll(".room__button--onsite");
+    bookRoomButton.forEach(button => {
+        button.addEventListener("click", () => {
+            const roomChallenge = button.closest(".challenges__room") || button.closest(".content__room");
+            const title = roomChallenge.querySelector(".room__heading").textContent;
+            const participantsText = roomChallenge.querySelector(".room__participants").textContent;
+            const minParticipants = parseInt(participantsText);
+            const maxParticipants = parseInt(participantsText.split("-")[1]);
+            console.log(minParticipants);
+            console.log(maxParticipants);
+            console.log(participantsText);
+            
+            windowBooking1.removeAttribute("id");
+            roomTitle.textContent = `Book room "${title}" (step 1)`;
+
+            if(room2Title) {
+                room2Title.className = roomTitle.className;
+                room2Title.textContent = roomTitle.textContent;
+            }
+
+            participantOption.innerHTML = "";
+
+            for(let i = minParticipants; i <= maxParticipants; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = `${i} participants`;
+                participantOption.appendChild(option);
+            }
+
+        })
+    })
 }
-roomTitle.innerHTML = "test"
+
+
+
 //Event-listners.
 closeBooking1.addEventListener("click", hideWindow);
 
