@@ -372,6 +372,10 @@
   gap: 0.2rem;
   padding: 0;
 }
+.content .room__stars i {
+  color: #e3170a;
+  font-size: 0.7rem;
+}
 .content .room__type-icon {
   position: absolute;
   top: 0.7rem;
