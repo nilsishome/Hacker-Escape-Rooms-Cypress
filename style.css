@@ -329,56 +329,73 @@
     max-width: 1280px;
   }
 }
-.content .room__img {
-  width: 100%;
-}
-.content .room {
+.content .content__room {
+  display: flex;
+  flex-direction: column;
   box-shadow: 0px 0px 10px 0px #b6bdb5;
   border-radius: 0.4rem;
   width: 13rem;
+  overflow: hidden;
+  flex: 0 0 auto;
 }
 @media screen and (min-width: 1280px) {
-  .content .room {
+  .content .content__room {
     margin: 0;
   }
+}
+.content .room {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .content .room__heading {
   font-size: 1rem;
   font-weight: 400;
-  margin: 0;
-  padding-left: 0.5rem;
+  padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
+}
+.content .room__image-container {
+  position: relative;
+  width: 100%;
+}
+.content .room__img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .content .room__stars {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.4rem;
   display: flex;
   align-items: center;
-  padding: 0 0 0 0.6rem;
-  gap: 0.3rem;
+  gap: 0.2rem;
+  padding: 0;
+}
+.content .room__type-icon {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  color: #e3170a;
 }
 .content .room__participants {
   font-size: 0.57rem;
-  margin: 0;
-  padding: 0.2rem;
-  text-align: center;
-}
-@media screen and (min-width: 1280px) {
-  .content .room__participants {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 0.2rem;
-  }
+  padding-left: 0.6rem;
+  margin: 0.3rem 0rem 0rem 0rem;
 }
 .content .room__info {
   font-size: 0.64rem;
   padding: 0.5rem 0.5rem 0 0.6rem;
   margin: 0;
+  flex-grow: 1;
 }
-.content .room__actions {
+.content .challenges__actions {
   display: flex;
   justify-content: flex-end;
   padding: 0.5rem;
+  margin-top: auto;
 }
-.content .room__button {
+.content .room__button--onsite, .content .room__button--online {
   background-color: #e3170a;
   font-size: 0.6rem;
   font-weight: 700;
@@ -389,7 +406,7 @@
   padding: 0.42rem 1.15rem;
   margin-top: 0.3rem;
 }
-.content .room__button:hover {
+.content .room__button--onsite:hover, .content .room__button--online:hover {
   cursor: pointer;
 }
 .content .content__navigation {
@@ -693,7 +710,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 1;
+  z-index: 9;
   left: 0;
   top: 0;
   width: 100%;
@@ -785,7 +802,16 @@
   width: 100%;
   height: 100%;
   background-color: rgba(112, 112, 112, 0.7);
-  z-index: 9998;
+  z-index: 5;
+  display: hidden;
+}
+
+#time_options {
+  display: block;
+}
+
+#time_options option {
+  color: black;
 }
 
 .book_modal {
@@ -797,8 +823,9 @@
   position: fixed;
   top: 20%;
   left: 30%;
-  z-index: 9999;
+  z-index: 6;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  display: hidden;
 }
 
 h4 {
@@ -822,7 +849,7 @@ h4 {
   width: 250px;
 }
 
-#booking-time, #participants {
+#booking-time, #time_options, #participants_number {
   position: relative;
   margin-left: 10px;
   bottom: 2px;
@@ -833,7 +860,7 @@ h4 {
   width: 150px;
 }
 
-.book_p-name, .book_p-email {
+.book_name, .book_email {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 0 30px;
@@ -843,7 +870,7 @@ h4 {
   margin-left: 10px;
 }
 
-.book_p-time, .participants-text {
+.book_time, .participants-text {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 0 30px;
@@ -994,7 +1021,7 @@ h4 {
   position: absolute;
   top: 0.7rem;
   right: 0.7rem;
-  color: rgb(65, 65, 65);
+  color: #e3170a;
 }
 .challenges .room__heading {
   font-size: 1rem;

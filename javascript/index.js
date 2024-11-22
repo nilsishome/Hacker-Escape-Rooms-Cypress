@@ -1,4 +1,6 @@
+
 import { filterByText } from "./textFilter.js";
+import filterType from "./type_filter.js";
 
 
 //variables.
@@ -59,6 +61,12 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+    // Adding an id for easier finding
+    if (room.type === "online") {
+      challengesRoom.setAttribute("id", "online");
+    } else {
+      challengesRoom.setAttribute("id", "onsite");
+    }
     container.appendChild(challengesRoom);
     //Creating a div for the room inside the container
     const rooms = document.createElement("div");
@@ -156,3 +164,7 @@ generateRoom();
 if (document.querySelector("#challenges__container")) {
   filterByText();
 }
+
+filterType();
+    
+
