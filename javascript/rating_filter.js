@@ -21,26 +21,36 @@ export async function filterByRating() {
   let lastSecondStarIdx = -1;
 
   if (firstStars && secondStars) {
-    // This is the value and style transformation of the first stars
-    firstStars.forEach((star, idx1) => {
-      star.addEventListener("click", () => {
-        firstStarSelection(idx1);
+    // This executes first star selection
+    firstStarBtns.forEach((btn, idx1) => {
+      btn.addEventListener("click", () => {
+        firstStarSelection(idx1)
+        // This code marks the star buttons selected for screen reader
+        firstStarBtns.forEach((btn, idx2) => {
+          if (idx1 === idx2 && idx1 === lastFirstStarIdx) {
+            btn.setAttribute("aria-pressed", "true");
+          }
+          else {
+            btn.setAttribute("aria-pressed", "false");
+          }
+        });
       });
-    });
-    // This executes first star selection with the spacebar key
-    firstStarBtns.forEach((star, idx1) => {
-      star.addEventListener("keypress", event => (event.key === ' ') ? firstStarSelection(idx1) : null);
     });
 
-    // This is the value and style transformation of the second stars
-    secondStars.forEach((star, idx1) => {
-      star.addEventListener("click", () => {
-        secondStarSelection(idx1);
+    // This executes second star selection
+    secondStarBtns.forEach((btn, idx1) => {
+      btn.addEventListener("click", () => {
+        secondStarSelection(idx1)
+        // This code marks the star buttons selected for screen reader
+        secondStarBtns.forEach((btn, idx2) => {
+          if (idx1 === idx2 && idx1 === lastSecondStarIdx) {
+            btn.setAttribute("aria-pressed", "true");
+          }
+          else {
+            btn.setAttribute("aria-pressed", "false");
+          }
+        });
       });
-    });
-    // This executes second star selection with the spacebar key
-    secondStarBtns.forEach((star, idx1) => {
-      star.addEventListener("keypress", event => (event.key === ' ') ? secondStarSelection(idx1) : null);
     });
 
     function firstStarSelection(idx1) {
