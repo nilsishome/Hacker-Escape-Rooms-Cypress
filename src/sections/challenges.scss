@@ -275,11 +275,18 @@ h4{
                     margin-left: 1rem;
                 }
 
-                & i {
-                    color: red;
-                    cursor: pointer;
-                    font-size: 0.8rem;
-                    margin-right: -0.15rem;
+                & button {
+                    background-color: transparent;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+
+                    & i {
+                        color: red;
+                        cursor: pointer;
+                        font-size: 0.8rem;
+                        margin-right: -0.15rem;
+                    }
                 }
 
                 & p {

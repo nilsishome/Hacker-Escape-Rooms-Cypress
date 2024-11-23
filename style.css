@@ -959,7 +959,13 @@ h4 {
     grid-row: 2;
     margin-left: 1rem;
   }
-  .filter ul .filter__rating i {
+  .filter ul .filter__rating button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  .filter ul .filter__rating button i {
     color: red;
     cursor: pointer;
     font-size: 0.8rem;

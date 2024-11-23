@@ -6,6 +6,10 @@ export async function filterByRating() {
   const firstStars = firstRating.querySelectorAll("i");
   const secondStars = secondRating.querySelectorAll("i");
 
+  // These buttons are made for screen readers and pressing the spacebar key, improved for accessibility
+  const firstStarBtns = firstRating.querySelectorAll(".star-button");
+  const secondStarBtns = secondRating.querySelectorAll(".star-button");
+
   // The rating values of the two existing starfields
   let firstRate = 0;
   let secondRate = 5;
@@ -20,58 +24,74 @@ export async function filterByRating() {
     // This is the value and style transformation of the first stars
     firstStars.forEach((star, idx1) => {
       star.addEventListener("click", () => {
-        if (lastFirstStarIdx === idx1) {
-          firstStars.forEach((star) => {
-            star.classList.remove("fa-solid");
-            star.classList.add("fa-regular");
-          });
-          // These values resets the firstStar rating
-          firstRate = 0;
-          lastFirstStarIdx = -1;
-        } else {
-          firstRate = idx1 + 1;
-          firstStars.forEach((star, idx2) => {
-            if (idx1 >= idx2) {
-              star.classList.remove("fa-regular");
-              star.classList.add("fa-solid");
-            } else {
-              star.classList.remove("fa-solid");
-              star.classList.add("fa-regular");
-            }
-          });
-          lastFirstStarIdx = idx1;
-        }
-        updateFilter();
+        firstStarSelection(idx1);
       });
+    });
+    // This executes first star selection with the spacebar key
+    firstStarBtns.forEach((star, idx1) => {
+      star.addEventListener("keypress", event => (event.key === ' ') ? firstStarSelection(idx1) : null);
     });
 
     // This is the value and style transformation of the second stars
     secondStars.forEach((star, idx1) => {
       star.addEventListener("click", () => {
-        if (lastSecondStarIdx === idx1) {
-          secondStars.forEach((star) => {
-            star.classList.remove("fa-solid");
-            star.classList.add("fa-regular");
-          });
-          // These values resets the secondStar rating
-          secondRate = 5;
-          lastSecondStarIdx = -1;
-        } else {
-          secondRate = idx1 + 1;
-          secondStars.forEach((star, idx2) => {
-            if (idx1 >= idx2) {
-              star.classList.remove("fa-regular");
-              star.classList.add("fa-solid");
-            } else {
-              star.classList.remove("fa-solid");
-              star.classList.add("fa-regular");
-            }
-          });
-          lastSecondStarIdx = idx1;
-        }
-        updateFilter();
+        secondStarSelection(idx1);
       });
     });
+    // This executes second star selection with the spacebar key
+    secondStarBtns.forEach((star, idx1) => {
+      star.addEventListener("keypress", event => (event.key === ' ') ? secondStarSelection(idx1) : null);
+    });
+
+    function firstStarSelection(idx1) {
+      if (lastFirstStarIdx === idx1) {
+        firstStars.forEach((star) => {
+          star.classList.remove("fa-solid");
+          star.classList.add("fa-regular");
+        });
+        // These values resets the firstStar rating
+        firstRate = 0;
+        lastFirstStarIdx = -1;
+      } else {
+        firstRate = idx1 + 1;
+        firstStars.forEach((star, idx2) => {
+          if (idx1 >= idx2) {
+            star.classList.remove("fa-regular");
+            star.classList.add("fa-solid");
+          } else {
+            star.classList.remove("fa-solid");
+            star.classList.add("fa-regular");
+          }
+        });
+        lastFirstStarIdx = idx1;
+      }
+      updateFilter();
+    }
+
+    function secondStarSelection(idx1) {
+      if (lastSecondStarIdx === idx1) {
+        secondStars.forEach((star) => {
+          star.classList.remove("fa-solid");
+          star.classList.add("fa-regular");
+        });
+        // These values resets the secondStar rating
+        secondRate = 5;
+        lastSecondStarIdx = -1;
+      } else {
+        secondRate = idx1 + 1;
+        secondStars.forEach((star, idx2) => {
+          if (idx1 >= idx2) {
+            star.classList.remove("fa-regular");
+            star.classList.add("fa-solid");
+          } else {
+            star.classList.remove("fa-solid");
+            star.classList.add("fa-regular");
+          }
+        });
+        lastSecondStarIdx = idx1;
+      }
+      updateFilter();
+    }
 
     function updateFilter() {
       // allChallenges is representing each room
