@@ -292,11 +292,13 @@ h4{
                 & p {
                     grid-row: 2;
                     margin: 0.1rem;
+                    margin-left: -0.5rem;
                     width: fit-content;
                 }
 
                 & .filter__second-rate {
                     grid-row: 2;
+                    margin-left: -1rem;
                 }
             }
 
