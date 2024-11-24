@@ -38,7 +38,6 @@ export function filterByLabel() {
         }
 
         let showChallenges = true;
-        console.log("selected filter to check:" + selectedLabels);
 
         selectedLabels.forEach((label) => {
           const challengeHasLabel = challengesLabels.includes(label);
