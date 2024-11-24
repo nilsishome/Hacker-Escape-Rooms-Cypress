@@ -1,7 +1,7 @@
 
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
-
+import { filterByLabel } from "./filterByLabel.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -35,6 +35,9 @@ async function challengesApi() {
   );
   const data = await response.json();
   console.log(data);
+  data.challenges.forEach(room => {
+    console.log(room.labels);
+  })
   return data;
 }
 //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
@@ -61,6 +64,9 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+
+    challengesRoom.setAttribute("data-labels", room.labels.join(","));
+
     // Adding an id for easier finding
     if (room.type === "online") {
       challengesRoom.setAttribute("id", "online");
@@ -151,6 +157,7 @@ generateRoom();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
+  filterByLabel();
 }
 
 filterType();

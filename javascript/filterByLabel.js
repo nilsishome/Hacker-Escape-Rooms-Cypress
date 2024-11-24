@@ -1,14 +1,16 @@
 export function filterByLabel() {
-    //takes all filter buttons from .filter__tag.
-    const labelButton = document.querySelectorAll(".filter__tag button");
-    //Empry array to store the labels that are active
-    let activeLabels = [];
+    // Find all filter buttons from the dom.
+    const filterButtons = document.querySelectorAll(".filter__tag button");
+    
 
-    labelButton.forEach(button => {
-        button.addEventListener("click", (e) => {
+    //Array with all active labels that the user has clicked.
+    let selectedLabels = [];
+
+
+
+    filterButtons.forEach(filterButton => {
+        filterButton.addEventListener("click", (e) => {
             e.preventDefault();
-
-            button.classList.toggle("active");
         })
     })
 }
