@@ -29,6 +29,19 @@ export function filterByLabel() {
                 selectedLabels = selectedLabels.filter(label => label !== clickedLabel);
                 console.log(selectedLabels)
             }
+
+            const allChallenges = document.querySelectorAll(".challenges__room");
+
+            allChallenges.forEach(challenge => {
+                const challengesLabels = challenge.dataset.labels.split(",");
+                console.log("Labels for this room", challengesLabels);
+
+                if (selectedLabels.length === 0) {
+                    challenge.style.display = "";
+                    return;
+                }
+                console.log(selectedLabels);
+            })
         })
     })
 }

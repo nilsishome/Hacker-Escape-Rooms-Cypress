@@ -64,7 +64,7 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
-
+    //Adds the rooms labels from the API as a attribute in the html element
     challengesRoom.setAttribute("data-labels", room.labels.join(","));
 
     // Adding an id for easier finding
