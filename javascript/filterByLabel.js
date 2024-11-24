@@ -7,10 +7,13 @@ export function filterByLabel() {
     let selectedLabels = [];
 
 
-
+    //When the user clicks on our labels, the filter runs.
     filterButtons.forEach(filterButton => {
         filterButton.addEventListener("click", (e) => {
             e.preventDefault();
+            
+
+            filterButton.classList.toggle("active");
         })
     })
 }

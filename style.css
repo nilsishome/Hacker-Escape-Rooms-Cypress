@@ -1078,6 +1078,19 @@ h4 {
   padding: 1rem;
 }
 
+.filter__tag button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter__tag button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
 * {
   max-width: 100%;
   box-sizing: border-box;
