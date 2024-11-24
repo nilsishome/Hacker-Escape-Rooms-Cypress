@@ -15,9 +15,20 @@ export function filterByLabel() {
             
             //Added a toggle to style with SCSS when the label is "active"
             filterButton.classList.toggle("active");
-            //Gets the label on the specific label that has been clicked.
+            //Gets the label on the specific label that has been clicked and makes it lowercase.
             const clickedLabel = filterButton.textContent.toLocaleLowerCase();
-            console.log(clickedLabel);
+            //checks to see if this label is already chosen
+            const labelsSelected = selectedLabels.includes(clickedLabel);
+
+            if (!labelsSelected) {
+                //If the label is not in the list, it gets added to the selectedLabels array.
+                selectedLabels.push(clickedLabel);
+                console.log(selectedLabels)
+            } else {
+                //If the label is in the array, it gets removed from the array.
+                selectedLabels = selectedLabels.filter(label => label !== clickedLabel);
+                console.log(selectedLabels)
+            }
         })
     })
 }
