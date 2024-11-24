@@ -29,18 +29,33 @@ export function filterByLabel() {
                 selectedLabels = selectedLabels.filter(label => label !== clickedLabel);
                 console.log(selectedLabels)
             }
-
+            //Get all challenges that are located on challenges.html.
             const allChallenges = document.querySelectorAll(".challenges__room");
+            console.log("All challenges found:" + allChallenges);
 
             allChallenges.forEach(challenge => {
                 const challengesLabels = challenge.dataset.labels.split(",");
-                console.log("Labels for this room", challengesLabels);
+                console.log("labels for this challenge:" + challengesLabels)
 
                 if (selectedLabels.length === 0) {
+                    console.log("No filter, display all challenges")
                     challenge.style.display = "";
                     return;
                 }
-                console.log(selectedLabels);
+
+                let showChallenges = true;
+                console.log("selected filter to check:" + selectedLabels);
+
+                selectedLabels.forEach(label => {
+                    const challengeHasLabel = challengesLabels.includes(label);
+                    console.log("checking if challenge has label" + label);
+                    console.log("result:" + challengeHasLabel)
+                    if (!challengeHasLabel) {
+                        console.log("Has no label, will be hidden.")
+                        showChallenges = false;
+                    }
+                });
+                
             })
         })
     })
