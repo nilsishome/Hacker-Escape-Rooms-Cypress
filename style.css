@@ -975,10 +975,10 @@ h4 {
     border-radius: 3px;
     border: 2px solid #8acfe5;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-family: "Roboto", sans-serif;
-    color: #8acfe5;
-    padding-left: 0.5rem;
+    padding: 1em;
+    padding-left: 0.5em;
     margin: 0.3rem 0 0 0;
     width: 13rem;
     height: 1.5rem;
