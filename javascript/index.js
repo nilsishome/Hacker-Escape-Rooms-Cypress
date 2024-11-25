@@ -26,9 +26,7 @@ function hideMenu() {
   overlayBlur.classList.remove("active");
   document.body.style.overflow = "";
 }
-
 //Connection to API, this function can now be called wherever we need it.
-
 async function challengesApi() {
   const response = await fetch(
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
