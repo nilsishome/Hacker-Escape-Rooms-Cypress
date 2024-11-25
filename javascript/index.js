@@ -34,12 +34,14 @@ async function challengesApi() {
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
   );
   const data = await response.json();
-  console.log(data);
-  data.challenges.forEach(room => {
-    console.log(room.labels);
-  })
+  data.challenges.forEach((room) => {
+    console.log(`Title: ${room.title}, Labels: ${room.labels.join(", ")}`);
+  });
+  
   return data;
-}
+  }
+  
+
 //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
