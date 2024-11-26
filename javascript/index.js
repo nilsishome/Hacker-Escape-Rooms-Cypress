@@ -2,6 +2,7 @@ import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
 import { filterByLabel } from "./filterByLabel.js";
+import { navigation } from "./navigation.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -171,6 +172,7 @@ if (document.querySelector("#challenges__container")) {
 generateRoom();
 filterByRating();
 filterType();
+navigation();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
