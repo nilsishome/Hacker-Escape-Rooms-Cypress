@@ -49,7 +49,7 @@ export function filterByLabel() {
             showChallenges = false;
           }
         });
-          //If the challenge is supposed to be shown, we give it its standard value. Else its set to none.
+        //If the challenge is supposed to be shown, we give it its standard value. Else its set to none.
         if (showChallenges) {
           challenge.style.display = "";
         } else {

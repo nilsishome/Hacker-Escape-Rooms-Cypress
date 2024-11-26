@@ -372,6 +372,10 @@
   gap: 0.2rem;
   padding: 0;
 }
+.content .room__stars i {
+  color: #e3170a;
+  font-size: 0.7rem;
+}
 .content .room__type-icon {
   position: absolute;
   top: 0.7rem;
@@ -899,10 +903,56 @@ h4 {
 }
 @media screen and (min-width: 1280px) {
   .filter {
-    display: block;
-    border: 3px solid #c4c4c4;
+    display: grid;
+  }
+  .filter .filter__button {
+    background-color: #8acfe5;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    width: 11rem;
+    height: 2.35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 2.2rem;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+  }
+  .filter .filter__button:hover {
+    background-color: lightblue;
+  }
+  .filter .filter__title {
+    color: #011827;
+    font-size: 1.2em;
+    margin: 0.6em auto 1em 1em;
+  }
+  .filter .filter__form {
+    display: none;
+    position: relative;
+    border: 2px solid #c4c4c4;
+    box-shadow: 0 0 5px 1px lightgrey;
     width: 90%;
     margin: 0 auto;
+  }
+  .filter .filter__form .filter__form__close-button {
+    width: 1.5rem;
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    cursor: pointer;
+  }
+  .filter h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 1.5rem auto;
   }
   .filter h4 {
     margin-left: 2%;
@@ -919,32 +969,36 @@ h4 {
   }
   .filter ul li h5 {
     font-size: 0.7rem;
-    margin: 0 0 0.3rem 1rem;
+    margin: 0 0 0.3rem 0;
     width: fit-content;
-  }
-  .filter ul li button {
-    margin-left: 1rem;
+    color: #011827;
   }
   .filter ul li input[type=checkbox] {
-    margin-left: 1rem;
     width: 0.65rem;
     height: 0.65rem;
+    cursor: pointer;
   }
   .filter ul li input[type=text] {
     border-radius: 3px;
-    border-style: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
-    font-size: 0.7rem;
-    padding-left: 0.5rem;
-    margin: 0.3rem 0 0 1rem;
+    border: 2px solid #8acfe5;
+    font-size: 0.8rem;
+    font-family: "Roboto", sans-serif;
+    padding: 1em;
+    padding-left: 0.5em;
+    margin: 0.3rem 0 0 0;
     width: 13rem;
     height: 1.5rem;
+  }
+  .filter ul li input[type=text]:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #8acfe5;
   }
   .filter ul li label {
     font-size: 0.7rem;
   }
   .filter ul .filter__type {
     grid-column: 1;
+    margin-left: 1rem;
   }
   .filter ul .filter__rating {
     display: grid;
@@ -954,19 +1008,55 @@ h4 {
   }
   .filter ul .filter__rating h5 {
     grid-row: 1;
+    margin: 0;
   }
   .filter ul .filter__rating .filter__first-rate {
     grid-row: 2;
   }
+  .filter ul .filter__rating button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  .filter ul .filter__rating button i {
+    color: red;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: -0.15rem;
+  }
   .filter ul .filter__rating p {
     grid-row: 2;
     margin: 0.1rem;
+    margin-left: -0.5rem;
+    width: fit-content;
   }
   .filter ul .filter__rating .filter__second-rate {
     grid-row: 2;
+    margin-left: -1rem;
   }
   .filter ul .filter__tag {
     grid-column: 3;
+    margin-left: 2rem;
+  }
+  .filter ul .filter__tag button {
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    border: 2px solid red;
+    border-radius: 1em;
+    font-size: 0.6em;
+    padding: 0.25em 0.5em;
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
+  .filter ul .filter__tag button.active {
+    background-color: red;
+    color: white;
+  }
+  .filter ul .filter__tag button:hover {
+    background-color: red;
+    color: white;
   }
   .filter ul .filter__keyword {
     grid-column: 2;
@@ -1012,6 +1102,10 @@ h4 {
   align-items: center;
   gap: 0.2rem;
   padding: 0;
+}
+.challenges .room__stars i {
+  color: #e3170a;
+  font-size: 0.7rem;
 }
 .challenges .room__type-icon {
   position: absolute;
@@ -1076,19 +1170,6 @@ h4 {
   grid-column: 2;
   margin-top: 5rem;
   padding: 1rem;
-}
-
-.filter__tag button {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.filter__tag button.active {
-  background-color: #007bff;
-  color: #fff;
 }
 
 * {
