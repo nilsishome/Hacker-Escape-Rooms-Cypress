@@ -13,10 +13,11 @@ const book_email_input = document.createElement("input");
 const book_time_label = document.createElement("label");
 const book_time_select = document.createElement("select");
 const book_time_option = document.createElement("option");
-const participants_label = document.createElement("label")
+const participants_label = document.createElement("label");
 const participants_select = document.createElement("select");
 //the participants numbers are constructed at the end of this function//
 const booking_button = document.createElement("button");
+
 
 
 //sets classname and attributes on elements//
@@ -39,7 +40,7 @@ book_email_input.id = "email-text";
 book_time_label.className = "book_time";
 book_time_label.setAttribute("for", "time_options");
 book_time_select.id = "time_options";
-book_time_option.value = "12-13";
+book_time_option.innerHTML = "";
 
 participants_label.className = "book_participants";
 participants_label.setAttribute("for", "participants_number");
@@ -51,9 +52,12 @@ booking_button.className = "booking_button";
 //text on elements//
 modal__title2.textContent = "Book room";
 book_name_label.textContent = "Name";
-book_email_label.textContent ="Email"
+book_email_label.textContent ="Email";
 book_time_label.textContent = "What time?";
-book_time_option.textContent = "12-13";
+book_time_option.textContent = "Select time";
+//these two values below are making sure 'Select time' is not selectable//
+book_time_option.disabled = true;
+book_time_option.selected = true;
 participants_label.textContent = "How many participants?";
 booking_button.textContent = "Submit booking";
 
@@ -75,7 +79,7 @@ book_form.appendChild(participants_select);
 book_form.appendChild(booking_button);
 
 //we need to make a for-loop for the different participant numbers
-for (let val = 2; val <= 6; val++) {
+for (let val = 2; val <= 11; val++) {
   const participants_option = document.createElement("option");
   participants_option.value = val;
   participants_option.textContent = val + " participants";
@@ -86,7 +90,6 @@ generateBookroom2();
 
 
 const formEl = document.querySelector(".book_form");
-
 
 
 formEl.addEventListener("submit", event => {
@@ -107,7 +110,10 @@ formEl.addEventListener("submit", event => {
     const date = new Date().toISOString();
     const userInput_time = document.getElementById("time_options").value;
     const userInput_participants = document.getElementById("participants_number").value;
-    
+    if (userInput_time === "Select time") {
+      alert("You need to select a time!");
+      return;
+    }
 
     const userInput = {
       challenge: 12,
@@ -152,7 +158,7 @@ formEl.addEventListener("submit", event => {
   // alert(`Received array: ${data.join(', ')}`);
 });
 
-// const availableTime = [newTime];
+ //const availableTime = [newTime];
 
 function availableTimeNow(newTime) {
   console.log(newTime,"hello1");
