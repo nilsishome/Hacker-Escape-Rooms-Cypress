@@ -134,8 +134,7 @@ formEl.addEventListener("submit", event => {
       body: JSON.stringify(userInput),  // Sending data in JSON format
     })
     .then(response => response.json())
-    .then(data => console.log('Success:', data))
-    .catch(error => console.error('Error:', error));
+    .then(data => console.log('Status:', data));
 
   
         console.log("Name:", userInput_name);
