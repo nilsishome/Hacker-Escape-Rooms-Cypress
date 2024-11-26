@@ -1,3 +1,83 @@
+function generateBookroom2() {
+//we create all elements on top of the other code//
+const body = document.querySelector("body");
+const overlay = document.createElement("div");
+const bookroom_modal = document.createElement("section");
+const book_modal = document.createElement("div");
+const book_form = document.createElement("form"); 
+const modal__title2 = document.createElement("h4");
+const book_name_label = document.createElement("label");
+const book_name_input = document.createElement("input");
+const book_email_label = document.createElement("label");
+const book_email_input = document.createElement("input");
+const book_time_label = document.createElement("label");
+const book_time_select = document.createElement("select");
+const book_time_option = document.createElement("option");
+const participants_label = document.createElement("label")
+const participants_select = document.createElement("select");
+const participants_option = document.createElement("option");
+const booking_button = document.createElement("button");
+
+
+//sets classname and attributes on elements//
+overlay.className = "overlay";
+bookroom_modal.className = "Bookroom_modal";
+book_modal.className = "book_modal";
+book_form.className = "book_form";
+modal__title2.className = "modal__title2";
+
+book_name_label.className = "book_name";
+book_name_label.setAttribute("for", "name-text");
+book_name_input.type = "text";
+book_name_input.id = "name-text";
+
+book_email_label.className = "book_email";
+book_email_label.setAttribute("for", "email-text");
+book_email_input.type = "email";
+book_email_input.id = "email-text";
+
+book_time_label.className = "book_time";
+book_time_label.setAttribute("for", "time_options");
+book_time_select.id = "time_options";
+book_time_option.value = "";
+
+participants_label.className = "book_participants";
+participants_label.setAttribute("for", "participants_number");
+participants_select.id = "participants_number";
+participants_option.value = "2";
+
+booking_button.className = "booking_button";
+
+
+//text on elements//
+modal__title2.textContent = "Book room";
+book_name_label.textContent = "Name";
+book_email_label.textContent ="Email"
+book_time_label.textContent = "What time?";
+participants_label.textContent = "How many participants?";
+booking_button.textContent = "Submit booking";
+
+//append all DOM-elements according to previous HTML-structure//
+body.appendChild(overlay);
+body.appendChild(bookroom_modal);
+bookroom_modal.appendChild(book_modal);
+book_modal.appendChild(book_form);
+book_form.appendChild(modal__title2);
+book_form.appendChild(book_name_label);
+book_form.appendChild(book_name_input);
+book_form.appendChild(book_email_label);
+book_form.appendChild(book_email_input);
+book_form.appendChild(book_time_label);
+book_form.appendChild(book_time_select);
+book_time_select.appendChild(book_time_option);
+book_form.appendChild(participants_label);
+book_form.appendChild(participants_select);
+participants_select.appendChild(participants_option);
+book_form.appendChild(booking_button);
+}
+generateBookroom2();
+
+
 const formEl = document.querySelector(".book_form");
 
 
