@@ -1,4 +1,4 @@
-
+import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
 
@@ -34,7 +34,6 @@ async function challengesApi() {
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
   );
   const data = await response.json();
-  console.log(data);
   return data;
 }
 //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
@@ -61,6 +60,8 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+    // This adds rating value from API as a DOM-element value
+    challengesRoom.rating = room.rating;
     // Adding an id for easier finding
     if (room.type === "online") {
       challengesRoom.setAttribute("id", "online");
@@ -157,14 +158,18 @@ async function generateRoom() {
     roomActions.appendChild(button);
   });
 }
-//Starts the function
+// This hinders the submit functionality in filter form
+if (document.querySelector("#challenges__container")) {
+  const form = document.querySelector(".filter__form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+  });
+  resetForm();
+}
 generateRoom();
-
+filterByRating();
+filterType();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
 }
-
-filterType();
-    
-
