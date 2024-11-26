@@ -1,7 +1,7 @@
 import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
-
+import { filterByLabel } from "./filterByLabel.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -26,9 +26,7 @@ function hideMenu() {
   overlayBlur.classList.remove("active");
   document.body.style.overflow = "";
 }
-
 //Connection to API, this function can now be called wherever we need it.
-
 async function challengesApi() {
   const response = await fetch(
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
@@ -36,6 +34,7 @@ async function challengesApi() {
   const data = await response.json();
   return data;
 }
+
 //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
@@ -60,6 +59,9 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+    //Adds the rooms labels from the API as a attribute in the html element
+    challengesRoom.setAttribute("data-labels", room.labels.join(","));
+
     // This adds rating value from API as a DOM-element value
     challengesRoom.rating = room.rating;
     // Adding an id for easier finding
@@ -99,7 +101,7 @@ async function generateRoom() {
     //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add("room__heading");
-    heading.textContent = (`${room.title} (${room.type})`)
+    heading.textContent = `${room.title} (${room.type})`;
     rooms.appendChild(heading);
     //Creating a div to hold the stars.
     const roomStars = document.createElement("div");
@@ -172,4 +174,5 @@ filterType();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
+  filterByLabel();
 }
