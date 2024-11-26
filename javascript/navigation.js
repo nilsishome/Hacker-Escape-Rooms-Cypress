@@ -10,8 +10,9 @@ export function navigation() {
   );
 
   //Getting logo and title to navigate to "Homepage"
-  const logo = document.querySelector(".header__logo");
-  const logoTitle = document.querySelector(".header__title");
+  const headerNavigation = document.querySelectorAll(
+    ".header__logo, .header__title"
+  );
 
   //Put all buttons in an array.
   const allButtons = [
@@ -31,6 +32,11 @@ export function navigation() {
     }
   });
 
-  
-
+  headerNavigation.forEach((logo) => {
+    if (logo) {
+      logo.addEventListener("click", () => {
+        window.location.href = "./index.html";
+      });
+    }
+  });
 }
