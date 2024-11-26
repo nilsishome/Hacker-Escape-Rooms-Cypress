@@ -147,11 +147,13 @@ async function generateRoom() {
   });
 }
 // This hinders the submit functionality in filter form
-const form = document.querySelector(".filter__form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
-resetForm();
+if (document.querySelector("#challenges__container")) {
+  const form = document.querySelector(".filter__form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+  });
+  resetForm();
+}
 generateRoom();
 filterByRating();
 filterType();
