@@ -924,6 +924,7 @@ h4 {
     font-weight: 400;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
   }
   .filter .filter__button:hover {
     background-color: lightblue;
@@ -941,11 +942,12 @@ h4 {
     width: 90%;
     margin: 0 auto;
   }
-  .filter .filter__form img {
+  .filter .filter__form .filter__form__close-button {
     width: 1.5rem;
     position: absolute;
     top: 0.4rem;
     right: 0.4rem;
+    cursor: pointer;
   }
   .filter h3 {
     font-size: 1.8rem;
@@ -974,11 +976,11 @@ h4 {
   .filter ul li input[type=checkbox] {
     width: 0.65rem;
     height: 0.65rem;
+    cursor: pointer;
   }
   .filter ul li input[type=text] {
     border-radius: 3px;
     border: 2px solid #8acfe5;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
     font-size: 0.8rem;
     font-family: "Roboto", sans-serif;
     padding: 1em;
@@ -986,6 +988,10 @@ h4 {
     margin: 0.3rem 0 0 0;
     width: 13rem;
     height: 1.5rem;
+  }
+  .filter ul li input[type=text]:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #8acfe5;
   }
   .filter ul li label {
     font-size: 0.7rem;
@@ -1006,7 +1012,6 @@ h4 {
   }
   .filter ul .filter__rating .filter__first-rate {
     grid-row: 2;
-    margin-left: 1rem;
   }
   .filter ul .filter__rating button {
     background-color: transparent;
@@ -1032,7 +1037,7 @@ h4 {
   }
   .filter ul .filter__tag {
     grid-column: 3;
-    margin-left: 3rem;
+    margin-left: 2rem;
   }
   .filter ul .filter__tag button {
     background-color: white;
@@ -1043,19 +1048,19 @@ h4 {
     font-size: 0.6em;
     padding: 0.25em 0.5em;
     margin-bottom: 3px;
+    cursor: pointer;
+  }
+  .filter ul .filter__tag button.active {
+    background-color: red;
+    color: white;
   }
   .filter ul .filter__tag button:hover {
     background-color: red;
     color: white;
   }
   .filter ul .filter__keyword {
-    text-align: center;
     grid-column: 2;
     margin-top: 2rem;
-  }
-  .filter ul .filter__keyword h5 {
-    margin-left: 1.3rem;
-    margin-right: auto;
   }
 }
 

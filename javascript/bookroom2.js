@@ -15,7 +15,7 @@ const book_time_select = document.createElement("select");
 const book_time_option = document.createElement("option");
 const participants_label = document.createElement("label")
 const participants_select = document.createElement("select");
-const participants_option = document.createElement("option");
+//the participants numbers are constructed at the end of this function//
 const booking_button = document.createElement("button");
 
 
@@ -39,12 +39,11 @@ book_email_input.id = "email-text";
 book_time_label.className = "book_time";
 book_time_label.setAttribute("for", "time_options");
 book_time_select.id = "time_options";
-book_time_option.value = "";
+book_time_option.value = "12-13";
 
 participants_label.className = "book_participants";
 participants_label.setAttribute("for", "participants_number");
 participants_select.id = "participants_number";
-participants_option.value = "2";
 
 booking_button.className = "booking_button";
 
@@ -54,6 +53,7 @@ modal__title2.textContent = "Book room";
 book_name_label.textContent = "Name";
 book_email_label.textContent ="Email"
 book_time_label.textContent = "What time?";
+book_time_option.textContent = "12-13";
 participants_label.textContent = "How many participants?";
 booking_button.textContent = "Submit booking";
 
@@ -72,8 +72,15 @@ book_form.appendChild(book_time_select);
 book_time_select.appendChild(book_time_option);
 book_form.appendChild(participants_label);
 book_form.appendChild(participants_select);
-participants_select.appendChild(participants_option);
 book_form.appendChild(booking_button);
+
+//we need to make a for-loop for the different participant numbers
+for (let val = 2; val <= 6; val++) {
+  const participants_option = document.createElement("option");
+  participants_option.value = val;
+  participants_option.textContent = val + " participants";
+  participants_select.appendChild(participants_option);
+}
 }
 generateBookroom2();
 
@@ -82,7 +89,7 @@ const formEl = document.querySelector(".book_form");
 
 
 
-formEl.addEventListener("submit", async event => {
+formEl.addEventListener("submit", event => {
     event.preventDefault(); //prevents reloading the page when submit
     const roomTitle = document.getElementsByClassName(".modal__title");
     roomTitle.innerHTML = "test"
@@ -91,23 +98,26 @@ formEl.addEventListener("submit", async event => {
     const payload = new URLSearchParams(data);
 
     //const data = Object.fromEntries(formData);//
+
+    //This shows an empty array//
     console.log([...payload]);
 
     const userInput_name = document.getElementById("name-text").value;
     const userInput_email = document.getElementById("email-text").value;
+    const date = new Date().toISOString();
     const userInput_time = document.getElementById("time_options").value;
     const userInput_participants = document.getElementById("participants_number").value;
     
 
     const userInput = {
-      challenge: 12 ,
+      challenge: 12,
       name: userInput_name,
       email: userInput_email,
-      date: userInput_time,
-      time: new Date().toISOString(),
-      participants: parseInt(userInput_participants,10),
+      date: date,
+      time: userInput_time,
+      participants: parseInt(userInput_participants, 10),
     };
-    console.log("user input object:",userInput);
+    console.log("user input object:", userInput);
 
     fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
       method: 'POST',
@@ -124,18 +134,20 @@ formEl.addEventListener("submit", async event => {
   
         console.log("Name:", userInput_name);
         console.log("Email:", userInput_email);
-        console.log("Time:", new Date().toISOString());
-        console.log("Participants_number", userInput_participants);
+        console.log("Time:", userInput_time);
+        console.log("Participants", userInput_participants);
    });
 
     // Listen for the custom event
+
+    // What does this do?
     document.addEventListener('arrayEvent', (event) => {
       const { message, data } = event.detail; // Extract the message and array
       
       console.log(message); // Log the message
       console.log('Received array:',data); // Log the array
       newTime = data;
-      console.log("this is the new time "+newTime)
+      console.log("this is the new time " + newTime)
       availableTimeNow(newTime)
   // alert(`Received array: ${data.join(', ')}`);
 });
@@ -156,4 +168,4 @@ function availableTimeNow(newTime) {
     
   });
 }
-availableTime(newTime);
+availableTimeNow(newTime);
