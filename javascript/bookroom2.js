@@ -90,6 +90,7 @@ generateBookroom2();
 
 
 const formEl = document.querySelector(".book_form");
+const timeOption = document.getElementById("time_options");
 
 
 formEl.addEventListener("submit", event => {
