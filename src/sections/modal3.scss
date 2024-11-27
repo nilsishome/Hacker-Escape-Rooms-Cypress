@@ -1,4 +1,11 @@
-.module3 {
+body {
+    display: flex;
+    flex-direction: column;
+    padding:0;
+    margin:0;
+  }
+  
+  .module3 {
     background-color: white;
     margin: auto;
     padding: 20px;
@@ -6,5 +13,23 @@
     width: 40%;
     height: 60%;
     z-index: 2;
-    display:flex;
+    display: flex;
+    text-align: center;
 }
+  
+  
+  .moduleTitle {
+    font-size: 24px;
+    font-weight: bold;
+    
+  }
+  
+  .challengesLink {
+    color: rgb(255, 18, 184);
+    text-decoration: none;
+  }
+  
+  .challengesLink:hover {
+    text-decoration: underline;
+  }
+ 
