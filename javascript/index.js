@@ -63,7 +63,7 @@ async function generateRoom() {
     );
     //Adds the rooms labels from the API as a attribute in the html element
     challengesRoom.setAttribute("data-labels", room.labels.join(","));
-
+    challengesRoom.setAttribute("data-id", room.id);
     // This adds rating value from API as a DOM-element value
     challengesRoom.rating = room.rating;
     // Adding an id for easier finding

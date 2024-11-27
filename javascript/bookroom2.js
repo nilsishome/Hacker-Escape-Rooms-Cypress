@@ -92,19 +92,19 @@ book_form.addEventListener("submit", event => {
     //This shows an empty array//
     console.log([...payload]);
 
-    const userInput_name = document.getElementById("name-text").value;
-    const userInput_email = document.getElementById("email-text").value;
+    const userInputName = document.getElementById("name-text").value;
+    const userInputEmail = document.getElementById("email-text").value;
     const date = new Date().toISOString();
-    const userInput_time = document.getElementById("time_options").value;
-    const userInput_participants = document.getElementById("participants_number").value;
+    const userInputTime = document.getElementById("time_options").value;
+    const userInputParticipants = document.getElementById("participants_number").value;
 
     const userInput = {
-      challenge: 12,
-      name: userInput_name,
-      email: userInput_email,
+      challenge: roomId,
+      name: userInputName,
+      email: userInputEmail,
       date: date,
-      time: userInput_time,
-      participants: parseInt(userInput_participants, 10),
+      time: userInputTime,
+      participants: parseInt(userInputParticipants, 10),
     };
     console.log("user input object:", userInput);
 
@@ -120,20 +120,22 @@ book_form.addEventListener("submit", event => {
     .then(data => console.log('Status:', data));
 
   
-        console.log("Name:", userInput_name);
-        console.log("Email:", userInput_email);
-        console.log("Time:", userInput_time);
-        console.log("Participants:", userInput_participants);
+        console.log("Name:", userInputName);
+        console.log("Email:", userInputEmail);
+        console.log("Time:", userInputTime);
+        console.log("Participants:", userInputParticipants);
    });
 
     // Listen for the custom event
     document.addEventListener('arrayEvent', (event) => {
-      const { message, data } = event.detail; // Extract the message and array
+      const { message, data, id } = event.detail; // Extract the message, array and room id
       
       console.log(message); // Log the message
-      console.log('Received array:',data); // Log the array
+      console.log('Received array:', data); // Log the array
       let newTime = data;
+      let roomId = id;
       console.log("this is the new time " + newTime)
+      console.log("This is the sent room id " + id);
       availableTimeNow(newTime)
   // alert(`Received array: ${data.join(', ')}`);
 });

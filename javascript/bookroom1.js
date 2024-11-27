@@ -1,4 +1,4 @@
-//Variables.
+// Variables
 const modalContent = document.createElement("div");
 const modalModal = document.createElement("div");
 const modalText = document.createElement("p");
@@ -10,10 +10,9 @@ const modalSpan = document.createElement("span");
 const modalButton = document.createElement("button");
 const modalButtonClose = document.createElement("button");
 
-// Sets classname on elements
+// Set class names on elements
 modalModal.className = "modal";
 modalContent.className = "modal__content";
-// Span content
 modalTitle.className = "modal__title";
 modalText.className = "modal__p-text";
 modalDate.className = "modal__p-date";
@@ -53,100 +52,95 @@ const roomTitle = document.querySelector(".modal__title");
 const room2Title = document.querySelector(".modal__title2");
 const timeOption = document.querySelector("#time_options");
 
+let inputChallenge = null;
+
+// Book room function
 export function bookRoom() {
     const bookRoomButton = document.querySelectorAll(".room__button--onsite");
     bookRoomButton.forEach(button => {
         button.addEventListener("click", () => {
             const roomChallenge = button.closest(".challenges__room") || button.closest(".content__room");
+            const roomId = roomChallenge.getAttribute("data-id");
+            inputChallenge = roomId; // Set the global variable
+            console.log(`Room ID: ${roomId}`);
+
             const title = roomChallenge.querySelector(".room__heading").textContent;
             const participantsText = roomChallenge.querySelector(".room__participants").textContent;
             const participantOption = document.querySelector("#participants_number");
             const minParticipants = parseInt(participantsText);
             const maxParticipants = parseInt(participantsText.split("-")[1]);
+
             console.log(minParticipants);
             console.log(maxParticipants);
             console.log(participantsText);
-            
+
+            // Update modal
             modalModal.removeAttribute("id");
             modalTitle.textContent = `Book room "${title}" (step 1)`;
 
-            if(room2Title) {
+            if (room2Title) {
                 room2Title.className = roomTitle.className;
                 room2Title.textContent = roomTitle.textContent;
             }
 
+            // Populate participants dropdown
             participantOption.innerHTML = "";
-
-            for(let i = minParticipants; i <= maxParticipants; i++) {
+            for (let i = minParticipants; i <= maxParticipants; i++) {
                 const option = document.createElement("option");
                 option.value = i;
                 option.textContent = `${i} participants`;
                 participantOption.appendChild(option);
             }
-        })
-    })
-}
-
- 
-let inputChallenge = 1 // 
-
-//Takes date and gets slot data
-function getDate() {
-console.log("input date "+modalInput.value)
-console.log("+")
-
-if (modalInput.value==""){
-    console.log("No date selected") // Error message if no date is selected
-    return slotTimes
-}
-
-
-   //Menu-functions.
-   function hideWindow() {
-   modalModal.setAttribute("id","hidden")
-   }
-
-function sendData(data) {
-    const time = data.slots
-    console.log("This is sending "+data.slots+"and"+time)
-}
-
-// Collect data from api
-let apiCall = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${modalInput.value}&challenge=${inputChallenge}`;
-let slotTimes = [];
-// Checks the API if data is okay
-fetch(apiCall)
-.then(response => {
-    if (!response.ok) {
-        throw new Error("Network response was not ok"); // Error message if bad data
-    }
-    return response.json(); // Parse data from response
-})
-.then(data => {
-    console.log("what is this "+data.slots);  // Handle the data from the API
-    slotTimes = data;
-    data.slots.forEach(slot => {
-    console.log(slot)}) // Output available slots on that date
-    slotTimes = data.slots;
-    const event = new CustomEvent('arrayEvent', {
-        detail: {
-            message: 'Button clicked, sending array!',
-            data: slotTimes, // Include the array
-        },
+        });
     });
-    hideWindow();
-    
-    // Dispatch the event on the document
-    document.dispatchEvent(event);
-   })
-.catch(error => {
-    console.error("There was a problem with the fetch operation", error);
-})
-};
+}
 
-modalButton.addEventListener("click",() => {
-    getDate()
-    document.querySelector(".overlay").style.display = "initial"; 
+// Function to handle date input and fetch available slots
+function getDate() {
+    console.log("Input date: " + modalInput.value);
+
+    if (modalInput.value === "") {
+        console.log("No date selected");
+        return; // Stop execution if no date is selected
+    }
+
+    // API call to fetch available times
+    const apiCall = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${modalInput.value}&challenge=${inputChallenge}`;
+    let slotTimes = [];
+    console.log(inputChallenge);
+
+    fetch(apiCall)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Available slots:", data.slots);
+            slotTimes = data.slots;
+
+            const event = new CustomEvent("arrayEvent", {
+                detail: {
+                    message: "Button clicked, sending array!",
+                    data: slotTimes,
+                    id: inputChallenge,
+                },
+            });
+
+            // Hide modal and dispatch event
+            modalModal.setAttribute("id", "hidden");
+            document.dispatchEvent(event);
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+        });
+}
+
+// Add event listener to the modal button
+modalButton.addEventListener("click", () => {
+    getDate();
+    document.querySelector(".overlay").style.display = "initial";
     document.querySelector(".Bookroom_modal").style.display = "flex";
-    console.log("second modal");
-    })
+    console.log("Second modal opened");
+});
