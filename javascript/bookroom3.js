@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     module3.style.display = "block";
     
     
-    console.log("Script is running");
+    console.log("oh richard darling \u{1F609}\u{FE0F} ");
     console.log(module3); // Logs the created module
 
-   
+  
+    
 });
