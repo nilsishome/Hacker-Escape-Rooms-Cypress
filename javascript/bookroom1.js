@@ -25,11 +25,11 @@ modalTitle.textContent = "Book room";
 modalText.textContent = "What date would you like to come?";
 modalDate.textContent = "Date";
 modalButton.textContent = "Search available times";
-// modalButtonClose = "X";
 
 // Input data
 modalInput.type = "date";
 modalInput.setAttribute("data-date-format", "YYYY MM DD");
+modalModal.setAttribute("id", "hidden");
 
 document.body.appendChild(modalSection);
 modalSection.appendChild(modalModal);
