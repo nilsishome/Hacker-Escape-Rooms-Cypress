@@ -3,17 +3,9 @@ import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
 import { filterByLabel } from "./filterByLabel.js";
 import { navigation } from "./navigation.js";
+import { challengesApi } from "./APIConnection.js";
 
-//Connection to API, this function can now be called wherever we need it.
-async function challengesApi() {
-  const response = await fetch(
-    "https://lernia-sjj-assignments.vercel.app/api/challenges"
-  );
-  const data = await response.json();
-  return data;
-}
 
-//Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
   const roomData = data.challenges;
