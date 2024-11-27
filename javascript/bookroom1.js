@@ -140,6 +140,5 @@ fetch(apiCall)
 
 modalButton.addEventListener("click",() => {
     getDate()
-    sendData()
     console.log("second modal");
     })
