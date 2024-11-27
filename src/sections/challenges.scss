@@ -492,3 +492,40 @@ h4{
   }
 
 
+///modalroom 3 styling
+.module3 {
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    border: 2px solid #999;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    z-index: 9999;
+    top:100px;
+    left: 400px;
+   
+  }
+.module3_Container {
+    align-items: center;
+}
+  
+  .moduleTitle {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .challengesLink {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-decoration: underline;
+    color: rgb(33, 73, 204);
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  

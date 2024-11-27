@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const moduleTitle = document.createElement("h2");
     const challengesLink = document.createElement("a");
     
-  
+    module3.id = "module3";
     module3.className = "module3";
     module3_Container.className = "module3_Container";
     moduleTitle.className = "moduleTitle";
@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document.body.appendChild(module3);
+    module3.style.display = "block";
     
     
     console.log("Script is running");
-console.log(module3); // Logs the created module
+    console.log(module3); // Logs the created module
 
+   
 });
