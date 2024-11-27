@@ -1,7 +1,7 @@
-
+import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
-import { bookRoom } from "./bookroom1.js";
+import { filterByLabel } from "./filterByLabel.js";
 
 //variables.
 const menuButton = document.querySelector(".header__menu-button");
@@ -26,17 +26,15 @@ function hideMenu() {
   overlayBlur.classList.remove("active");
   document.body.style.overflow = "";
 }
-
 //Connection to API, this function can now be called wherever we need it.
-
 async function challengesApi() {
   const response = await fetch(
     "https://lernia-sjj-assignments.vercel.app/api/challenges"
   );
   const data = await response.json();
-  console.log(data);
   return data;
 }
+
 //Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
@@ -61,6 +59,11 @@ async function generateRoom() {
     challengesRoom.classList.add(
       content__rooms ? "content__room" : "challenges__room"
     );
+    //Adds the rooms labels from the API as a attribute in the html element
+    challengesRoom.setAttribute("data-labels", room.labels.join(","));
+
+    // This adds rating value from API as a DOM-element value
+    challengesRoom.rating = room.rating;
     // Adding an id for easier finding
     if (room.type === "online") {
       challengesRoom.setAttribute("id", "online");
@@ -98,23 +101,35 @@ async function generateRoom() {
     //adding heading for each room
     const heading = document.createElement("h3");
     heading.classList.add("room__heading");
-    heading.textContent = (`${room.title} (${room.type})`)
+    heading.textContent = `${room.title} (${room.type})`;
     rooms.appendChild(heading);
-    //adding first the div for the star pictures
+    //Creating a div to hold the stars.
     const roomStars = document.createElement("div");
     roomStars.classList.add("room__stars");
     imageContainer.appendChild(roomStars);
-    //Making a for-loop that generates stars based on rating number from API-data.
-    for (let i = 1; i <= 5; i++) {
-      const starImg = document.createElement("img");
-      if (i <= room.rating) {
-        starImg.src = "./img/starfilled.png";
-        starImg.alt = "Filled star for rating of the room.";
-      } else {
-        starImg.src = "./img/starunfilled.png";
-        starImg.alt = "Unfilled star for rating of the room.";
-      }
-      roomStars.appendChild(starImg);
+    //Rounds down the rating to nearst "whole number" for filled stars
+    const fullStar = Math.floor(room.rating);
+    //Checks if the rating has a decimal for a half star between 0.1 - 0.9.
+    const halfStar = room.rating % 1 !== 0;
+    //Counts the number of empty stars by taking 5 minus the rating, then rounds up.
+    const emptyStar = 5 - Math.ceil(room.rating);
+    //Making a for-loop that generates stars with fontawesome icons based on the room.rating from fullstar.
+    for (let i = 0; i < fullStar; i++) {
+      const star = document.createElement("i");
+      star.classList.add("fa-solid", "fa-star");
+      roomStars.appendChild(star);
+    }
+    //if the rating has a decimal, a half star will be added.
+    if (halfStar) {
+      const decimalStar = document.createElement("i");
+      decimalStar.classList.add("fa-solid", "fa-star-half-stroke");
+      roomStars.appendChild(decimalStar);
+    }
+    //A loop that fills the rest of the stars as empty.
+    for (let i = 0; i < emptyStar; i++) {
+      const unfilledStar = document.createElement("i");
+      unfilledStar.classList.add("fa-regular", "fa-star");
+      roomStars.appendChild(unfilledStar);
     }
     //Adding the number of participants per room
     const participants = document.createElement("p");
@@ -145,17 +160,19 @@ async function generateRoom() {
     roomActions.appendChild(button);
   });
 }
-//Starts the function
-async function awaitChallenges() {
-await generateRoom();
-bookRoom();
+// This hinders the submit functionality in filter form
+if (document.querySelector("#challenges__container")) {
+  const form = document.querySelector(".filter__form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+  });
+  resetForm();
 }
-awaitChallenges();
+generateRoom();
+filterByRating();
+filterType();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
+  filterByLabel();
 }
-
-filterType();
-    
-
