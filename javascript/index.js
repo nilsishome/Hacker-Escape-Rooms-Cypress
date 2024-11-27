@@ -114,7 +114,7 @@ async function generateRoom() {
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
     rooms.appendChild(participants);
-
+ 
     //adding the description for each room
     const roomInfo = document.createElement("p");
     roomInfo.classList.add("room__info");

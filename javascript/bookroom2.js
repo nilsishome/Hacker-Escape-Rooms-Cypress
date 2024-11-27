@@ -1,4 +1,5 @@
 const formEl = document.querySelector(".book_form");
+const timeOption = document.getElementById("time_options");
 
 
 
@@ -54,26 +55,13 @@ formEl.addEventListener("submit", async event => {
       
       console.log(message); // Log the message
       console.log('Received array:',data); // Log the array
-      newTime = data;
-      console.log("this is the new time "+newTime)
-      availableTimeNow(newTime)
-  // alert(`Received array: ${data.join(', ')}`);
-});
-
-// const availableTime = [newTime];
-
-function availableTimeNow(newTime) {
-  console.log(newTime,"hello1");
-  userInput_time = document.getElementById("time_options");
-  // userInput_time.innerHTML ='<option value=""></options>';
-
-  newTime.forEach((newTime) => {
-    console.log(newTime,"hello2");
-    const option = document.createElement("option");
-    option.value = newTime;
-    option.textContent = newTime;
-    userInput_time.appendChild(option);
+      const newTime = data;
     
-  });
-}
-availableTime(newTime);
+       newTime.forEach((slot) => {
+        const option = document.createElement("option");
+        option.textContent =slot;
+        timeOption.appendChild(option);
+      }
+        );
+        
+})
