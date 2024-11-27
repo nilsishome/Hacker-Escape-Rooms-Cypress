@@ -16,9 +16,7 @@ const book_time_option = document.createElement("option");
 const participants_label = document.createElement("label");
 const participants_select = document.createElement("select");
 const participants_number = document.createElement("option");
-//the participants numbers are constructed at the end of this function//
 const booking_button = document.createElement("button");
-
 
 
 //sets classname and attributes on elements//
@@ -57,10 +55,6 @@ modal__title2.textContent = "Book room";
 book_name_label.textContent = "Name";
 book_email_label.textContent ="Email";
 book_time_label.textContent = "What time?";
-book_time_option.textContent = "Select time";
-//these two values below are making sure 'Select time' is not selectable//
-book_time_option.disabled = true;
-book_time_option.selected = true;
 participants_label.textContent = "How many participants?";
 booking_button.textContent = "Submit booking";
 
@@ -82,23 +76,18 @@ book_form.appendChild(participants_label);
 book_form.appendChild(participants_select);
 participants_select.appendChild(participants_number);
 book_form.appendChild(booking_button);
-
 }
 generateBookroom2();
 
+//This is a different value from the one, created in generateBookroom2 function//
+const book_form = document.querySelector(".book_form");
 
-const formEl = document.querySelector(".book_form");
 
-
-formEl.addEventListener("submit", event => {
+book_form.addEventListener("submit", event => {
     event.preventDefault(); //prevents reloading the page when submit
-    const roomTitle = document.getElementsByClassName(".modal__title");
-    roomTitle.innerHTML = "test"
 
-    const data = new FormData(formEl);
+    const data = new FormData(book_form);
     const payload = new URLSearchParams(data);
-
-    //const data = Object.fromEntries(formData);//
 
     //This shows an empty array//
     console.log([...payload]);
@@ -108,10 +97,6 @@ formEl.addEventListener("submit", event => {
     const date = new Date().toISOString();
     const userInput_time = document.getElementById("time_options").value;
     const userInput_participants = document.getElementById("participants_number").value;
-    if (userInput_time === "Select time") {
-      alert("You need to select a time!");
-      return;
-    }
 
     const userInput = {
       challenge: 12,
@@ -142,8 +127,6 @@ formEl.addEventListener("submit", event => {
    });
 
     // Listen for the custom event
-
-    // What does this do?
     document.addEventListener('arrayEvent', (event) => {
       const { message, data } = event.detail; // Extract the message and array
       
@@ -159,12 +142,15 @@ formEl.addEventListener("submit", event => {
 
 function availableTimeNow(newTime) {
   console.log(newTime,"hello1");
-  // userInput_time.innertext ='<option value=""></options>';
+  //This resets the time select options in every booking//
+  const timeSelect = document.querySelector("#time_options");
+  timeSelect.innerHTML = "";
+
   newTime.forEach((newTime) => {
     console.log(newTime,"hello2");
     const option = document.createElement("option");
     option.value = newTime;
     option.textContent = newTime;
-    document.querySelector("#time_options").appendChild(option); 
+    timeSelect.appendChild(option); 
   });
 }
