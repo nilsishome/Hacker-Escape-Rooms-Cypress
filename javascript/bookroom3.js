@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("oh richard darling \u{1F609}\u{FE0F} ");
     console.log(module3); // Logs the created module
 
-  
+    function closeModule3(event) {
+        event.preventDefault();
+        module3.style.display ="none";
+        document.body.style.overflow ="";
+        window.location.href = challengesLink.href;
+    }
+    challengesLink.addEventListener("click",closeModule3);
     
 });
