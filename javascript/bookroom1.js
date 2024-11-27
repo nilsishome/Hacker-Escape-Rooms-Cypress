@@ -20,6 +20,9 @@ modalDate.className = "modal__p-date";
 modalInput.className = "modal__input";
 modalButton.className = "modal__button";
 modalButtonClose.className = "modal__button_close";
+modalButtonClose.addEventListener("click", () => {
+    modalModal.setAttribute("id", "hidden");
+})
 // Sets text on elements
 modalTitle.textContent = "Book room";
 modalText.textContent = "What date would you like to come?";
@@ -45,10 +48,9 @@ modalSpan.appendChild(modalButtonClose);
 /* const closeBooking1 = document.querySelector(".modal__button_close");
 const windowBooking1 = document.querySelector(".modal");
 const inputDate = document.querySelector(".modal__input");
-const searchTimesBtn = document.querySelector(".modal__button");
+const searchTimesBtn = document.querySelector(".modal__button"); */
 const roomTitle = document.querySelector(".modal__title");
-const room2Title = document.querySelector(".modal__title2"); */
-const participantOption = document.querySelector("#participants_number");
+const room2Title = document.querySelector(".modal__title2");
 const timeOption = document.querySelector("#time_options");
 
 export function bookRoom() {
@@ -58,6 +60,7 @@ export function bookRoom() {
             const roomChallenge = button.closest(".challenges__room") || button.closest(".content__room");
             const title = roomChallenge.querySelector(".room__heading").textContent;
             const participantsText = roomChallenge.querySelector(".room__participants").textContent;
+            const participantOption = document.querySelector("#participants_number");
             const minParticipants = parseInt(participantsText);
             const maxParticipants = parseInt(participantsText.split("-")[1]);
             console.log(minParticipants);
@@ -97,13 +100,6 @@ if (modalInput.value==""){
     return slotTimes
 }
 
-if (modalButtonClose) {
-    //Event-listners.
-   modalButtonClose.addEventListener("click", hideWindow);
-   }
-   else {
-       console.log("element not found")
-   }
 
    //Menu-functions.
    function hideWindow() {
@@ -132,6 +128,16 @@ fetch(apiCall)
     data.slots.forEach(slot => {
     console.log(slot)}) // Output available slots on that date
     slotTimes = data.slots;
+    const event = new CustomEvent('arrayEvent', {
+        detail: {
+            message: 'Button clicked, sending array!',
+            data: slotTimes, // Include the array
+        },
+    });
+    hideWindow();
+    
+    // Dispatch the event on the document
+    document.dispatchEvent(event);
    })
 .catch(error => {
     console.error("There was a problem with the fetch operation", error);
@@ -140,5 +146,7 @@ fetch(apiCall)
 
 modalButton.addEventListener("click",() => {
     getDate()
+    document.querySelector(".overlay").style.display = "initial"; 
+    document.querySelector(".Bookroom_modal").style.display = "flex";
     console.log("second modal");
     })

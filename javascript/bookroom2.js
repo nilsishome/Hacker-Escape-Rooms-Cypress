@@ -15,6 +15,7 @@ const book_time_select = document.createElement("select");
 const book_time_option = document.createElement("option");
 const participants_label = document.createElement("label");
 const participants_select = document.createElement("select");
+const participants_number = document.createElement("option");
 //the participants numbers are constructed at the end of this function//
 const booking_button = document.createElement("button");
 
@@ -22,7 +23,9 @@ const booking_button = document.createElement("button");
 
 //sets classname and attributes on elements//
 overlay.className = "overlay";
+overlay.setAttribute("id", "hidden");
 bookroom_modal.className = "Bookroom_modal";
+bookroom_modal.setAttribute("id", "hidden");
 book_modal.className = "book_modal";
 book_form.className = "book_form";
 modal__title2.className = "modal__title2";
@@ -40,11 +43,11 @@ book_email_input.id = "email-text";
 book_time_label.className = "book_time";
 book_time_label.setAttribute("for", "time_options");
 book_time_select.id = "time_options";
-book_time_option.innerHTML = "";
 
 participants_label.className = "book_participants";
 participants_label.setAttribute("for", "participants_number");
 participants_select.id = "participants_number";
+
 
 booking_button.className = "booking_button";
 
@@ -61,6 +64,7 @@ book_time_option.selected = true;
 participants_label.textContent = "How many participants?";
 booking_button.textContent = "Submit booking";
 
+
 //append all DOM-elements according to previous HTML-structure//
 body.appendChild(overlay);
 body.appendChild(bookroom_modal);
@@ -76,21 +80,14 @@ book_form.appendChild(book_time_select);
 book_time_select.appendChild(book_time_option);
 book_form.appendChild(participants_label);
 book_form.appendChild(participants_select);
+participants_select.appendChild(participants_number);
 book_form.appendChild(booking_button);
 
-//we need to make a for-loop for the different participant numbers
-for (let val = 2; val <= 11; val++) {
-  const participants_option = document.createElement("option");
-  participants_option.value = val;
-  participants_option.textContent = val + " participants";
-  participants_select.appendChild(participants_option);
-}
 }
 generateBookroom2();
 
 
 const formEl = document.querySelector(".book_form");
-const timeOption = document.getElementById("time_options");
 
 
 formEl.addEventListener("submit", event => {
@@ -141,7 +138,7 @@ formEl.addEventListener("submit", event => {
         console.log("Name:", userInput_name);
         console.log("Email:", userInput_email);
         console.log("Time:", userInput_time);
-        console.log("Participants", userInput_participants);
+        console.log("Participants:", userInput_participants);
    });
 
     // Listen for the custom event
@@ -152,7 +149,7 @@ formEl.addEventListener("submit", event => {
       
       console.log(message); // Log the message
       console.log('Received array:',data); // Log the array
-      newTime = data;
+      let newTime = data;
       console.log("this is the new time " + newTime)
       availableTimeNow(newTime)
   // alert(`Received array: ${data.join(', ')}`);
@@ -162,16 +159,12 @@ formEl.addEventListener("submit", event => {
 
 function availableTimeNow(newTime) {
   console.log(newTime,"hello1");
-  userInput_time = document.getElementById("time_options");
-  // userInput_time.innerHTML ='<option value=""></options>';
-
+  // userInput_time.innertext ='<option value=""></options>';
   newTime.forEach((newTime) => {
     console.log(newTime,"hello2");
     const option = document.createElement("option");
     option.value = newTime;
     option.textContent = newTime;
-    userInput_time.appendChild(option);
-    
+    document.querySelector("#time_options").appendChild(option); 
   });
 }
-availableTimeNow(newTime);
