@@ -1,5 +1,5 @@
 // Creates a function that filters the room cards by rating
-export async function filterByRating() {
+export async function filterByRating(data) {
   if (document.querySelector("#challenges__container")) {
     // These variables are for identifying and using the stars and their values later
     const firstRating = document.querySelector(".filter__first-rate");
@@ -27,6 +27,7 @@ export async function filterByRating() {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
           firstStarSelection(idx1);
+          data.minRating = idx1 + 1;
           // This code marks the star buttons selected for screen reader
           firstStarBtns.forEach((btn, idx2) => {
             if (idx1 === idx2 && idx1 === lastFirstStarIdx) {
@@ -35,6 +36,13 @@ export async function filterByRating() {
               btn.setAttribute("aria-pressed", "false");
             }
           });
+          if (btn.getAttribute("aria-pressed") == "true") {
+            data.minRating = idx1 + 1;
+            console.log(data);
+          } else {
+            data.minRating = 0;
+            console.log(data);
+          }
         });
       });
 
@@ -51,6 +59,13 @@ export async function filterByRating() {
               btn.setAttribute("aria-pressed", "false");
             }
           });
+          if (btn.getAttribute("aria-pressed") == "true") {
+            data.maxRating = idx1 + 1;
+            console.log(data);
+          } else {
+            data.maxRating = 0;
+            console.log(data);
+          }
         });
       });
 
@@ -110,7 +125,7 @@ export async function filterByRating() {
 
         allChallenges.forEach((challenge) => {
           // Targets the rating value of the cards rating
-          const rating = challenge.rating;
+          const rating = challenge.rating;    
 
           // A conditional statement that makes sure the rateInput values are correct
           if (rating >= firstRate && rating <= secondRate) {

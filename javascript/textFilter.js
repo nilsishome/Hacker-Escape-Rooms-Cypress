@@ -1,5 +1,5 @@
 //Creates an function to be exported to index.js to work as a filter for user input-text.
-export function filterByText() {
+export function filterByText(data) {
   //target the filter__text in the filter-modal.
   const searchInput = document.querySelector("#filter__text");
   //If the searchinput was found, the code runs.
@@ -13,6 +13,13 @@ export function filterByText() {
     searchInput.addEventListener("input", () => {
       //Converts the users text to lowercase to avoind problems with upper / lower case from the user.
       const searchText = searchInput.value.toLowerCase();
+      if (data.text === searchText) {
+        data.text = "";
+      }
+      else {
+        data.text = searchText;
+      }
+      console.log(data);
       //Get all the challenges inside the challenges__container
       const allChallenges = document.querySelectorAll(".challenges__room");
       //Sets filteredChallenges to false.
