@@ -27,7 +27,6 @@ export async function filterByRating(data) {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
           firstStarSelection(idx1);
-          data.minRating = idx1 + 1;
           // This code marks the star buttons selected for screen reader
           firstStarBtns.forEach((btn, idx2) => {
             if (idx1 === idx2 && idx1 === lastFirstStarIdx) {
