@@ -42,7 +42,11 @@
     @include breakpoint($large-screen-breakpoint) {
       width: auto;
       font-size: 1.42rem;
+      cursor: pointer;
     }
+  }
+  .header__logo {
+    cursor: pointer;
   }
   .header__menu-button {
     background: none;

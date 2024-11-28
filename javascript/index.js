@@ -2,40 +2,9 @@ import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
 import { filterByLabel } from "./filterByLabel.js";
+import { navigation } from "./navigation.js";
+import { challengesApi } from "./APIConnection.js";
 
-//variables.
-const menuButton = document.querySelector(".header__menu-button");
-const closeButton = document.querySelector(".header__navigation-close");
-const navigationMenu = document.querySelector(".header__navigation");
-const overlayBlur = document.querySelector(".overlay__blur");
-
-//event-listeners.
-menuButton.addEventListener("click", showMenu);
-closeButton.addEventListener("click", hideMenu);
-overlayBlur.addEventListener("click", hideMenu);
-
-//Menu functions.
-function showMenu() {
-  navigationMenu.classList.add("overlay");
-  overlayBlur.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function hideMenu() {
-  navigationMenu.classList.remove("overlay");
-  overlayBlur.classList.remove("active");
-  document.body.style.overflow = "";
-}
-//Connection to API, this function can now be called wherever we need it.
-async function challengesApi() {
-  const response = await fetch(
-    "https://lernia-sjj-assignments.vercel.app/api/challenges"
-  );
-  const data = await response.json();
-  return data;
-}
-
-//Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
   const roomData = data.challenges;
@@ -136,7 +105,7 @@ async function generateRoom() {
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
     rooms.appendChild(participants);
- 
+
     //adding the description for each room
     const roomInfo = document.createElement("p");
     roomInfo.classList.add("room__info");
@@ -171,6 +140,7 @@ if (document.querySelector("#challenges__container")) {
 generateRoom();
 filterByRating();
 filterType();
+navigation();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
