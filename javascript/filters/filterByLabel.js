@@ -1,3 +1,5 @@
+import { applyFilters } from "./allFilter.js";
+
 // export function filterByLabel() {
 //   // Find all filter buttons from the dom.
 //   const filterButtons = document.querySelectorAll(".filter__tag button");
@@ -62,6 +64,7 @@
 
 export function filterByLabel(data) {
   const filterTag = document.querySelector(".filter__tag");
+  if (!filterTag) return; //If there is no filtertags, exit.
   const buttons = filterTag.querySelectorAll("button");
   buttons.forEach((button) => {
       button.addEventListener('click', (e) => {
@@ -73,10 +76,10 @@ export function filterByLabel(data) {
               if (index > -1) { // only splice array when item is found
                     data.labels.splice(index, 1); // 2nd parameter means remove one item only
               }
-          }
-          else {
+          } else {
               data.labels.push(buttonText);
           }
+          applyFilters(data);
           console.log(data);
         })
     })

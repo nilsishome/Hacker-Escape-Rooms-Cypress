@@ -96,7 +96,7 @@ export function filterType(data) {
                     data.types.splice(i, 1);
                 }
             }
-            applyFilters(data.types)
+            applyFilters(data)
             console.log(data);
         })
     }
@@ -113,7 +113,7 @@ export function filterType(data) {
                 }
             }
             console.log(data);
-            applyFilters(data.types)
+            applyFilters(data)
         })
     }
 }
