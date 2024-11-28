@@ -13,10 +13,6 @@ export async function filterByRating(data) {
     const firstStarBtns = firstRating.querySelectorAll(".star-button");
     const secondStarBtns = secondRating.querySelectorAll(".star-button");
 
-    // The rating values of the two existing starfields
-    let firstRate = 0;
-    let secondRate = 5;
-
     // These values make the stars 'disappear' if you double click on them
     // If these values get the same value as the index of the stars, all stars will be removed
     // (it will make sense later)
@@ -36,7 +32,6 @@ export async function filterByRating(data) {
 
           data.minRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 0;
           applyFilters(data);
-          console.log(data);
         });
       });
 
@@ -51,7 +46,6 @@ export async function filterByRating(data) {
           });
           data.maxRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 5;
           applyFilters(data);
-          console.log(data);
         });
       });
 

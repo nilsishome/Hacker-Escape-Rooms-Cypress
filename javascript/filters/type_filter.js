@@ -19,7 +19,6 @@ export function filterType(data) {
                 }
             }
             applyFilters(data)
-            console.log(data);
         })
     }
     if (onsiteChallenges) {
@@ -34,7 +33,6 @@ export function filterType(data) {
                     data.types.splice(i, 1);
                 }
             }
-            console.log(data);
             applyFilters(data)
         })
     }

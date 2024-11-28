@@ -18,7 +18,6 @@ export function filterByLabel(data) {
               data.labels.push(buttonText);
           }
           applyFilters(data);
-          console.log(data);
         })
     })
 }
