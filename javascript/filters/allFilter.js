@@ -51,7 +51,6 @@ export function applyFilters(data) {
         const title = room.querySelector(".room__heading").textContent.toLowerCase();
         const description = room.querySelector(".room__info").textContent.toLowerCase();
         const rating = room.rating;
-        console.log(rating);
 
         //checking if the room matches the type-filter.
         //Returns true if no types are chosen or if the rooms type matches the rooms
