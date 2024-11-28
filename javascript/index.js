@@ -1,5 +1,5 @@
-
 import { allFilters } from "./filters/allFilter.js";
+import { bookRoom } from "./bookroom1.js";
 import { navigation } from "./navigation.js";
 import { challengesApi } from "./APIConnection.js";
 
@@ -29,7 +29,7 @@ async function generateRoom() {
     );
     //Adds the rooms labels from the API as a attribute in the html element
     challengesRoom.setAttribute("data-labels", room.labels.join(","));
-
+    challengesRoom.setAttribute("data-id", room.id);
     // This adds rating value from API as a DOM-element value
     challengesRoom.rating = room.rating;
     // Adding an id for easier finding
@@ -121,6 +121,8 @@ async function generateRoom() {
     if (room.type === "onsite") {
       button.textContent = "Book this room";
       button.classList.add("room__button--onsite");
+      //This function connects the functionality of the buttons to the booking modal
+      bookRoom();
     } else if (room.type === "online") {
       button.textContent = "Take challenge online";
       button.classList.add("room__button--online");
