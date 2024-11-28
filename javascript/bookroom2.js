@@ -51,7 +51,7 @@ booking_button.className = "booking_button";
 
 
 // Text on elements //
-modal__title2.textContent = "Book room " + "Title of room" + " (step 2)";
+modal__title2.textContent = "";
 book_name_label.textContent = "Name";
 book_email_label.textContent ="Email";
 book_time_label.textContent = "What time?";
@@ -81,26 +81,37 @@ generateBookroom2();
 
 // This is a different value from the one, created in generateBookroom2 function//
 const book_form = document.querySelector(".book_form");
+const modal__title2 = document.querySelector(".modal__title2");
 
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
+let roomTitle;
 
 function getRoomId(id) {
   roomId = id;
   return id;
 }
 
+function changeTitle(title) {
+  modal__title2.textContent = `Book room "${title}" (step 2)`;
+  return title;
+}
+
   // Listen for the custom event
   document.addEventListener('arrayEvent', (event) => {
-    const { message, data, id } = event.detail; // Extract the message, array and room id
+    const { message, data, id, title } = event.detail; // Extract the message, array and room id
     
     console.log(message); // Log the message
     console.log('Received array:', data); // Log the array
+    console.log("what is the sent title?"+title);
     let newTime = data;
     // Return id as roomId
     getRoomId(id);
+    changeTitle(title);
+
     console.log("this is the sent times " + newTime);
     console.log("This is the sent room id " + id);
+    console.log("Titel= "+ title)
     availableTimeNow(newTime);
 });
 
@@ -138,17 +149,20 @@ book_form.addEventListener("submit", event => {
       },
       body: JSON.stringify(userInput),  // Sending data in JSON format
     })
-    .then(response => response.json())
-    .then(data => console.log('Status:', data));
-
-
-      
-
-  
-        console.log("Name:", userInputName);
-        console.log("Email:", userInputEmail);
-        console.log("Time:", userInputTime);
-        console.log("Participants:", userInputParticipants);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("All fields must be filled!");
+      }
+      return response.json()
+    })
+    .then(data => {
+      console.log("Name:", userInputName);
+      console.log("Email:", userInputEmail);
+      console.log("Time:", userInputTime);
+      console.log("Participants:", userInputParticipants);
+      console.log('Status:', data)
+      document.querySelector(".modal3").removeAttribute("id");
+    });
    });
     
 
@@ -165,13 +179,13 @@ function availableTimeNow(newTime) {
     const option = document.createElement("option");
     option.value = newTime;
     option.textContent = newTime;
-    timeSelect.appendChild(option); 
+    timeSelect.appendChild(option);
   });
 }
 // Add event listener to the modal button
-booking_button.addEventListener("click", () => {
+// booking_button.addEventListener("click", () => {
   
-  document.querySelector(".module3").style.display = "flex";
   
-  console.log("Second modal opened");
-});
+  
+//   console.log("Third modal opened");
+// });

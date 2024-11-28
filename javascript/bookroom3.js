@@ -1,28 +1,28 @@
 
 function generateModule3() {
-    const body = document.querySelector("body");
-    const module3 = document.createElement("div");
-    const moduleTitle = document.createElement("h2");
+    const section = document.createElement("section");
+    const modal3 = document.createElement("div");
+    const modalTitle = document.createElement("h2");
     const challengesLink = document.createElement("a");
   
     
-    module3.id = "module3";
-    module3.className = "module3";
-    moduleTitle.className = "moduleTitle";
+    modal3.id = "modal3";
+    modal3.className = "modal3";
+    modalTitle.className = "modalTitle";
     challengesLink.className = "challengesLink";
-  
+
+    modal3.setAttribute("id", "hidden");
     
-    moduleTitle.textContent = "Thank you!";
+    modalTitle.textContent = "Thank you!";
     challengesLink.textContent = "Back to challenges";
-    challengesLink.href = "http://127.0.0.1:5500/challenges.html";  // Update with the correct URL for challenges page
+    challengesLink.href = "../challenges.html";  // Update with the correct URL for challenges page
   
-   
-    module3.appendChild(moduleTitle);
-    module3.appendChild(challengesLink);
-  
+    document.body.appendChild(section);
+    section.appendChild(modal3);
+    modal3.appendChild(modalTitle);
+    modal3.appendChild(challengesLink);
     
-    body.appendChild(module3);
-    module3.style.display = "none";  
+    // modal3.style.display = "none";
   }
   
   // Generate module3 when the page loads

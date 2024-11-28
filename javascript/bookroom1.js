@@ -9,6 +9,7 @@ const modalInput = document.createElement("input");
 const modalSpan = document.createElement("span");
 const modalButton = document.createElement("button");
 const modalButtonClose = document.createElement("button");
+let challengeTitle = null;
 
 // Set class names on elements
 modalModal.className = "modal";
@@ -84,6 +85,8 @@ export function bookRoom() {
             // Update modal
             modalModal.removeAttribute("id");
             modalTitle.textContent = `Book room "${title}" (step 1)`;
+            challengeTitle = title;
+
 
             if (room2Title) {
                 room2Title.className = roomTitle.className;
@@ -100,6 +103,7 @@ export function bookRoom() {
             }
         });
     });
+    return challengeTitle;
 }
 
 // Function to handle date input and fetch available slots
@@ -109,6 +113,7 @@ function getDate() {
         alert("No date selected")
         return;
     }
+
 
     const apiCall = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${modalInput.value}&challenge=${inputChallenge}`;
     fetch(apiCall)
@@ -121,12 +126,13 @@ function getDate() {
         })
         .then(data => {
             console.log("Available slots:", data.slots);
-
+            
             const event = new CustomEvent("arrayEvent", {
                 detail: {
                     message: "Button clicked, sending array!",
                     data: data.slots,
-                    id: inputChallenge
+                    id: inputChallenge,
+                    title: challengeTitle
                 },
             });
 
