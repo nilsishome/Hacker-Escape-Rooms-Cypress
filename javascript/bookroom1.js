@@ -1,4 +1,4 @@
-// Variables
+// Create HTML Elements 
 const modalContent = document.createElement("div");
 const modalModal = document.createElement("div");
 const modalText = document.createElement("p");
@@ -19,16 +19,14 @@ modalDate.className = "modal__p-date";
 modalInput.className = "modal__input";
 modalButton.className = "modal__button";
 modalButtonClose.className = "modal__button_close";
-modalButtonClose.addEventListener("click", () => {
-    modalModal.setAttribute("id", "hidden");
-})
+
 // Sets text on elements
 modalTitle.textContent = "Book room";
 modalText.textContent = "What date would you like to come?";
 modalDate.textContent = "Date";
 modalButton.textContent = "Search available times";
 
-// Input data
+// Type and atrributes
 modalInput.type = "date";
 modalInput.setAttribute("data-date-format", "YYYY MM DD");
 modalModal.setAttribute("id", "hidden");
@@ -53,6 +51,15 @@ const room2Title = document.querySelector(".modal__title2");
 // const timeOption = document.querySelector("#time_options");
 
 let inputChallenge = null;
+
+
+
+// Adds a close button to the first modul
+modalButtonClose.addEventListener("click", () => {
+    modalModal.setAttribute("id", "hidden");
+})
+
+
 
 // Book room function
 export function bookRoom() {
@@ -97,54 +104,46 @@ export function bookRoom() {
 
 // Function to handle date input and fetch available slots
 function getDate() {
-    console.log("Input date: " + modalInput.value);
-
-    if (modalInput.value === "") {
+    if (!modalInput.value) {
         console.log("No date selected");
-        return; // Stop execution if no date is selected
+        alert("No date selected")
+        return;
     }
 
-    // API call to fetch available times
     const apiCall = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${modalInput.value}&challenge=${inputChallenge}`;
-    console.log(apiCall+" api call")
-    let slotTimes = [];
-    console.log(inputChallenge+" input challenge");
-
     fetch(apiCall)
         .then(response => {
             if (!response.ok) {
                 alert("Date has already passed");
                 throw new Error("Network response was not ok");
             }
-            else {
-                return response.json();
-            }
+            return response.json();
         })
         .then(data => {
             console.log("Available slots:", data.slots);
-            slotTimes = data.slots;
 
             const event = new CustomEvent("arrayEvent", {
                 detail: {
                     message: "Button clicked, sending array!",
-                    data: slotTimes,
-                    id: inputChallenge,
+                    data: data.slots,
+                    id: inputChallenge
                 },
             });
 
-            // Hide modal and dispatch event
             modalModal.setAttribute("id", "hidden");
             document.dispatchEvent(event);
+
+            // Open the modal
+            document.querySelector(".overlay").style.display = "initial";
+            document.querySelector(".Bookroom_modal").style.display = "flex";
+            console.log("Second modal opened");
         })
         .catch(error => {
-            console.error("There was a problem with the fetch operation:", error);
+            console.error("Fetch error:", error);
         });
 }
 
 // Add event listener to the modal button
 modalButton.addEventListener("click", () => {
     getDate();
-    document.querySelector(".overlay").style.display = "initial";
-    document.querySelector(".Bookroom_modal").style.display = "flex";
-    console.log("Second modal opened");
 });

@@ -1,5 +1,5 @@
 function generateBookroom2() {
-//we create all elements on top of the other code//
+// We create all elements on top of the other code //
 const body = document.querySelector("body");
 const overlay = document.createElement("div");
 const bookroom_modal = document.createElement("section");
@@ -19,7 +19,7 @@ const participants_number = document.createElement("option");
 const booking_button = document.createElement("button");
 
 
-//sets classname and attributes on elements//
+// Sets classname and attributes on elements //
 overlay.className = "overlay";
 overlay.setAttribute("id", "hidden");
 bookroom_modal.className = "Bookroom_modal";
@@ -50,8 +50,8 @@ participants_select.id = "participants_number";
 booking_button.className = "booking_button";
 
 
-//text on elements//
-modal__title2.textContent = "Book room";
+// Text on elements //
+modal__title2.textContent = "Book room " + "Title of room" + " (step 2)";
 book_name_label.textContent = "Name";
 book_email_label.textContent ="Email";
 book_time_label.textContent = "What time?";
@@ -99,7 +99,7 @@ function getRoomId(id) {
     let newTime = data;
     // Return id as roomId
     getRoomId(id);
-    console.log("this is the new time " + newTime);
+    console.log("this is the sent times " + newTime);
     console.log("This is the sent room id " + id);
     availableTimeNow(newTime);
 });
@@ -153,13 +153,11 @@ book_form.addEventListener("submit", event => {
  //const availableTime = [newTime];
 
 function availableTimeNow(newTime) {
-  console.log(newTime,"hello1");
-  //This resets the time select options in every booking//
+  // This resets the time select options in every booking //
   const timeSelect = document.querySelector("#time_options");
   timeSelect.innerHTML = "";
 
   newTime.forEach((newTime) => {
-    console.log(newTime,"hello2");
     const option = document.createElement("option");
     option.value = newTime;
     option.textContent = newTime;
