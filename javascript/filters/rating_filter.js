@@ -1,3 +1,5 @@
+import { applyFilters } from "./allFilter.js";
+
 // Creates a function that filters the room cards by rating
 export async function filterByRating(data) {
   if (document.querySelector("#challenges__container")) {
@@ -29,19 +31,12 @@ export async function filterByRating(data) {
           firstStarSelection(idx1);
           // This code marks the star buttons selected for screen reader
           firstStarBtns.forEach((btn, idx2) => {
-            if (idx1 === idx2 && idx1 === lastFirstStarIdx) {
-              btn.setAttribute("aria-pressed", "true");
-            } else {
-              btn.setAttribute("aria-pressed", "false");
-            }
+            btn.setAttribute("aria-pressed", idx1 === idx2 && idx1 === lastFirstStarIdx);
           });
-          if (btn.getAttribute("aria-pressed") == "true") {
-            data.minRating = idx1 + 1;
-            console.log(data);
-          } else {
-            data.minRating = 0;
-            console.log(data);
-          }
+
+          data.minRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 0;
+          applyFilters(data);
+          console.log(data);
         });
       });
 
@@ -52,33 +47,23 @@ export async function filterByRating(data) {
           secondStarSelection(idx1);
           // This code marks the star buttons selected for screen reader
           secondStarBtns.forEach((btn, idx2) => {
-            if (idx1 === idx2 && idx1 === lastSecondStarIdx) {
-              btn.setAttribute("aria-pressed", "true");
-            } else {
-              btn.setAttribute("aria-pressed", "false");
-            }
+            btn.setAttribute("aria-pressed", idx1 === idx2 && idx1 === lastSecondStarIdx);
           });
-          if (btn.getAttribute("aria-pressed") == "true") {
-            data.maxRating = idx1 + 1;
-            console.log(data);
-          } else {
-            data.maxRating = 0;
-            console.log(data);
-          }
+          data.maxRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 5;
+          applyFilters(data);
+          console.log(data);
         });
       });
 
       function firstStarSelection(idx1) {
         if (lastFirstStarIdx === idx1) {
-          firstStars.forEach((star) => {
+          firstStars.forEach(star => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
           });
           // These values resets the firstStar rating
-          firstRate = 0;
           lastFirstStarIdx = -1;
         } else {
-          firstRate = idx1 + 1;
           firstStars.forEach((star, idx2) => {
             if (idx1 >= idx2) {
               star.classList.remove("fa-regular");
@@ -90,20 +75,16 @@ export async function filterByRating(data) {
           });
           lastFirstStarIdx = idx1;
         }
-        updateFilter();
       }
 
       function secondStarSelection(idx1) {
         if (lastSecondStarIdx === idx1) {
-          secondStars.forEach((star) => {
+          secondStars.forEach(star => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
-          });
-          // These values resets the secondStar rating
-          secondRate = 5;
+          }); 
           lastSecondStarIdx = -1;
         } else {
-          secondRate = idx1 + 1;
           secondStars.forEach((star, idx2) => {
             if (idx1 >= idx2) {
               star.classList.remove("fa-regular");
@@ -115,24 +96,6 @@ export async function filterByRating(data) {
           });
           lastSecondStarIdx = idx1;
         }
-        updateFilter();
-      }
-
-      function updateFilter() {
-        // allChallenges is representing each room
-        const allChallenges = document.querySelectorAll(".challenges__room");
-
-        allChallenges.forEach((challenge) => {
-          // Targets the rating value of the cards rating
-          const rating = challenge.rating;    
-
-          // A conditional statement that makes sure the rateInput values are correct
-          if (rating >= firstRate && rating <= secondRate) {
-            challenge.style.display = "";
-          } else {
-            challenge.style.display = "none";
-          }
-        });
       }
     }
   }

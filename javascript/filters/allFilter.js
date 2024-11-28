@@ -10,7 +10,7 @@ export function allFilters() {
         types: [],
         labels: [],
         minRating: 0,
-        maxRating: 0,
+        maxRating: 5,
         text: "",
     };
 
@@ -36,7 +36,7 @@ export function applyFilters(data) {
         room.style.display = "none";
     });
 //If no filters are chosen, show all challenges on challenges.html.
-    if (data.types.length === 0 && data.labels.length === 0 && !data.text) {
+    if (data.types.length === 0 && data.labels.length === 0 && !data.text && data.minRating === 0 && data.maxRating === 5) {
         allChallenges.forEach(room => {
             room.style.display = "";
         });
@@ -50,6 +50,7 @@ export function applyFilters(data) {
         const roomLabels = room.dataset.labels.split(",");
         const title = room.querySelector(".room__heading").textContent.toLowerCase();
         const description = room.querySelector(".room__info").textContent.toLowerCase();
+        const rating = room.rating;
 
         //checking if the room matches the type-filter.
         //Returns true if no types are chosen or if the rooms type matches the rooms
@@ -63,8 +64,10 @@ export function applyFilters(data) {
         //Returns true if the user search text is there in the title or the description.
         const passesTextFilter = !data.text || title.includes(data.text) || description.includes(data.text);
 
+        const passesRatingFilter = rating >= data.minRating && rating <= data.maxRating;
+
         //room has to pass both type and label filter
-        return passesTypeFilter && passesLabelFilter && passesTextFilter;
+        return passesTypeFilter && passesLabelFilter && passesTextFilter && passesRatingFilter;
     });
     
     if (filteredRooms.length === 0) {
