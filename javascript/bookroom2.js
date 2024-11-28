@@ -119,12 +119,16 @@ book_form.addEventListener("submit", event => {
     .then(response => response.json())
     .then(data => console.log('Status:', data));
 
+
+      
+
   
         console.log("Name:", userInputName);
         console.log("Email:", userInputEmail);
         console.log("Time:", userInputTime);
         console.log("Participants:", userInputParticipants);
    });
+    
 
     // Listen for the custom event
     document.addEventListener('arrayEvent', (event) => {
@@ -156,3 +160,10 @@ function availableTimeNow(newTime) {
     timeSelect.appendChild(option); 
   });
 }
+// Add event listener to the modal button
+booking_button.addEventListener("click", () => {
+  
+  document.querySelector(".module3").style.display = "flex";
+  
+  console.log("Second modal opened");
+});
