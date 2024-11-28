@@ -79,19 +79,41 @@ book_form.appendChild(booking_button);
 }
 generateBookroom2();
 
-//This is a different value from the one, created in generateBookroom2 function//
+// This is a different value from the one, created in generateBookroom2 function//
 const book_form = document.querySelector(".book_form");
 
+// Declare roomId value that imports the ID from bookroom modal (step 1)
+let roomId;
+
+function getRoomId(id) {
+  roomId = id;
+  return id;
+}
+
+  // Listen for the custom event
+  document.addEventListener('arrayEvent', (event) => {
+    const { message, data, id } = event.detail; // Extract the message, array and room id
+    
+    console.log(message); // Log the message
+    console.log('Received array:', data); // Log the array
+    let newTime = data;
+    // Return id as roomId
+    getRoomId(id);
+    console.log("this is the new time " + newTime);
+    console.log("This is the sent room id " + id);
+    availableTimeNow(newTime);
+});
 
 book_form.addEventListener("submit", event => {
-    event.preventDefault(); //prevents reloading the page when submit
+    event.preventDefault(); // Prevents reloading the page when submit
 
-    const data = new FormData(book_form);
-    const payload = new URLSearchParams(data);
+    // const data = new FormData(book_form);
+    // const payload = new URLSearchParams(data);
 
-    //This shows an empty array//
-    console.log([...payload]);
+    // This shows an empty array //
+    // console.log([...payload]);
 
+    const userRoomId = parseInt(roomId, 10);
     const userInputName = document.getElementById("name-text").value;
     const userInputEmail = document.getElementById("email-text").value;
     const date = new Date().toISOString();
@@ -99,7 +121,7 @@ book_form.addEventListener("submit", event => {
     const userInputParticipants = document.getElementById("participants_number").value;
 
     const userInput = {
-      challenge: roomId,
+      challenge: userRoomId,
       name: userInputName,
       email: userInputEmail,
       date: date,
@@ -126,19 +148,7 @@ book_form.addEventListener("submit", event => {
         console.log("Participants:", userInputParticipants);
    });
 
-    // Listen for the custom event
-    document.addEventListener('arrayEvent', (event) => {
-      const { message, data, id } = event.detail; // Extract the message, array and room id
-      
-      console.log(message); // Log the message
-      console.log('Received array:', data); // Log the array
-      let newTime = data;
-      let roomId = id;
-      console.log("this is the new time " + newTime)
-      console.log("This is the sent room id " + id);
-      availableTimeNow(newTime)
-  // alert(`Received array: ${data.join(', ')}`);
-});
+
 
  //const availableTime = [newTime];
 

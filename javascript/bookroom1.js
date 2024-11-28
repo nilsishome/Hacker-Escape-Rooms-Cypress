@@ -50,7 +50,7 @@ const inputDate = document.querySelector(".modal__input");
 const searchTimesBtn = document.querySelector(".modal__button"); */
 const roomTitle = document.querySelector(".modal__title");
 const room2Title = document.querySelector(".modal__title2");
-const timeOption = document.querySelector("#time_options");
+// const timeOption = document.querySelector("#time_options");
 
 let inputChallenge = null;
 
@@ -106,15 +106,19 @@ function getDate() {
 
     // API call to fetch available times
     const apiCall = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${modalInput.value}&challenge=${inputChallenge}`;
+    console.log(apiCall+" api call")
     let slotTimes = [];
-    console.log(inputChallenge);
+    console.log(inputChallenge+" input challenge");
 
     fetch(apiCall)
         .then(response => {
             if (!response.ok) {
+                alert("Date has already passed");
                 throw new Error("Network response was not ok");
             }
-            return response.json();
+            else {
+                return response.json();
+            }
         })
         .then(data => {
             console.log("Available slots:", data.slots);
