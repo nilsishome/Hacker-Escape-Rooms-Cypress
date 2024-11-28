@@ -17,7 +17,7 @@ export function allFilters() {
     };
     
 
-    filterType();
+    filterType(data);
     filterByLabel(data);
     filterByRating(data);
     filterByText(data);

@@ -1,4 +1,8 @@
-import { allFilters } from "./allFilter.js";
+
+import { allFilters } from "./filters/allFilter.js";
+import { navigation } from "./navigation.js";
+import { challengesApi } from "./APIConnection.js";
+
 
 async function generateRoom() {
   const data = await challengesApi();
