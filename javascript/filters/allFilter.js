@@ -6,8 +6,6 @@ import { filterType } from './type_filter.js';
 
 
 export function allFilters() {
-
-
     const data = {
         types: [],
         labels: [],
@@ -15,7 +13,6 @@ export function allFilters() {
         maxRating: 0,
         text: "",
     };
-    
 
     filterType(data);
     filterByLabel(data);
@@ -23,3 +20,25 @@ export function allFilters() {
     filterByText(data);
     resetForm();
 };
+
+export function applyFilters(types) {
+    const allChallenges = document.querySelectorAll(".challenges__room");
+
+    allChallenges.forEach(room => {
+        room.style.display = "none";
+    });
+
+    if (types.length === 0) {
+        allChallenges.forEach(room => {
+            room.style.display = "";
+        });
+        return;
+    }
+
+    const filteredRooms = Array.from(allChallenges).filter(room => 
+        types.includes(room.getAttribute("id"))
+    );
+    filteredRooms.forEach(room => {
+        room.style.display = "";
+    })
+}
