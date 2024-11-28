@@ -46,7 +46,11 @@
   .header .header__title {
     width: auto;
     font-size: 1.42rem;
+    cursor: pointer;
   }
+}
+.header .header__logo {
+  cursor: pointer;
 }
 .header .header__menu-button {
   background: none;
@@ -881,7 +885,7 @@ h4 {
   margin-left: 10px;
 }
 
-.book_time, .participants-text {
+.book_time, .book_participants {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 0 30px;

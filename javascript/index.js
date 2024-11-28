@@ -2,40 +2,10 @@ import { filterByRating, resetForm } from "./rating_filter.js";
 import { filterByText } from "./textFilter.js";
 import filterType from "./type_filter.js";
 import { filterByLabel } from "./filterByLabel.js";
+import { bookRoom } from "./bookroom1.js";
+import { navigation } from "./navigation.js";
+import { challengesApi } from "./APIConnection.js";
 
-//variables.
-const menuButton = document.querySelector(".header__menu-button");
-const closeButton = document.querySelector(".header__navigation-close");
-const navigationMenu = document.querySelector(".header__navigation");
-const overlayBlur = document.querySelector(".overlay__blur");
-
-//event-listeners.
-menuButton.addEventListener("click", showMenu);
-closeButton.addEventListener("click", hideMenu);
-overlayBlur.addEventListener("click", hideMenu);
-
-//Menu functions.
-function showMenu() {
-  navigationMenu.classList.add("overlay");
-  overlayBlur.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function hideMenu() {
-  navigationMenu.classList.remove("overlay");
-  overlayBlur.classList.remove("active");
-  document.body.style.overflow = "";
-}
-//Connection to API, this function can now be called wherever we need it.
-async function challengesApi() {
-  const response = await fetch(
-    "https://lernia-sjj-assignments.vercel.app/api/challenges"
-  );
-  const data = await response.json();
-  return data;
-}
-
-//Creating a function for generating the rooms, that also calls the challengesAPI function to get the data from the API.
 async function generateRoom() {
   const data = await challengesApi();
   const roomData = data.challenges;
@@ -61,7 +31,7 @@ async function generateRoom() {
     );
     //Adds the rooms labels from the API as a attribute in the html element
     challengesRoom.setAttribute("data-labels", room.labels.join(","));
-
+    challengesRoom.setAttribute("data-id", room.id);
     // This adds rating value from API as a DOM-element value
     challengesRoom.rating = room.rating;
     // Adding an id for easier finding
@@ -136,7 +106,7 @@ async function generateRoom() {
     participants.classList.add("room__participants");
     participants.textContent = `${room.minParticipants} - ${room.maxParticipants} participants`;
     rooms.appendChild(participants);
- 
+
     //adding the description for each room
     const roomInfo = document.createElement("p");
     roomInfo.classList.add("room__info");
@@ -153,6 +123,8 @@ async function generateRoom() {
     if (room.type === "onsite") {
       button.textContent = "Book this room";
       button.classList.add("room__button--onsite");
+      //This function connects the functionality of the buttons to the booking modal
+      bookRoom();
     } else if (room.type === "online") {
       button.textContent = "Take challenge online";
       button.classList.add("room__button--online");
@@ -168,9 +140,11 @@ if (document.querySelector("#challenges__container")) {
   });
   resetForm();
 }
+
 generateRoom();
 filterByRating();
 filterType();
+navigation();
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
 if (document.querySelector("#challenges__container")) {
   filterByText();
