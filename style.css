@@ -46,7 +46,11 @@
   .header .header__title {
     width: auto;
     font-size: 1.42rem;
+    cursor: pointer;
   }
+}
+.header .header__logo {
+  cursor: pointer;
 }
 .header .header__menu-button {
   background: none;
