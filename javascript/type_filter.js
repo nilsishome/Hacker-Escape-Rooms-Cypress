@@ -68,4 +68,31 @@ export function filterType() {
             })
         });
     };
+
+
+    onlineChallenges.addEventListener('change', () => {
+        if (data.types.includes("online")) {
+            const i = data.types.indexOf("online");
+            if (i > -1) {
+                data.types.splice(i, 1);
+            }
+        }
+        else {
+            data.types.push("online");
+        }
+        console.log(data);
+    })
+
+    onsiteChallenges.addEventListener('change', () => {
+        if (data.types.includes("onsite")) {
+            const index = data.types.indexOf("onsite");
+            if (index > -1) {
+                data.types.splice(index, 1);
+            }
+        }
+        else {
+            data.types.push("onsite");
+        }
+        console.log(data);
+    })
 };
