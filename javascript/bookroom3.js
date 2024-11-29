@@ -13,7 +13,7 @@ export function generateModule3() {
 
   modalTitle.textContent = "Thank you!";
   challengesLink.textContent = "Back to challenges";
-  challengesLink.href = "../challenges.html"; // Update with the correct URL for challenges page
+  challengesLink.href = "./challenges.html"; // Update with the correct URL for challenges page
 
   document.body.appendChild(section);
   section.appendChild(modal3);
