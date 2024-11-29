@@ -43,13 +43,8 @@ modalSpan.appendChild(modalInput);
 modalSpan.appendChild(modalButton);
 modalSpan.appendChild(modalButtonClose);
 
-/* const closeBooking1 = document.querySelector(".modal__button_close");
-const windowBooking1 = document.querySelector(".modal");
-const inputDate = document.querySelector(".modal__input");
-const searchTimesBtn = document.querySelector(".modal__button"); */
 const roomTitle = document.querySelector(".modal__title");
 const room2Title = document.querySelector(".modal__title2");
-// const timeOption = document.querySelector("#time_options");
 
 let inputChallenge = null;
 
@@ -70,7 +65,6 @@ export function bookRoom() {
             const roomChallenge = button.closest(".challenges__room") || button.closest(".content__room");
             const roomId = roomChallenge.getAttribute("data-id");
             inputChallenge = roomId; // Set the global variable
-            console.log(`Room ID: ${roomId}`);
 
             const title = roomChallenge.querySelector(".room__heading").textContent;
             const participantsText = roomChallenge.querySelector(".room__participants").textContent;
@@ -78,9 +72,6 @@ export function bookRoom() {
             const minParticipants = parseInt(participantsText);
             const maxParticipants = parseInt(participantsText.split("-")[1]);
 
-            console.log(minParticipants);
-            console.log(maxParticipants);
-            console.log(participantsText);
 
             // Update modal
             modalModal.removeAttribute("id");
@@ -109,8 +100,7 @@ export function bookRoom() {
 // Function to handle date input and fetch available slots
 function getDate() {
     if (!modalInput.value) {
-        console.log("No date selected");
-        alert("No date selected")
+        alert("No date selected");
         return;
     }
 
@@ -125,8 +115,6 @@ function getDate() {
             return response.json();
         })
         .then(data => {
-            console.log("Available slots:", data.slots);
-            
             const event = new CustomEvent("arrayEvent", {
                 detail: {
                     message: "Button clicked, sending array!",
@@ -142,7 +130,6 @@ function getDate() {
             // Open the modal
             document.querySelector(".overlay").style.display = "initial";
             document.querySelector(".Bookroom_modal").style.display = "flex";
-            console.log("Second modal opened");
         })
         .catch(error => {
             console.error("Fetch error:", error);

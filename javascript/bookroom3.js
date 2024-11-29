@@ -22,7 +22,6 @@ function generateModule3() {
     modal3.appendChild(modalTitle);
     modal3.appendChild(challengesLink);
     
-    // modal3.style.display = "none";
   }
   
   // Generate module3 when the page loads
