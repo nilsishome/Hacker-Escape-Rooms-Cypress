@@ -1,4 +1,4 @@
-function generateBookroom2() {
+export function generateBookroom2() {
   // We create all elements on top of the other code //
   const body = document.querySelector("body");
   const overlay = document.createElement("div");
@@ -82,12 +82,12 @@ const modal__title2 = document.querySelector(".modal__title2");
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
 
-function getRoomId(id) {
+export function getRoomId(id) {
   roomId = id;
   return id;
 }
 
-function changeTitle(title) {
+export function changeTitle(title) {
   modal__title2.textContent = `Book room "${title}" (step 2)`;
   return title;
 }
@@ -141,13 +141,12 @@ book_form.addEventListener("submit", (event) => {
       }
       return response.json();
     })
-    .then((data) => {
-      console.log("Form sent status:", data);
+    .then(() => {
       document.querySelector(".modal3").removeAttribute("id");
     });
 });
 
-function availableTimeNow(newTime) {
+export function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
   const timeSelect = document.querySelector("#time_options");
   timeSelect.innerHTML = "";

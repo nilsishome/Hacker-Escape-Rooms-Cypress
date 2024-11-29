@@ -1,7 +1,14 @@
 import { allFilters } from "./filters/allFilter.js";
-import { bookRoom } from "./bookroom1.js";
+import { bookRoom, getDate } from "./bookroom1.js";
 import { navigation } from "./navigation.js";
 import { challengesApi } from "./APIConnection.js";
+import {
+  generateBookroom2,
+  getRoomId,
+  changeTitle,
+  availableTimeNow,
+} from "./bookroom2.js";
+import { generateModule3 } from "./bookroom3.js";
 
 async function generateRoom() {
   const data = await challengesApi();

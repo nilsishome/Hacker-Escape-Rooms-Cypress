@@ -90,7 +90,7 @@ export function bookRoom() {
 }
 
 // Function to handle date input and fetch available slots
-function getDate() {
+export function getDate() {
   if (!modalInput.value) {
     alert("No date selected");
     return;

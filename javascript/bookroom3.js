@@ -1,4 +1,4 @@
-function generateModule3() {
+export function generateModule3() {
   const section = document.createElement("section");
   const modal3 = document.createElement("div");
   const modalTitle = document.createElement("h2");
