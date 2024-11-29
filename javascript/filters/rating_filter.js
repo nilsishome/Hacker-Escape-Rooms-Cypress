@@ -27,10 +27,14 @@ export async function filterByRating(data) {
           firstStarSelection(idx1);
           // This code marks the star buttons selected for screen reader
           firstStarBtns.forEach((btn, idx2) => {
-            btn.setAttribute("aria-pressed", idx1 === idx2 && idx1 === lastFirstStarIdx);
+            btn.setAttribute(
+              "aria-pressed",
+              idx1 === idx2 && idx1 === lastFirstStarIdx
+            );
           });
 
-          data.minRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 0;
+          data.minRating =
+            btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 0;
           applyFilters(data);
         });
       });
@@ -42,16 +46,20 @@ export async function filterByRating(data) {
           secondStarSelection(idx1);
           // This code marks the star buttons selected for screen reader
           secondStarBtns.forEach((btn, idx2) => {
-            btn.setAttribute("aria-pressed", idx1 === idx2 && idx1 === lastSecondStarIdx);
+            btn.setAttribute(
+              "aria-pressed",
+              idx1 === idx2 && idx1 === lastSecondStarIdx
+            );
           });
-          data.maxRating = btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 5;
+          data.maxRating =
+            btn.getAttribute("aria-pressed") === "true" ? idx1 + 1 : 5;
           applyFilters(data);
         });
       });
 
       function firstStarSelection(idx1) {
         if (lastFirstStarIdx === idx1) {
-          firstStars.forEach(star => {
+          firstStars.forEach((star) => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
           });
@@ -73,10 +81,10 @@ export async function filterByRating(data) {
 
       function secondStarSelection(idx1) {
         if (lastSecondStarIdx === idx1) {
-          secondStars.forEach(star => {
+          secondStars.forEach((star) => {
             star.classList.remove("fa-solid");
             star.classList.add("fa-regular");
-          }); 
+          });
           lastSecondStarIdx = -1;
         } else {
           secondStars.forEach((star, idx2) => {

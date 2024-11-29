@@ -13,6 +13,6 @@ export function filterByText(data) {
       data.text = searchText;
       //calls applyFilters with the new updated data-object.
       applyFilters(data);
-    })
+    });
   }
 }
