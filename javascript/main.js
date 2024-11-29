@@ -3,7 +3,6 @@ import { bookRoom } from "./bookroom1.js";
 import { navigation } from "./navigation.js";
 import { challengesApi } from "./APIConnection.js";
 
-
 async function generateRoom() {
   const data = await challengesApi();
   const roomData = data.challenges;
@@ -131,7 +130,6 @@ async function generateRoom() {
   });
   bookRoom();
 }
-
 generateRoom();
 navigation();
 
