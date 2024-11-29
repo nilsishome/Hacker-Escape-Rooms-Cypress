@@ -1,5 +1,5 @@
 function generateBookroom2() {
-//we create all elements on top of the other code//
+// We create all elements on top of the other code //
 const body = document.querySelector("body");
 const overlay = document.createElement("div");
 const bookroom_modal = document.createElement("section");
@@ -19,7 +19,7 @@ const participants_number = document.createElement("option");
 const booking_button = document.createElement("button");
 
 
-//sets classname and attributes on elements//
+// Sets classname and attributes on elements //
 overlay.className = "overlay";
 overlay.setAttribute("id", "hidden");
 bookroom_modal.className = "Bookroom_modal";
@@ -50,8 +50,8 @@ participants_select.id = "participants_number";
 booking_button.className = "booking_button";
 
 
-//text on elements//
-modal__title2.textContent = "Book room";
+// Text on elements //
+modal__title2.textContent = "";
 book_name_label.textContent = "Name";
 book_email_label.textContent ="Email";
 book_time_label.textContent = "What time?";
@@ -79,19 +79,52 @@ book_form.appendChild(booking_button);
 }
 generateBookroom2();
 
-//This is a different value from the one, created in generateBookroom2 function//
+// This is a different value from the one, created in generateBookroom2 function//
 const book_form = document.querySelector(".book_form");
+const modal__title2 = document.querySelector(".modal__title2");
 
+// Declare roomId value that imports the ID from bookroom modal (step 1)
+let roomId;
+let roomTitle;
+
+function getRoomId(id) {
+  roomId = id;
+  return id;
+}
+
+function changeTitle(title) {
+  modal__title2.textContent = `Book room "${title}" (step 2)`;
+  return title;
+}
+
+  // Listen for the custom event
+  document.addEventListener('arrayEvent', (event) => {
+    const { message, data, id, title } = event.detail; // Extract the message, array and room id
+    
+    console.log(message); // Log the message
+    console.log('Received array:', data); // Log the array
+    console.log("what is the sent title?"+title);
+    let newTime = data;
+    // Return id as roomId
+    getRoomId(id);
+    changeTitle(title);
+
+    console.log("this is the sent times " + newTime);
+    console.log("This is the sent room id " + id);
+    console.log("Titel= "+ title)
+    availableTimeNow(newTime);
+});
 
 book_form.addEventListener("submit", event => {
-    event.preventDefault(); //prevents reloading the page when submit
+    event.preventDefault(); // Prevents reloading the page when submit
 
-    const data = new FormData(book_form);
-    const payload = new URLSearchParams(data);
+    // const data = new FormData(book_form);
+    // const payload = new URLSearchParams(data);
 
-    //This shows an empty array//
-    console.log([...payload]);
+    // This shows an empty array //
+    // console.log([...payload]);
 
+    const userRoomId = parseInt(roomId, 10);
     const userInputName = document.getElementById("name-text").value;
     const userInputEmail = document.getElementById("email-text").value;
     const date = new Date().toISOString();
@@ -99,7 +132,7 @@ book_form.addEventListener("submit", event => {
     const userInputParticipants = document.getElementById("participants_number").value;
 
     const userInput = {
-      challenge: roomId,
+      challenge: userRoomId,
       name: userInputName,
       email: userInputEmail,
       date: date,
@@ -116,54 +149,43 @@ book_form.addEventListener("submit", event => {
       },
       body: JSON.stringify(userInput),  // Sending data in JSON format
     })
-    .then(response => response.json())
-    .then(data => console.log('Status:', data));
-
-
-      
-
-  
-        console.log("Name:", userInputName);
-        console.log("Email:", userInputEmail);
-        console.log("Time:", userInputTime);
-        console.log("Participants:", userInputParticipants);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("All fields must be filled!");
+      }
+      return response.json()
+    })
+    .then(data => {
+      console.log("Name:", userInputName);
+      console.log("Email:", userInputEmail);
+      console.log("Time:", userInputTime);
+      console.log("Participants:", userInputParticipants);
+      console.log('Status:', data)
+      document.querySelector(".modal3").removeAttribute("id");
+    });
    });
     
 
-    // Listen for the custom event
-    document.addEventListener('arrayEvent', (event) => {
-      const { message, data, id } = event.detail; // Extract the message, array and room id
-      
-      console.log(message); // Log the message
-      console.log('Received array:', data); // Log the array
-      let newTime = data;
-      let roomId = id;
-      console.log("this is the new time " + newTime)
-      console.log("This is the sent room id " + id);
-      availableTimeNow(newTime)
-  // alert(`Received array: ${data.join(', ')}`);
-});
+
 
  //const availableTime = [newTime];
 
 function availableTimeNow(newTime) {
-  console.log(newTime,"hello1");
-  //This resets the time select options in every booking//
+  // This resets the time select options in every booking //
   const timeSelect = document.querySelector("#time_options");
   timeSelect.innerHTML = "";
 
   newTime.forEach((newTime) => {
-    console.log(newTime,"hello2");
     const option = document.createElement("option");
     option.value = newTime;
     option.textContent = newTime;
-    timeSelect.appendChild(option); 
+    timeSelect.appendChild(option);
   });
 }
 // Add event listener to the modal button
-booking_button.addEventListener("click", () => {
+// booking_button.addEventListener("click", () => {
   
-  document.querySelector(".module3").style.display = "flex";
   
-  console.log("Second modal opened");
-});
+  
+//   console.log("Third modal opened");
+// });
