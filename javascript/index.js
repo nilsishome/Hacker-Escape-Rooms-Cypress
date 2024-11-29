@@ -20,6 +20,7 @@ async function generateRoom() {
     roomData.sort((a, b) => b.rating - a.rating); //Using sort to sort the rooms based on highest to lowest rating.
     roomData.length = 3; //Takes the 3 first elements in the sorted array.
   }
+  container.innerHTML = "";
   //forEach loop that loops through the challenges array which is located in the data from the API.
   roomData.forEach((room) => {
     //Creating a room with the same "structure" as in previous hardcoded HTML, adds correct class depending on container and gets appended to the dynamic container variable.
@@ -122,13 +123,13 @@ async function generateRoom() {
       button.textContent = "Book this room";
       button.classList.add("room__button--onsite");
       //This function connects the functionality of the buttons to the booking modal
-      bookRoom();
     } else if (room.type === "online") {
       button.textContent = "Take challenge online";
       button.classList.add("room__button--online");
     }
     roomActions.appendChild(button);
   });
+  bookRoom();
 }
 
 generateRoom();
