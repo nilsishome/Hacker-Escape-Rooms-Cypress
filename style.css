@@ -803,7 +803,7 @@
   font-weight: 600;
   top: 22%;
   right: 31%;
-  z-index: 4;
+  z-index: 3;
 }
 
 ::-webkit-datetime-edit-month-field {

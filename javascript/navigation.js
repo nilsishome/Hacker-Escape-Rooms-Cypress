@@ -51,6 +51,23 @@ export function navigation() {
   }
   filterModalNavigation();
 
+  // Closes booking modal step 2, when clicking on the overlay outside of the modal.
+  //JS for the modal, basic for closing to be able to work
+  document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+      overlay.addEventListener("click", closeMenu);
+    }
+
+    function closeMenu() {
+      const bookRoomModal = document.querySelector(".Bookroom_modal");
+      if (bookRoomModal) {
+        bookRoomModal.style.display = "none";
+      }
+      overlay.style.display = "none";
+    }
+  });
+
   //Getting all the buttons on index.html
   const indexButtonNavigation = document.querySelectorAll(
     ".introduction__button--online, .content__navigation-link, .introduction__button--onsite, .content__navigation-button, .play__button--book, .play__button--challenges"
