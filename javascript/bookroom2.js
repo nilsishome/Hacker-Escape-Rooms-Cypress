@@ -5,7 +5,7 @@ const overlay = document.createElement("div");
 const bookroom_modal = document.createElement("section");
 const book_modal = document.createElement("div");
 const book_form = document.createElement("form"); 
-const modal__title2 = document.createElement("h4");
+const modal__title2 = document.createElement("h2");
 const book_name_label = document.createElement("label");
 const book_name_input = document.createElement("input");
 const book_email_label = document.createElement("label");
@@ -85,7 +85,6 @@ const modal__title2 = document.querySelector(".modal__title2");
 
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
-let roomTitle;
 
 function getRoomId(id) {
   roomId = id;
@@ -101,28 +100,17 @@ function changeTitle(title) {
   document.addEventListener('arrayEvent', (event) => {
     const { message, data, id, title } = event.detail; // Extract the message, array and room id
     
-    console.log(message); // Log the message
-    console.log('Received array:', data); // Log the array
-    console.log("what is the sent title?"+title);
+    // console.log(message); // Log the message
     let newTime = data;
-    // Return id as roomId
+    // Return id as roomId and title as modal__title2.textContent
     getRoomId(id);
     changeTitle(title);
 
-    console.log("this is the sent times " + newTime);
-    console.log("This is the sent room id " + id);
-    console.log("Titel= "+ title)
     availableTimeNow(newTime);
 });
 
 book_form.addEventListener("submit", event => {
     event.preventDefault(); // Prevents reloading the page when submit
-
-    // const data = new FormData(book_form);
-    // const payload = new URLSearchParams(data);
-
-    // This shows an empty array //
-    // console.log([...payload]);
 
     const userRoomId = parseInt(roomId, 10);
     const userInputName = document.getElementById("name-text").value;
@@ -139,7 +127,6 @@ book_form.addEventListener("submit", event => {
       time: userInputTime,
       participants: parseInt(userInputParticipants, 10),
     };
-    console.log("user input object:", userInput);
 
     fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
       method: 'POST',
@@ -151,24 +138,17 @@ book_form.addEventListener("submit", event => {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error("All fields must be filled!");
+        alert("All fields must be filled!");
+        throw new Error("Network response was not ok");
       }
-      return response.json()
+      return response.json();
     })
     .then(data => {
-      console.log("Name:", userInputName);
-      console.log("Email:", userInputEmail);
-      console.log("Time:", userInputTime);
-      console.log("Participants:", userInputParticipants);
-      console.log('Status:', data)
+      console.log('Form sent status:', data);
       document.querySelector(".modal3").removeAttribute("id");
     });
    });
     
-
-
-
- //const availableTime = [newTime];
 
 function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
@@ -182,10 +162,3 @@ function availableTimeNow(newTime) {
     timeSelect.appendChild(option);
   });
 }
-// Add event listener to the modal button
-// booking_button.addEventListener("click", () => {
-  
-  
-  
-//   console.log("Third modal opened");
-// });
