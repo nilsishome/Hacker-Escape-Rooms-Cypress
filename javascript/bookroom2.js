@@ -57,7 +57,7 @@ export function generateBookroom2() {
   // Text on elements //
   modal__title2.textContent = "";
   book_name_label.textContent = "Name";
-  book_phone_label.textContent ="Phone number";
+  book_phone_label.textContent ="Phone number(optional)";
   book_email_label.textContent = "Email";
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
