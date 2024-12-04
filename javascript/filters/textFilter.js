@@ -12,7 +12,11 @@ export function filterByText(data) {
       //Updated the data object with the users search text.
       data.text = searchText;
       //calls applyFilters with the new updated data-object.
-      applyFilters(data);
+      //The if statement will run if user input text is equal to 0.
+      //If the text in more or equal to 3, the filter will start filtering on the user text.
+      if (searchText.length === 0 || searchText.length >= 3) {
+        applyFilters(data);
+      }
     });
   }
 }
