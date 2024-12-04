@@ -12,7 +12,7 @@ export function filterByText(data) {
       //Updated the data object with the users search text.
       data.text = searchText;
       //calls applyFilters with the new updated data-object.
-      if (searchText.length >= 3) {
+      if (searchText.length === 0 || searchText.length >= 3) {
         applyFilters(data);
       }
     });
