@@ -12,7 +12,9 @@ export function filterByText(data) {
       //Updated the data object with the users search text.
       data.text = searchText;
       //calls applyFilters with the new updated data-object.
-      applyFilters(data);
+      if (searchText.length >= 3) {
+        applyFilters(data);
+      }
     });
   }
 }
