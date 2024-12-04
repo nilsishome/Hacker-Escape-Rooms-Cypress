@@ -17,6 +17,8 @@ export function generateBookroom2() {
   const participants_select = document.createElement("select");
   const participants_number = document.createElement("option");
   const booking_button = document.createElement("button");
+  const book_phone_label = document.createElement("label");
+  const book_phone_input = document.createElement("input");
 
   // Sets classname and attributes on elements //
   overlay.className = "overlay";
@@ -47,9 +49,15 @@ export function generateBookroom2() {
 
   booking_button.className = "booking_button";
 
+  book_phone_label.className ="phone_number";
+  book_phone_label.setAttribute("for","phone-number");
+  book_phone_input.type ="number";
+  book_phone_input.id = "phone-number"
+
   // Text on elements //
   modal__title2.textContent = "";
   book_name_label.textContent = "Name";
+  book_phone_label.textContent ="Phone number";
   book_email_label.textContent = "Email";
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
@@ -63,6 +71,8 @@ export function generateBookroom2() {
   book_form.appendChild(modal__title2);
   book_form.appendChild(book_name_label);
   book_form.appendChild(book_name_input);
+  book_form.appendChild(book_phone_label);
+  book_form.appendChild(book_phone_input);
   book_form.appendChild(book_email_label);
   book_form.appendChild(book_email_input);
   book_form.appendChild(book_time_label);
@@ -72,6 +82,7 @@ export function generateBookroom2() {
   book_form.appendChild(participants_select);
   participants_select.appendChild(participants_number);
   book_form.appendChild(booking_button);
+ 
 }
 generateBookroom2();
 
@@ -110,6 +121,7 @@ book_form.addEventListener("submit", (event) => {
 
   const userRoomId = parseInt(roomId, 10);
   const userInputName = document.getElementById("name-text").value;
+  const userInputPhone = document.getElementById("phone-number").value;
   const userInputEmail = document.getElementById("email-text").value;
   const date = new Date().toISOString();
   const userInputTime = document.getElementById("time_options").value;
@@ -120,6 +132,7 @@ book_form.addEventListener("submit", (event) => {
   const userInput = {
     challenge: userRoomId,
     name: userInputName,
+    phone: userInputPhone,
     email: userInputEmail,
     date: date,
     time: userInputTime,
@@ -144,6 +157,13 @@ book_form.addEventListener("submit", (event) => {
     .then(() => {
       document.querySelector(".modal3").removeAttribute("id");
     });
+
+    const phoneNumberCheck = document.querySelector("#phone-number")?.value;
+    if(phoneNumberCheck) {
+      console.log(`Phone number provided: ${phoneNumberCheck}`);
+    } else {
+      console.log("Phone number not provided, not an requirement");
+    }
 });
 
 export function availableTimeNow(newTime) {

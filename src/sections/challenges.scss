@@ -218,7 +218,24 @@ h2{
         border: none;
         
     }
-
+.phone_number {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px 0 -5px 30px;
+    display: flex;
+    color:rgb(26, 26, 26);
+    opacity: 75%;
+}
+#phone-number{
+    position: relative;
+    margin: 0px 0 10px 30px;
+    bottom:2px;
+    border-radius: 3px;
+    border-color: rgb(201, 200, 200);
+    border-style: solid;
+    height: 30px;
+    width: 250px;
+}
 
 .filter {
     /* Made the filter window only visible in desktop mode, for now */
