@@ -9,6 +9,7 @@ const modalInput = document.createElement("input");
 const modalSpan = document.createElement("span");
 const modalButton = document.createElement("button");
 const modalButtonClose = document.createElement("button");
+let errorText = document.createElement("p");
 let challengeTitle = null;
 
 // Set class names on elements
@@ -20,17 +21,20 @@ modalDate.className = "modal__p-date";
 modalInput.className = "modal__input";
 modalButton.className = "modal__button";
 modalButtonClose.className = "modal__button_close";
+errorText.className = "modal__date_error_text"
 
 // Sets text on elements
 modalTitle.textContent = "Book room";
 modalText.textContent = "What date would you like to come?";
 modalDate.textContent = "Date";
 modalButton.textContent = "Search available times";
+errorText.textContent = ""
 
 // Type and atrributes
 modalInput.type = "date";
 modalInput.setAttribute("data-date-format", "YYYY MM DD");
 modalModal.setAttribute("id", "hidden");
+errorText.setAttribute("id", "hidden");
 
 document.body.appendChild(modalSection);
 modalSection.appendChild(modalModal);
@@ -89,10 +93,20 @@ export function bookRoom() {
   return challengeTitle;
 }
 
+function updateErrorText(errorMsg) {
+errorText.textContent=errorMsg;
+errorText.style.animation="none";
+void errorText.offsetWidth;
+errorText.style.animation="";
+return errorText;
+}
+
 // Function to handle date input and fetch available slots
 export function getDate() {
   if (!modalInput.value) {
-    alert("No date selected");
+    modalSpan.appendChild(errorText);
+    updateErrorText("No date selected"); // Update error msg with inserted text
+    errorText.removeAttribute("id");
     return;
   }
 
@@ -100,7 +114,9 @@ export function getDate() {
   fetch(apiCall)
     .then((response) => {
       if (!response.ok) {
-        alert("Date has already passed");
+        modalSpan.appendChild(errorText);
+        updateErrorText("Invalid date selected"); // Update error msg with inserted text
+        errorText.removeAttribute("id");
         throw new Error("Network response was not ok");
       }
       return response.json();
@@ -114,7 +130,7 @@ export function getDate() {
           title: challengeTitle,
         },
       });
-
+      errorText.remove();
       modalModal.setAttribute("id", "hidden");
       document.dispatchEvent(event);
 
