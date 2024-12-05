@@ -947,6 +947,11 @@ h2 {
   width: 250px;
 }
 
+.booking_button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .filter {
   /* Made the filter window only visible in desktop mode, for now */
   display: none;

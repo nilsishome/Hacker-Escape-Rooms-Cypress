@@ -19,6 +19,7 @@ export function generateBookroom2() {
   const booking_button = document.createElement("button");
   const book_phone_label = document.createElement("label");
   const book_phone_input = document.createElement("input");
+  
 
   // Sets classname and attributes on elements //
   overlay.className = "overlay";
@@ -51,13 +52,15 @@ export function generateBookroom2() {
 
   book_phone_label.className ="phone_number";
   book_phone_label.setAttribute("for","phone-number");
-  book_phone_input.type ="number";
+  book_phone_input.type ="tel";
   book_phone_input.id = "phone-number"
+  book_phone_input.value = "(+46)";
 
   // Text on elements //
   modal__title2.textContent = "";
   book_name_label.textContent = "Name";
   book_phone_label.textContent ="Phone number(optional)";
+  
   book_email_label.textContent = "Email";
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
@@ -90,6 +93,7 @@ generateBookroom2();
 const book_form = document.querySelector(".book_form");
 const modal__title2 = document.querySelector(".modal__title2");
 
+  
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
 
@@ -155,17 +159,45 @@ book_form.addEventListener("submit", (event) => {
       return response.json();
     })
     .then(() => {
-      document.querySelector(".modal3").removeAttribute("id");
-    });
+    document.querySelector(".modal3").removeAttribute("id");
+      let phoneNumberCheck = document.querySelector("#phone-number")?.value;
 
-    const phoneNumberCheck = document.querySelector("#phone-number")?.value;
-    if(phoneNumberCheck) {
+      let phoneInputAreaCode = document.querySelector("#phone-number");
+      phoneInputAreaCode.addEventListener("focus", () => {
+        if (!phoneInputAreaCode.value.startsWith("(+46)")) {
+          phoneInputAreaCode.value = "(+46)";
+        }
+      });
+
+      
+
+    if(phoneNumberCheck && phoneNumberCheck.length === 10 && !isNaN(phoneNumberCheck)) {
       console.log(`Phone number provided: ${phoneNumberCheck}`);
-    } else {
-      console.log("Phone number not provided, not an requirement");
-    }
-});
+      document.querySelector(".modal3").removeAttribute("id");
 
+      
+    } 
+    else if (isNaN(phoneNumberCheck) && phoneNumberCheck.length === 15) {
+      phoneInputAreaCode = phoneNumberCheck.substring(5, 15);
+      console.log(`Phone number provided: ${phoneInputAreaCode}`);
+      document.querySelector(".modal3").removeAttribute("id");
+    }
+    else if (phoneNumberCheck.length !== 0 && phoneNumberCheck.length !== 15 && phoneNumberCheck.length !== 10) {
+      console.log("Wrong phone format, try again");
+      if (document.querySelector(".modal3")) {
+        document.querySelector(".modal3").setAttribute("id", "hidden"); // Hide modal3 if invalid phone number
+        
+      }
+    }
+    else {
+      document.querySelector("#phone-number").value = "";
+      console.log("Phone number not provided, not an requirement");
+      document.querySelector(".modal3").removeAttribute("id");
+    }
+      
+    });
+  
+});
 export function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
   const timeSelect = document.querySelector("#time_options");
