@@ -174,8 +174,6 @@ book_form.addEventListener("submit", (event) => {
     if(phoneNumberCheck && phoneNumberCheck.length === 10 && !isNaN(phoneNumberCheck)) {
       console.log(`Phone number provided: ${phoneNumberCheck}`);
       document.querySelector(".modal3").removeAttribute("id");
-
-      
     } 
     else if (isNaN(phoneNumberCheck) && phoneNumberCheck.length === 15) {
       phoneInputAreaCode = phoneNumberCheck.substring(5, 15);
