@@ -137,10 +137,16 @@ async function generateRoom() {
   });
   bookRoom();
 }
-generateRoom();
 navigation();
 
 //Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
+if (
+  document.querySelector("#challenges__container") ||
+  document.querySelector(".content__rooms")
+) {
+  generateRoom();
+}
+
 if (document.querySelector("#challenges__container")) {
   allFilters();
 }
