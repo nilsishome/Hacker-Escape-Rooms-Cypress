@@ -796,6 +796,14 @@
   z-index: 4;
 }
 
+@keyframes dateError {
+  0%, 100% {
+    color: red;
+  }
+  50% {
+    color: white;
+  }
+}
 .modal__button_close {
   position: fixed;
   height: 40px;
@@ -809,6 +817,19 @@
   top: 22%;
   right: 31%;
   z-index: 4;
+}
+
+.modal__date_error_text {
+  position: fixed;
+  color: red;
+  opacity: 75%;
+  margin: 0 0 0 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 0.5rem;
+  animation-duration: 0.5s;
+  animation-iteration-count: 2;
+  animation-name: dateError;
 }
 
 ::-webkit-datetime-edit-month-field {
