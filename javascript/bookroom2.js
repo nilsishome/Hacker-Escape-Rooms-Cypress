@@ -54,7 +54,7 @@ export function generateBookroom2() {
   book_phone_label.setAttribute("for","phone-number");
   book_phone_input.type ="tel";
   book_phone_input.id = "phone-number"
-  book_phone_input.value = "(+46)";
+  
 
   // Text on elements //
   modal__title2.textContent = "";
@@ -123,15 +123,26 @@ document.addEventListener("arrayEvent", (event) => {
 book_form.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevents reloading the page when submit
 
+  const userInputPhone = document.getElementById("phone-number").value.trim();
+
+  // Validate phone number (optional or exactly 10 digits)
+  const isValidPhoneNumber = userInputPhone === "" || /^\d{10}$/.test(userInputPhone);
+
+  if (!isValidPhoneNumber) {
+    console.log("Please provide a valid 10-digit phone number or leave it blank.");
+    return; 
+  }
+
   const userRoomId = parseInt(roomId, 10);
   const userInputName = document.getElementById("name-text").value;
-  const userInputPhone = document.getElementById("phone-number").value;
+  
   const userInputEmail = document.getElementById("email-text").value;
   const date = new Date().toISOString();
   const userInputTime = document.getElementById("time_options").value;
   const userInputParticipants = document.getElementById(
     "participants_number"
   ).value;
+  
 
   const userInput = {
     challenge: userRoomId,
@@ -142,6 +153,7 @@ book_form.addEventListener("submit", (event) => {
     time: userInputTime,
     participants: parseInt(userInputParticipants, 10),
   };
+  
 
   fetch("https://lernia-sjj-assignments.vercel.app/api/booking/reservations", {
     method: "POST",
@@ -160,41 +172,25 @@ book_form.addEventListener("submit", (event) => {
     })
     .then(() => {
     document.querySelector(".modal3").removeAttribute("id");
-      let phoneNumberCheck = document.querySelector("#phone-number")?.value;
 
-      let phoneInputAreaCode = document.querySelector("#phone-number");
-      phoneInputAreaCode.addEventListener("focus", () => {
-        if (!phoneInputAreaCode.value.startsWith("(+46)")) {
-          phoneInputAreaCode.value = "(+46)";
-        }
-      });
 
-      
+    const userInputPhone = document.getElementById("phone-number").value.trim();
 
-    if(phoneNumberCheck && phoneNumberCheck.length === 10 && !isNaN(phoneNumberCheck)) {
-      console.log(`Phone number provided: ${phoneNumberCheck}`);
-      document.querySelector(".modal3").removeAttribute("id");
-    } 
-    else if (isNaN(phoneNumberCheck) && phoneNumberCheck.length === 15) {
-      phoneInputAreaCode = phoneNumberCheck.substring(5, 15);
-      console.log(`Phone number provided: ${phoneInputAreaCode}`);
-      document.querySelector(".modal3").removeAttribute("id");
-    }
-    else if (phoneNumberCheck.length !== 0 && phoneNumberCheck.length !== 15 && phoneNumberCheck.length !== 10) {
-      console.log("Wrong phone format, try again");
-      if (document.querySelector(".modal3")) {
-        document.querySelector(".modal3").setAttribute("id", "hidden"); // Hide modal3 if invalid phone number
-        
-      }
-    }
-    else {
-      document.querySelector("#phone-number").value = "";
-      console.log("Phone number not provided, not an requirement");
-      document.querySelector(".modal3").removeAttribute("id");
-    }
-      
-    });
   
+  if (
+    userInputPhone && // If phone number is not empty
+    (!/^\d{10}$/.test(userInputPhone) || userInputPhone.length !== 10)
+  ) {
+    console.log("Please provide a valid 10-digit phone number or leave it blank.");
+    document.querySelector(".modal3")?.removeAttribute("id");
+    return;
+  
+  }
+
+  
+  document.querySelector(".modal3")?.removeAttribute("id");
+
+});
 });
 export function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
