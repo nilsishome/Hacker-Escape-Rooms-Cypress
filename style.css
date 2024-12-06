@@ -5,7 +5,7 @@
 .header {
   display: flex;
   flex-wrap: wrap;
-  background-color: #011827;
+  background-color: #021928;
   align-items: center;
   position: relative;
 }
@@ -93,7 +93,7 @@
   left: 50%;
   width: 92%;
   height: 95%;
-  background-color: #011827;
+  background-color: #021928;
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -484,7 +484,7 @@
   }
 }
 .content .content__story {
-  background-color: #011827;
+  background-color: #021928;
 }
 .content .content__story .story__container {
   display: flex;
@@ -512,7 +512,7 @@
   }
 }
 .content .content__story .story__button {
-  background-color: #011827;
+  background-color: #021928;
   border: 2px solid #8acfe5;
   font-size: 0.85rem;
   font-weight: 700;
@@ -625,7 +625,7 @@
 
 .footer {
   margin-top: 1.1rem;
-  background-color: #011827;
+  background-color: #021928;
   color: white;
   height: 21rem;
   padding: 2rem 1rem;
@@ -948,7 +948,7 @@ h2 {
   position: fixed;
   height: 36px;
   width: 130px;
-  background-color: #e3170a;
+  background-color: #E3170A;
   border-radius: 5px;
   color: white;
   font-weight: 600;
@@ -980,6 +980,19 @@ h2 {
 .booking_button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.booking_button {
+  position: fixed;
+  height: 36px;
+  width: 130px;
+  background-color: #e3170a;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  bottom: 22%;
+  right: 31%;
+  border: none;
 }
 
 .filter {
@@ -1015,7 +1028,7 @@ h2 {
     background-color: lightblue;
   }
   .filter .filter__title {
-    color: #011827;
+    color: #021928;
     font-size: 1.2em;
     margin: 0.6em auto 1em 1em;
   }
@@ -1056,7 +1069,7 @@ h2 {
     font-size: 0.7rem;
     margin: 0 0 0.3rem 0;
     width: fit-content;
-    color: #011827;
+    color: #021928;
   }
   .filter ul li input[type=checkbox] {
     width: 0.65rem;
@@ -1326,7 +1339,7 @@ h2 {
 html {
   font-family: "Roboto", sans-serif;
   font-size: 28px;
-  background-color: #011827;
+  background-color: #021928;
 }
 
 body {
