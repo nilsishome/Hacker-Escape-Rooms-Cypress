@@ -4,8 +4,12 @@ export function navigation() {
   const closeButton = document.querySelector(".header__navigation-close");
   const navigationMenu = document.querySelector(".header__navigation");
   const overlayBlur = document.querySelector(".overlay__blur");
-  const modalButtonClose = document.querySelector(".modal__button_close");
+  const modalButtonClose = document.querySelector("#modal1__button_close");
+  const modalButtonClose2 = document.querySelector("#modal2__button_close");
   const modalModal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal__content");
+  const bookRoomModal = document.querySelector(".Bookroom_modal");
+  const overlay = document.querySelector(".overlay");
 
   //event-listeners.
   menuButton.addEventListener("click", showMenu);
@@ -27,6 +31,11 @@ export function navigation() {
   //Navigation for closing the booking modal.
   modalButtonClose.addEventListener("click", () => {
     modalModal.setAttribute("id", "hidden");
+    modalContent.setAttribute("id", "hidden");
+  });
+  modalButtonClose2.addEventListener("click", () => {
+    bookRoomModal.style.display = "none";
+    overlay.style.display = "none";
   });
 
   function filterModalNavigation() {
@@ -54,17 +63,28 @@ export function navigation() {
   // Closes booking modal step 2, when clicking on the overlay outside of the modal.
   //JS for the modal, basic for closing to be able to work
   document.addEventListener("DOMContentLoaded", () => {
-    const overlay = document.querySelector(".overlay");
-    if (overlay) {
-      overlay.addEventListener("click", closeMenu);
+    const overlay1 = modalModal;
+    const overlay2 = overlay;
+    if (overlay1) {
+      overlay1.addEventListener("click", closeMenu);
+    }
+    if (overlay2) {
+      overlay2.addEventListener("click", closeMenu);
     }
 
     function closeMenu() {
-      const bookRoomModal = document.querySelector(".Bookroom_modal");
-      if (bookRoomModal) {
-        bookRoomModal.style.display = "none";
+      const bookRoomModal1 = modalContent;
+      const bookRoomModal2 = bookRoomModal;
+      // These are two different methods to reach the same desired outcome
+      // It is because the functionality slightly differs from the first two bookmodals
+      if (bookRoomModal1) {
+        bookRoomModal1.setAttribute("id", "hidden");
+        overlay1.setAttribute("id", "hidden");
       }
-      overlay.style.display = "none";
+      if (bookRoomModal2) {
+        bookRoomModal2.style.display = "none";
+        overlay2.style.display = "none";
+      }
     }
   });
 

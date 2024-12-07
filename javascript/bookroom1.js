@@ -21,24 +21,27 @@ modalDate.className = "modal__p-date";
 modalInput.className = "modal__input";
 modalButton.className = "modal__button";
 modalButtonClose.className = "modal__button_close";
-errorText.className = "modal__date_error_text"
+modalButtonClose.type = "button";
+modalButtonClose.id = "modal1__button_close";
+errorText.className = "modal__date_error_text";
 
 // Sets text on elements
 modalTitle.textContent = "Book room";
 modalText.textContent = "What date would you like to come?";
 modalDate.textContent = "Date";
 modalButton.textContent = "Search available times";
-errorText.textContent = ""
+errorText.textContent = "";
 
 // Type and atrributes
 modalInput.type = "date";
 modalInput.setAttribute("data-date-format", "YYYY MM DD");
 modalModal.setAttribute("id", "hidden");
+modalContent.setAttribute("id", "hidden");
 errorText.setAttribute("id", "hidden");
 
 document.body.appendChild(modalSection);
 modalSection.appendChild(modalModal);
-modalModal.appendChild(modalContent);
+modalSection.appendChild(modalContent);
 modalContent.appendChild(modalSpan);
 modalSpan.appendChild(modalTitle);
 modalSpan.appendChild(modalText);
@@ -72,6 +75,7 @@ export function bookRoom() {
 
       // Update modal
       modalModal.removeAttribute("id");
+      modalContent.removeAttribute("id");
       modalTitle.textContent = `Book room "${title}" (step 1)`;
       challengeTitle = title;
 
@@ -94,11 +98,11 @@ export function bookRoom() {
 }
 
 function updateErrorText(errorMsg) {
-errorText.textContent=errorMsg;
-errorText.style.animation="none";
-void errorText.offsetWidth;
-errorText.style.animation="";
-return errorText;
+  errorText.textContent = errorMsg;
+  errorText.style.animation = "none";
+  void errorText.offsetWidth;
+  errorText.style.animation = "";
+  return errorText;
 }
 
 // Function to handle date input and fetch available slots
@@ -132,6 +136,7 @@ export function getDate() {
       });
       errorText.remove();
       modalModal.setAttribute("id", "hidden");
+      modalContent.setAttribute("id", "hidden");
       document.dispatchEvent(event);
 
       // Open the modal
