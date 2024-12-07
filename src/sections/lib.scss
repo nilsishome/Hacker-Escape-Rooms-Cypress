@@ -1,6 +1,6 @@
 /*Project Colors*/
 $red: #e3170a;
-$dark: #011827;
+$dark: #021928;
 $gray: #b6bdb5;
 $blue: #36769d;
 $lightblue: #8acfe5;
@@ -22,8 +22,8 @@ $max-screen-breakpoint: 1500px;
   text-decoration: none;
   width: 11rem;
   height: 2.35rem;
-  display: flex;  
-  justify-content: center;  
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 @mixin buttonLink {
