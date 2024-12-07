@@ -129,7 +129,7 @@ book_form.addEventListener("submit", (event) => {
   const isValidPhoneNumber = userInputPhone === "" || /^\d{10}$/.test(userInputPhone);
 
   if (!isValidPhoneNumber) {
-    console.log("Please provide a valid 10-digit phone number or leave it blank.");
+    
     return; 
   }
 
@@ -174,21 +174,7 @@ book_form.addEventListener("submit", (event) => {
     document.querySelector(".modal3").removeAttribute("id");
 
 
-    const userInputPhone = document.getElementById("phone-number").value.trim();
-
-  
-  if (
-    userInputPhone && // If phone number is not empty
-    (!/^\d{10}$/.test(userInputPhone) || userInputPhone.length !== 10)
-  ) {
-    console.log("Please provide a valid 10-digit phone number or leave it blank.");
-    document.querySelector(".modal3")?.removeAttribute("id");
-    return;
-  
-  }
-
-  
-  document.querySelector(".modal3")?.removeAttribute("id");
+    
 
 });
 });
