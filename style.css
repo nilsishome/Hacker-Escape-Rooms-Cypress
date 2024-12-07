@@ -751,6 +751,7 @@
   left: 30%;
   color: rgb(26, 26, 26);
   opacity: 75%;
+  width: 85%;
   z-index: 4;
 }
 
@@ -808,7 +809,7 @@
   position: fixed;
   height: 40px;
   width: 50px;
-  background-color: white;
+  background-color: red;
   border-color: white;
   border-style: none;
   border-radius: 5px;
@@ -870,6 +871,7 @@
   background-color: white;
   margin: auto;
   border: 2px solid rgb(201, 200, 200);
+  padding: 20px;
   width: 40%;
   height: 60%;
   position: fixed;
@@ -879,16 +881,17 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   display: hidden;
 }
-
-h2 {
+.book_modal h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 0.8rem;
-  line-height: 1.4em;
-  margin: 30px 0 20px 30px;
-  text-align: start;
+  margin: 12px 0 25px 10px;
+  top: 20%;
+  left: 30%;
   color: rgb(26, 26, 26);
   opacity: 75%;
+  width: 85%;
+  z-index: 4;
 }
 
 #name-text,
@@ -903,7 +906,7 @@ h2 {
   width: 250px;
 }
 
-#booking-time,
+#book_time,
 #time_options,
 #participants_number {
   position: relative;
@@ -980,6 +983,19 @@ h2 {
 .booking_button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.booking_button {
+  position: fixed;
+  height: 36px;
+  width: 130px;
+  background-color: #e3170a;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  bottom: 22%;
+  right: 31%;
+  border: none;
 }
 
 .filter {

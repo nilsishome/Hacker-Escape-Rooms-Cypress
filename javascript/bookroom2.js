@@ -19,7 +19,7 @@ export function generateBookroom2() {
   const booking_button = document.createElement("button");
   const book_phone_label = document.createElement("label");
   const book_phone_input = document.createElement("input");
-  
+  const modalButtonClose = document.createElement("button");
 
   // Sets classname and attributes on elements //
   overlay.className = "overlay";
@@ -50,17 +50,19 @@ export function generateBookroom2() {
 
   booking_button.className = "booking_button";
 
-  book_phone_label.className ="phone_number";
-  book_phone_label.setAttribute("for","phone-number");
-  book_phone_input.type ="tel";
-  book_phone_input.id = "phone-number"
+  book_phone_label.className = "phone_number";
+  book_phone_label.setAttribute("for", "phone-number");
+  book_phone_input.type = "tel";
+  book_phone_input.id = "phone-number";
   book_phone_input.value = "(+46)";
+
+  modalButtonClose.className = "modal__button_close";
 
   // Text on elements //
   modal__title2.textContent = "";
   book_name_label.textContent = "Name";
-  book_phone_label.textContent ="Phone number(optional)";
-  
+  book_phone_label.textContent = "Phone number(optional)";
+
   book_email_label.textContent = "Email";
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
@@ -85,7 +87,7 @@ export function generateBookroom2() {
   book_form.appendChild(participants_select);
   participants_select.appendChild(participants_number);
   book_form.appendChild(booking_button);
- 
+  book_form.appendChild(modalButtonClose);
 }
 generateBookroom2();
 
@@ -93,7 +95,6 @@ generateBookroom2();
 const book_form = document.querySelector(".book_form");
 const modal__title2 = document.querySelector(".modal__title2");
 
-  
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
 
@@ -159,7 +160,7 @@ book_form.addEventListener("submit", (event) => {
       return response.json();
     })
     .then(() => {
-    document.querySelector(".modal3").removeAttribute("id");
+      document.querySelector(".modal3").removeAttribute("id");
       let phoneNumberCheck = document.querySelector("#phone-number")?.value;
 
       let phoneInputAreaCode = document.querySelector("#phone-number");
@@ -169,32 +170,32 @@ book_form.addEventListener("submit", (event) => {
         }
       });
 
-      
-
-    if(phoneNumberCheck && phoneNumberCheck.length === 10 && !isNaN(phoneNumberCheck)) {
-      console.log(`Phone number provided: ${phoneNumberCheck}`);
-      document.querySelector(".modal3").removeAttribute("id");
-    } 
-    else if (isNaN(phoneNumberCheck) && phoneNumberCheck.length === 15) {
-      phoneInputAreaCode = phoneNumberCheck.substring(5, 15);
-      console.log(`Phone number provided: ${phoneInputAreaCode}`);
-      document.querySelector(".modal3").removeAttribute("id");
-    }
-    else if (phoneNumberCheck.length !== 0 && phoneNumberCheck.length !== 15 && phoneNumberCheck.length !== 10) {
-      console.log("Wrong phone format, try again");
-      if (document.querySelector(".modal3")) {
-        document.querySelector(".modal3").setAttribute("id", "hidden"); // Hide modal3 if invalid phone number
-        
+      if (
+        phoneNumberCheck &&
+        phoneNumberCheck.length === 10 &&
+        !isNaN(phoneNumberCheck)
+      ) {
+        console.log(`Phone number provided: ${phoneNumberCheck}`);
+        document.querySelector(".modal3").removeAttribute("id");
+      } else if (isNaN(phoneNumberCheck) && phoneNumberCheck.length === 15) {
+        phoneInputAreaCode = phoneNumberCheck.substring(5, 15);
+        console.log(`Phone number provided: ${phoneInputAreaCode}`);
+        document.querySelector(".modal3").removeAttribute("id");
+      } else if (
+        phoneNumberCheck.length !== 0 &&
+        phoneNumberCheck.length !== 15 &&
+        phoneNumberCheck.length !== 10
+      ) {
+        console.log("Wrong phone format, try again");
+        if (document.querySelector(".modal3")) {
+          document.querySelector(".modal3").setAttribute("id", "hidden"); // Hide modal3 if invalid phone number
+        }
+      } else {
+        document.querySelector("#phone-number").value = "";
+        console.log("Phone number not provided, not an requirement");
+        document.querySelector(".modal3").removeAttribute("id");
       }
-    }
-    else {
-      document.querySelector("#phone-number").value = "";
-      console.log("Phone number not provided, not an requirement");
-      document.querySelector(".modal3").removeAttribute("id");
-    }
-      
     });
-  
 });
 export function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
