@@ -36,9 +36,6 @@
   }
   .introduction__button--online {
     @include buttonLink;
-    &:hover {
-      color: $dark;
-    }
     @include breakpoint($large-screen-breakpoint) {
       @include bigRedButtonDesktop;
       order: -1;

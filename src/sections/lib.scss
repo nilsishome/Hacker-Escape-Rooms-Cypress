@@ -12,7 +12,6 @@ $black: black;
 /*Screen size variables*/
 $large-screen-breakpoint: 1280px;
 $max-screen-breakpoint: 1500px;
-
 /*Project button mixins*/
 @mixin blueButton {
   background-color: $lightblue;
@@ -41,6 +40,9 @@ $max-screen-breakpoint: 1500px;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 0.6rem;
+  &:hover {
+    color: $dark;
+  }
 }
 @mixin redButton {
   background-color: $red;
@@ -88,6 +90,7 @@ $max-screen-breakpoint: 1500px;
   align-items: center;
   &:hover {
     background-color: $darkRedButtonHover;
+    color: $white;
   }
 }
 @mixin darkButton {
