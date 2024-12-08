@@ -8,8 +8,9 @@ export function navigation() {
   const modalButtonClose2 = document.querySelector("#modal2__button_close");
   const modalModal = document.querySelector(".modal");
   const modalContent = document.querySelector(".modal__content");
-  const bookRoomModal = document.querySelector(".Bookroom_modal");
-  const overlay = document.querySelector(".overlay");
+  const bookRoomModal2 = document.querySelector(".Bookroom_modal");
+  const overlay2 = document.querySelector(".overlay");
+  const bookRoomModal3 = document.querySelector(".modal3");
 
   //event-listeners.
   menuButton.addEventListener("click", showMenu);
@@ -32,10 +33,13 @@ export function navigation() {
   modalButtonClose.addEventListener("click", () => {
     modalModal.setAttribute("id", "hidden");
     modalContent.setAttribute("id", "hidden");
+    // The code below resets date input when booking modal is closed by user
+    document.querySelector(".modal__input").value = "";
   });
   modalButtonClose2.addEventListener("click", () => {
-    bookRoomModal.style.display = "none";
-    overlay.style.display = "none";
+    bookRoomModal2.setAttribute("id", "hidden");
+    overlay2.setAttribute("id", "hidden");
+    document.querySelector(".modal__input").value = "";
   });
 
   function filterModalNavigation() {
@@ -64,7 +68,6 @@ export function navigation() {
   //JS for the modal, basic for closing to be able to work
   document.addEventListener("DOMContentLoaded", () => {
     const overlay1 = modalModal;
-    const overlay2 = overlay;
     if (overlay1) {
       overlay1.addEventListener("click", closeMenu);
     }
@@ -74,16 +77,22 @@ export function navigation() {
 
     function closeMenu() {
       const bookRoomModal1 = modalContent;
-      const bookRoomModal2 = bookRoomModal;
-      // These are two different methods to reach the same desired outcome
-      // It is because the functionality slightly differs from the first two bookmodals
+      // This code resets the form values if modal window is closed by user
+      document.querySelector(".book_form").reset();
+
       if (bookRoomModal1) {
         bookRoomModal1.setAttribute("id", "hidden");
         overlay1.setAttribute("id", "hidden");
+        document.querySelector(".modal__input").value = "";
       }
       if (bookRoomModal2) {
-        bookRoomModal2.style.display = "none";
-        overlay2.style.display = "none";
+        bookRoomModal2.setAttribute("id", "hidden");
+        overlay2.setAttribute("id", "hidden");
+        document.querySelector(".modal__input").value = "";
+      }
+      if (bookRoomModal3) {
+        bookRoomModal3.setAttribute("id", "hidden");
+        document.querySelector(".modal__input").value = "";
       }
     }
   });

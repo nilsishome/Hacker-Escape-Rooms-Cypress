@@ -171,6 +171,7 @@ book_form.addEventListener("submit", (event) => {
       return response.json();
     })
     .then(() => {
+      document.querySelector(".Bookroom_modal").setAttribute("id", "hidden");
       document.querySelector(".modal3").removeAttribute("id");
     });
 });

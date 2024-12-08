@@ -140,8 +140,8 @@ export function getDate() {
       document.dispatchEvent(event);
 
       // Open the modal
-      document.querySelector(".overlay").style.display = "initial";
-      document.querySelector(".Bookroom_modal").style.display = "flex";
+      document.querySelector(".overlay").removeAttribute("id");
+      document.querySelector(".Bookroom_modal").removeAttribute("id");
     })
     .catch((error) => {
       console.error("Fetch error:", error);
