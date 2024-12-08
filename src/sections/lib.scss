@@ -5,6 +5,7 @@ $dark: #021928;
 $gray: #b6bdb5;
 $blue: #36769d;
 $lightblue: #8acfe5;
+$darkBlueButtonHover: #599fb9;
 $white: white;
 $black: black;
 /*Screen size variables*/
@@ -26,6 +27,9 @@ $max-screen-breakpoint: 1500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    background-color: $darkBlueButtonHover;
+  }
 }
 @mixin buttonLink {
   text-decoration: underline;
@@ -63,6 +67,9 @@ $max-screen-breakpoint: 1500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    background-color: $darkRedButtonHover;
+  }
 }
 @mixin bigRedButtonDesktop {
   background-color: $red;
@@ -78,6 +85,9 @@ $max-screen-breakpoint: 1500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    background-color: $darkRedButtonHover;
+  }
 }
 @mixin darkButton {
   background-color: $dark;

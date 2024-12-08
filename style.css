@@ -202,6 +202,9 @@
   justify-content: center;
   align-items: center;
 }
+.introduction .introduction__button--onsite:hover {
+  background-color: #599fb9;
+}
 .introduction .introduction__button--online {
   text-decoration: underline;
   background-color: white;
@@ -228,6 +231,9 @@
     justify-content: center;
     align-items: center;
     order: -1;
+  }
+  .introduction .introduction__button--online:hover {
+    background-color: #c31409;
   }
 }
 
@@ -459,6 +465,9 @@
   justify-content: center;
   align-items: center;
 }
+.content .content__navigation-button:hover {
+  background-color: #599fb9;
+}
 .content .content__navigation-link {
   text-decoration: underline;
   background-color: white;
@@ -485,6 +494,9 @@
     justify-content: center;
     align-items: center;
     order: -1;
+  }
+  .content .content__navigation-link:hover {
+    background-color: #c31409;
   }
 }
 .content .content__story {
@@ -604,6 +616,10 @@
   justify-content: center;
   align-items: center;
   margin: 2rem 0rem 1.45rem 0rem;
+}
+.play .play__button--book:hover,
+.play .play__button--challenges:hover {
+  background-color: #c31409;
 }
 .play .play__button--book:hover,
 .play .play__button--challenges:hover {
@@ -964,7 +980,7 @@ h2 {
   position: fixed;
   height: 36px;
   width: 130px;
-  background-color: #E3170A;
+  background-color: #e3170a;
   border-radius: 5px;
   color: white;
   font-weight: 600;
@@ -1041,7 +1057,10 @@ h2 {
     cursor: pointer;
   }
   .filter .filter__button:hover {
-    background-color: lightblue;
+    background-color: #599fb9;
+  }
+  .filter .filter__button:hover {
+    background-color: #599fb9;
   }
   .filter .filter__title {
     color: #021928;
