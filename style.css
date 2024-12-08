@@ -420,6 +420,10 @@
 }
 .content .room__button--onsite:hover,
 .content .room__button--online:hover {
+  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
+}
+.content .room__button--onsite:hover,
+.content .room__button--online:hover {
   cursor: pointer;
 }
 .content .content__navigation {
@@ -1248,6 +1252,9 @@ h2 {
   margin-top: 0.3rem;
 }
 .challenges .room__button--onsite:hover {
+  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
+}
+.challenges .room__button--onsite:hover {
   cursor: pointer;
 }
 .challenges .room__button--online {
@@ -1260,6 +1267,9 @@ h2 {
   color: white;
   padding: 0.42rem 1.15rem;
   margin-top: 0.3rem;
+}
+.challenges .room__button--online:hover {
+  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
 }
 .challenges .room__button--online:hover {
   cursor: pointer;
