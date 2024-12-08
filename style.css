@@ -481,9 +481,6 @@
   font-weight: 700;
   font-size: 0.6rem;
 }
-.content .content__navigation-link:hover {
-  color: #021928;
-}
 @media screen and (min-width: 1280px) {
   .content .content__navigation-link {
     background-color: #e3170a;

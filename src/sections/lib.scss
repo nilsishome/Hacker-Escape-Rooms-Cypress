@@ -41,9 +41,6 @@ $max-screen-breakpoint: 1500px;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 0.6rem;
-  &:hover {
-    color: $dark;
-  }
 }
 @mixin redButton {
   background-color: $red;
