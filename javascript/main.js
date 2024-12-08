@@ -10,7 +10,15 @@ import {
 } from "./bookroom2.js";
 import { generateModule3 } from "./bookroom3.js";
 
+import { showLoadingIndicator,hideLoadingIndicator } from "./loadingindicator.js";
+
+
+
+
 async function generateRoom() {
+  showLoadingIndicator(); //loading indicator shows
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const data = await challengesApi();
   const roomData = data.challenges;
   const challenges__container = document.querySelector(
@@ -136,6 +144,9 @@ async function generateRoom() {
     roomActions.appendChild(button);
   });
   bookRoom();
+ 
+  hideLoadingIndicator();
+
 }
 navigation();
 

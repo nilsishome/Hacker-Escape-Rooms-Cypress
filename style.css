@@ -1311,6 +1311,29 @@ h2 {
   transition: color 0.3s;
 }
 
+#loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border: 10px solid #36769d;
+  border-radius: 100%;
+  border-top: 10px solid #f5655a;
+  animation: spin 1s linear infinite;
+  z-index: 9999;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .about__title {
   text-align: center;
   font-size: 1.1rem;
