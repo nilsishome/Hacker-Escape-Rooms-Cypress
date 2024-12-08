@@ -2,6 +2,7 @@
 $red: #e3170a;
 $darkRedButtonHover: #c31409;
 $dark: #021928;
+$lighterDarkButtonHover: #123241;
 $gray: #b6bdb5;
 $blue: #36769d;
 $lightblue: #8acfe5;
@@ -40,6 +41,9 @@ $max-screen-breakpoint: 1500px;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 0.6rem;
+  &:hover {
+    color: $dark;
+  }
 }
 @mixin redButton {
   background-color: $red;
@@ -103,6 +107,9 @@ $max-screen-breakpoint: 1500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    background-color: $lighterDarkButtonHover;
+  }
 }
 /*Project screen-size mixins*/
 @mixin breakpoint($min-size) {

@@ -215,6 +215,9 @@
   font-weight: 700;
   font-size: 0.6rem;
 }
+.introduction .introduction__button--online:hover {
+  color: #021928;
+}
 @media screen and (min-width: 1280px) {
   .introduction .introduction__button--online {
     background-color: #e3170a;
@@ -478,6 +481,9 @@
   font-weight: 700;
   font-size: 0.6rem;
 }
+.content .content__navigation-link:hover {
+  color: #021928;
+}
 @media screen and (min-width: 1280px) {
   .content .content__navigation-link {
     background-color: #e3170a;
@@ -542,6 +548,9 @@
   justify-content: center;
   align-items: center;
   margin: 0.9rem 0rem 2.2rem 0rem;
+}
+.content .content__story .story__button:hover {
+  background-color: #123241;
 }
 
 @media screen and (min-width: 1280px) {
