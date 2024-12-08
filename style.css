@@ -911,8 +911,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   display: hidden;
 }
-
-h2 {
+.book_modal h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 0.8rem;
