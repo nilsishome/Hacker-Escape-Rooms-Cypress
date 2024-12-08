@@ -420,7 +420,7 @@
 }
 .content .room__button--onsite:hover,
 .content .room__button--online:hover {
-  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
+  background-color: #c31409;
 }
 .content .room__button--onsite:hover,
 .content .room__button--online:hover {
@@ -642,6 +642,9 @@
     height: 16.7rem;
   }
 }
+.footer .fiiter__menu-item {
+  display: inline-block;
+}
 .footer .footer__company {
   margin-top: 0.3rem;
 }
@@ -684,6 +687,9 @@
   font-size: 0.65rem;
   display: block;
 }
+.footer .footer__contact .footer__menu--contact .footer__menu-link:hover {
+  color: #8acfe5;
+}
 .footer .footer__contact .footer__menu--play {
   list-style: none;
   padding: 0;
@@ -693,6 +699,9 @@
   text-decoration: none;
   font-size: 0.65rem;
   display: block;
+}
+.footer .footer__contact .footer__menu--play .footer__menu-link:hover {
+  color: #8acfe5;
 }
 .footer .footer__media {
   margin-top: 1.5rem;
@@ -717,6 +726,9 @@
   text-decoration: none;
   font-size: 0.65rem;
   display: block;
+}
+.footer .footer__media .footer__menu--media .footer__menu-link:hover {
+  color: #8acfe5;
 }
 
 #hidden {
@@ -1252,7 +1264,7 @@ h2 {
   margin-top: 0.3rem;
 }
 .challenges .room__button--onsite:hover {
-  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
+  background-color: #c31409;
 }
 .challenges .room__button--onsite:hover {
   cursor: pointer;
@@ -1269,7 +1281,7 @@ h2 {
   margin-top: 0.3rem;
 }
 .challenges .room__button--online:hover {
-  background-color: rgb(178.1518987342, 18.0506329114, 7.8481012658);
+  background-color: #c31409;
 }
 .challenges .room__button--online:hover {
   cursor: pointer;

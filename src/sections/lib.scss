@@ -1,5 +1,6 @@
 /*Project Colors*/
 $red: #e3170a;
+$darkRedButtonHover: #c31409;
 $dark: #021928;
 $gray: #b6bdb5;
 $blue: #36769d;
@@ -46,7 +47,7 @@ $max-screen-breakpoint: 1500px;
   color: $white;
   padding: 0.42rem 1.15rem;
   &:hover {
-    background-color: darken($red, 10%);
+    background-color: $darkRedButtonHover;
   }
 }
 @mixin bigRedButton {
