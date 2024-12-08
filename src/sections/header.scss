@@ -38,6 +38,9 @@
     color: $white;
     width: 3.5rem;
     margin: 0rem 0rem 0rem 0.5rem;
+    &:hover {
+      color: $lightblue;
+    }
     @include breakpoint($large-screen-breakpoint) {
       width: auto;
       font-size: 1.42rem;
