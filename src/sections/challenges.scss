@@ -603,4 +603,8 @@
   color: rgb(33, 73, 204);
   border-radius: 5px;
   transition: color 0.3s;
+  &:hover {
+    color: $dark;
+    cursor: pointer;
+  }
 }

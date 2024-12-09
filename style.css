@@ -1372,6 +1372,10 @@
   border-radius: 5px;
   transition: color 0.3s;
 }
+.challengesLink:hover {
+  color: #021928;
+  cursor: pointer;
+}
 
 .about__title {
   text-align: center;
