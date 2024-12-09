@@ -841,6 +841,10 @@
   right: 31%;
   z-index: 4;
 }
+.modal__button:hover {
+  background-color: #c31409;
+  cursor: pointer;
+}
 
 @keyframes dateError {
   0%, 100% {
@@ -1038,6 +1042,10 @@
   bottom: 22%;
   right: 31%;
   border: none;
+}
+.booking_button:hover {
+  background-color: #c31409;
+  cursor: pointer;
 }
 
 .filter {
