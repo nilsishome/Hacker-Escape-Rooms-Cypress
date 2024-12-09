@@ -1320,7 +1320,7 @@ h2 {
   height: 100px;
   border: 10px solid #36769d;
   border-radius: 100%;
-  border-top: 10px solid #f5655a;
+  border-top: 10px solid #bd1408;
   animation: spin 1s linear infinite;
   z-index: 9999;
   align-items: center;
