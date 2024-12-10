@@ -149,21 +149,18 @@ navigation();
 if (window.location.pathname.endsWith("/challenges.html")) {
   navigation();
 
-  
-  if (
-    document.querySelector("#challenges__container") ||
-    document.querySelector(".content__rooms")
-  ) {
+  const challengesContainer = document.querySelector("#challenges__container");
+  if (challengesContainer || document.querySelector(".content__rooms")) {
     showLoadingIndicator();
 
     setTimeout(() => {
-      generateRoom(); 
-      hideLoadingIndicator(); 
+      generateRoom();
+      hideLoadingIndicator();
     }, 1000);
   }
 
   // Additional filters for #challenges__container
-  if (document.querySelector("#challenges__container")) {
+  if (challengesContainer) {
     allFilters();
   }
 }
