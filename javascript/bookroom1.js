@@ -93,7 +93,7 @@ export function bookRoom() {
   return challengeTitle;
 }
 
-function updateErrorText(errorMsg) {
+export function updateErrorText(errorMsg) {
 errorText.textContent=errorMsg;
 errorText.style.animation="none";
 void errorText.offsetWidth;

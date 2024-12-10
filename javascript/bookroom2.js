@@ -20,7 +20,6 @@ export function generateBookroom2() {
   const book_phone_label = document.createElement("label");
   const book_phone_input = document.createElement("input");
   
-
   // Sets classname and attributes on elements //
   overlay.className = "overlay";
   overlay.setAttribute("id", "hidden");
@@ -65,7 +64,7 @@ export function generateBookroom2() {
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
   booking_button.textContent = "Submit booking";
-
+  
   //append all DOM-elements according to previous HTML-structure//
   body.appendChild(overlay);
   body.appendChild(bookroom_modal);
@@ -92,7 +91,10 @@ generateBookroom2();
 // This is a different value from the one, created in generateBookroom2 function//
 const book_form = document.querySelector(".book_form");
 const modal__title2 = document.querySelector(".modal__title2");
-
+let errorText = document.createElement("p");
+errorText.className = "modal__date_error_text";
+// Function to use if we want to update text on the error msg
+// import { updateErrorText } from "./bookroom1";
   
 // Declare roomId value that imports the ID from bookroom modal (step 1)
 let roomId;
@@ -165,7 +167,8 @@ book_form.addEventListener("submit", (event) => {
   })
     .then((response) => {
       if (!response.ok) {
-        alert("All fields must be filled!");
+        book_form.appendChild(errorText);
+        errorText.textContent = "All fields must be filled!"
         throw new Error("Network response was not ok");
       }
       return response.json();
@@ -174,7 +177,7 @@ book_form.addEventListener("submit", (event) => {
     document.querySelector(".modal3").removeAttribute("id");
 
 
-    
+
 
 });
 });
