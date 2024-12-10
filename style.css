@@ -861,13 +861,12 @@
   position: fixed;
   height: 40px;
   width: 50px;
-  background-color: red;
-  border-color: white;
+  background-color: #fff;
   border-style: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-  top: 22%;
+  color: #636363;
+  cursor: pointer;
+  font-size: 200%;
+  top: 21%;
   right: 31%;
   z-index: 4;
 }
@@ -925,12 +924,11 @@
   border: 2px solid rgb(201, 200, 200);
   padding: 20px;
   width: 40%;
-  height: 60%;
+  height: 68%;
   position: fixed;
   top: 20%;
   left: 30%;
   z-index: 3;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   display: hidden;
 }
 .book_modal h2 {
@@ -1007,9 +1005,13 @@
   border-radius: 5px;
   color: white;
   font-weight: 600;
-  bottom: 22%;
+  bottom: 14%;
   right: 31%;
   border: none;
+}
+.booking_button:hover {
+  background-color: #c31409;
+  cursor: pointer;
 }
 
 .phone_number {
@@ -1035,23 +1037,6 @@
 .booking_button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.booking_button {
-  position: fixed;
-  height: 36px;
-  width: 130px;
-  background-color: #e3170a;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-  bottom: 22%;
-  right: 31%;
-  border: none;
-}
-.booking_button:hover {
-  background-color: #c31409;
-  cursor: pointer;
 }
 
 .filter {

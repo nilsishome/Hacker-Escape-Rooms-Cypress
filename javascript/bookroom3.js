@@ -16,7 +16,7 @@ export function generateModule3() {
   challengesLink.textContent = "Back to challenges";
   challengesLink.href = "./challenges.html"; // Update with the correct URL for challenges page
 
-  modalButtonClose.className = "modal__button_close";
+  modalButtonClose.className = "modal__button_close fa fa-times";
   modalButtonClose.id = "modal3__button_close";
   modalButtonClose.type = "button";
 

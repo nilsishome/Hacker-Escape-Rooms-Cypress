@@ -55,7 +55,7 @@ export function generateBookroom2() {
   book_phone_input.type = "tel";
   book_phone_input.id = "phone-number";
 
-  modalButtonClose.className = "modal__button_close";
+  modalButtonClose.className = "modal__button_close fa fa-times";
   modalButtonClose.type = "button";
   modalButtonClose.id = "modal2__button_close";
 
