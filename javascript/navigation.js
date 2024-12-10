@@ -1,3 +1,4 @@
+
 export function navigation() {
   //variables.
   const menuButton = document.querySelector(".header__menu-button");
@@ -78,12 +79,23 @@ export function navigation() {
   );
   //For each button an eventListener gets added that on click navigates to challenges.html.
   indexButtonNavigation.forEach((button) => {
-    if (button) {
+    /*if (button) {
       button.addEventListener("click", () => {
+        
         window.location.href = "./challenges.html";
       });
+      
     }
-  });
+  });*/
+  if (button) {
+    button.addEventListener("click", () => {
+      
+        window.location.href = "./challenges.html";
+     
+    });
+  }
+});
+
   //foreach to add eventlistener to logo and logotitle and onclick navigate to index.html
   headerNavigation.forEach((logo) => {
     if (logo) {

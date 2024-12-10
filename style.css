@@ -1311,7 +1311,7 @@ h2 {
   transition: color 0.3s;
 }
 
-#loading-indicator {
+#loadingIndicator {
   position: fixed;
   top: 50%;
   left: 47%;
@@ -1321,14 +1321,15 @@ h2 {
   border: 10px solid #36769d;
   border-radius: 100%;
   border-top: 10px solid #bd1408;
-  animation: spin 1s linear infinite;
   z-index: 9999;
   align-items: center;
+  display: none;
+  animation: colorbump 0.5s linear infinite;
 }
 
-@keyframes spin {
+@keyframes colorbump {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(10deg);
   }
   100% {
     transform: rotate(360deg);

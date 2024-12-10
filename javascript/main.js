@@ -9,15 +9,11 @@ import {
   availableTimeNow,
 } from "./bookroom2.js";
 import { generateModule3 } from "./bookroom3.js";
-
 import { showLoadingIndicator,hideLoadingIndicator } from "./loadingindicator.js";
 
 
-
-
 async function generateRoom() {
-  showLoadingIndicator(); //loading indicator shows
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+ 
 
   const data = await challengesApi();
   const roomData = data.challenges;
@@ -145,19 +141,29 @@ async function generateRoom() {
   });
   bookRoom();
  
-  hideLoadingIndicator();
+  
 
 }
 navigation();
 
-//Calls the textfilter function, but only for the challenges__container which is located on challenges.html.
-if (
-  document.querySelector("#challenges__container") ||
-  document.querySelector(".content__rooms")
-) {
-  generateRoom();
-}
+if (window.location.pathname.endsWith("/challenges.html")) {
+  navigation();
 
-if (document.querySelector("#challenges__container")) {
-  allFilters();
+  
+  if (
+    document.querySelector("#challenges__container") ||
+    document.querySelector(".content__rooms")
+  ) {
+    showLoadingIndicator();
+
+    setTimeout(() => {
+      generateRoom(); 
+      hideLoadingIndicator(); 
+    }, 1000);
+  }
+
+  // Additional filters for #challenges__container
+  if (document.querySelector("#challenges__container")) {
+    allFilters();
+  }
 }
