@@ -82,6 +82,10 @@
   bottom: 22%;
   right: 31%;
   z-index: 4;
+  &:hover {
+    background-color: $darkRedButtonHover;
+    cursor: pointer;
+  }
 }
 
 @keyframes dateError {
@@ -281,6 +285,10 @@
   bottom: 22%;
   right: 31%;
   border: none;
+  &:hover {
+    background-color: $darkRedButtonHover;
+    cursor: pointer;
+  }
 }
 
 .filter {
@@ -301,7 +309,7 @@
     }
 
     & .filter__button:hover {
-      background-color: lightblue;
+      background-color: $darkBlueButtonHover;
     }
 
     & .filter__title {
@@ -602,4 +610,8 @@
   color: rgb(33, 73, 204);
   border-radius: 5px;
   transition: color 0.3s;
+  &:hover {
+    color: $dark;
+    cursor: pointer;
+  }
 }
