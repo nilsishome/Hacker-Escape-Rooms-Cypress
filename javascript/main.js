@@ -162,5 +162,7 @@ if (window.location.pathname.endsWith("/challenges.html")) {
   // Additional filters for #challenges__container
   if (challengesContainer) {
     allFilters();
-  }
+  } 
+}else {
+  generateRoom();
 }
