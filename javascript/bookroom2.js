@@ -19,7 +19,8 @@ export function generateBookroom2() {
   const booking_button = document.createElement("button");
   const book_phone_label = document.createElement("label");
   const book_phone_input = document.createElement("input");
-  
+  const modalButtonClose = document.createElement("button");
+
   // Sets classname and attributes on elements //
   overlay.className = "overlay";
   overlay.setAttribute("id", "hidden");
@@ -49,17 +50,20 @@ export function generateBookroom2() {
 
   booking_button.className = "booking_button";
 
-  book_phone_label.className ="phone_number";
-  book_phone_label.setAttribute("for","phone-number");
-  book_phone_input.type ="tel";
-  book_phone_input.id = "phone-number"
-  
+  book_phone_label.className = "phone_number";
+  book_phone_label.setAttribute("for", "phone-number");
+  book_phone_input.type = "tel";
+  book_phone_input.id = "phone-number";
+
+  modalButtonClose.className = "modal__button_close fa fa-times";
+  modalButtonClose.type = "button";
+  modalButtonClose.id = "modal2__button_close";
 
   // Text on elements //
   modal__title2.textContent = "";
   book_name_label.textContent = "Name";
-  book_phone_label.textContent ="Phone number(optional)";
-  
+  book_phone_label.textContent = "Phone number(optional)";
+
   book_email_label.textContent = "Email";
   book_time_label.textContent = "What time?";
   participants_label.textContent = "How many participants?";
@@ -84,7 +88,7 @@ export function generateBookroom2() {
   book_form.appendChild(participants_select);
   participants_select.appendChild(participants_number);
   book_form.appendChild(booking_button);
- 
+  book_form.appendChild(modalButtonClose);
 }
 generateBookroom2();
 
@@ -128,23 +132,22 @@ book_form.addEventListener("submit", (event) => {
   const userInputPhone = document.getElementById("phone-number").value.trim();
 
   // Validate phone number (optional or exactly 10 digits)
-  const isValidPhoneNumber = userInputPhone === "" || /^\d{10}$/.test(userInputPhone);
+  const isValidPhoneNumber =
+    userInputPhone === "" || /^\d{10}$/.test(userInputPhone);
 
   if (!isValidPhoneNumber) {
-    
-    return; 
+    return;
   }
 
   const userRoomId = parseInt(roomId, 10);
   const userInputName = document.getElementById("name-text").value;
-  
+
   const userInputEmail = document.getElementById("email-text").value;
   const date = new Date().toISOString();
   const userInputTime = document.getElementById("time_options").value;
   const userInputParticipants = document.getElementById(
     "participants_number"
   ).value;
-  
 
   const userInput = {
     challenge: userRoomId,
@@ -155,7 +158,6 @@ book_form.addEventListener("submit", (event) => {
     time: userInputTime,
     participants: parseInt(userInputParticipants, 10),
   };
-  
 
   fetch("https://lernia-sjj-assignments.vercel.app/api/booking/reservations", {
     method: "POST",
@@ -174,12 +176,9 @@ book_form.addEventListener("submit", (event) => {
       return response.json();
     })
     .then(() => {
-    document.querySelector(".modal3").removeAttribute("id");
-
-
-
-
-});
+      document.querySelector(".Bookroom_modal").setAttribute("id", "hidden");
+      document.querySelector(".modal3").removeAttribute("id");
+    });
 });
 export function availableTimeNow(newTime) {
   // This resets the time select options in every booking //
