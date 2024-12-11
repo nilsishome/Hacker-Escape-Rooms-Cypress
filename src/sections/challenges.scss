@@ -465,6 +465,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.4rem;
+    justify-content: center;
+
+    @include breakpoint($ultra-large-screen-breakpoint) {
+    grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .challenges__room {
