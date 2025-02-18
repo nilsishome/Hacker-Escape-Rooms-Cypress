@@ -160,7 +160,7 @@ if (window.location.pathname.endsWith("/challenges.html")) {
     } finally {
       hideLoadingIndicator();
     }
-  }
+  } //removed timer
 
   // Additional filters for #challenges__container
   if (challengesContainer) {
