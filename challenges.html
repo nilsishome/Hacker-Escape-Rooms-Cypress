@@ -15,29 +15,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
-    <!-- Critical/Primary CSS -->
-    <link rel="stylesheet" href="style.css" media="all" />
+    <!-- Din primära CSS -->
+    <link rel="stylesheet" href="style.css" />
 
-    <!-- Google Fonts - endast nödvändiga vikter -->
+    <!-- Google Fonts med font-display=swap -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=optional"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
 
-    <!-- Font Awesome - ladda asynkront -->
+    <!-- Font Awesome direkt -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
 
-    <!-- Fallback för browsers som inte har JavaScript aktiverat -->
+    <!-- Fallback för browsers utan JavaScript -->
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=optional"
         rel="stylesheet"
       />
       <link
@@ -86,7 +82,7 @@
       </nav>
     </header>
     <section class="filter">
-      <h3>Our challenges</h3>
+      <h1>Our challenges</h1>
       <button type="button" class="filter__button">Filter challenges</button>
       <form class="filter__form">
         <img
@@ -234,9 +230,9 @@
     </section>
     <footer class="footer">
       <div class="footer__company">
-        <h3 class="footer__heading footer__heading--company">
+        <h1 class="footer__heading footer__heading--company">
           [Esc] Hacker Escape Rooms
-        </h3>
+        </h1>
         <p class="footer__text">
           Quodsi haberent magnalia inter potentiam et divitias, et non illam
           quidem haec eo spectant haec quoque vos omnino desit illud quo solo
@@ -244,7 +240,7 @@
         </p>
       </div>
       <div class="footer__contact">
-        <h3 class="footer__heading footer__heading--contact">Site map</h3>
+        <h1 class="footer__heading footer__heading--contact">Site map</h1>
         <ul class="footer__menu footer__menu--contact">
           <li class="footer__menu-item">
             <a href="#" class="footer__menu-link">The story</a>
@@ -266,7 +262,7 @@
         </ul>
       </div>
       <div class="footer__media">
-        <h3 class="footer__heading footer__heading--media">Follow us on</h3>
+        <h1 class="footer__heading footer__heading--media">Follow us on</h1>
         <ul class="footer__menu footer__menu--media">
           <li class="footer__menu-item">
             <a href="#" class="footer__menu-link">Facebook</a>

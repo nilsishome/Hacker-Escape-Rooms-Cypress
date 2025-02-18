@@ -68,6 +68,7 @@ async function generateRoom() {
     img.classList.add("room__img");
     img.src = room.image;
     img.alt = `Picture of the room ${room.title}`;
+
     imageContainer.appendChild(img);
     //Creating a div to hold the icons
     const iconContainer = document.createElement("div");
@@ -82,7 +83,7 @@ async function generateRoom() {
     iconContainer.appendChild(roomIcon);
     imageContainer.appendChild(iconContainer);
     //adding heading for each room
-    const heading = document.createElement("h3");
+    const heading = document.createElement("h1");
     heading.classList.add("room__heading");
     heading.textContent = `${room.title} (${room.type})`;
     rooms.appendChild(heading);
