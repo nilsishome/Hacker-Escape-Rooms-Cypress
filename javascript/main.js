@@ -36,7 +36,7 @@ async function generateRoom() {
   }
   container.innerHTML = "";
   //forEach loop that loops through the challenges array which is located in the data from the API.
-  roomData.forEach((room) => {
+  roomData.forEach((room, index) => {
     //Creating a room with the same "structure" as in previous hardcoded HTML, adds correct class depending on container and gets appended to the dynamic container variable.
     const challengesRoom = document.createElement("div");
     challengesRoom.classList.add(

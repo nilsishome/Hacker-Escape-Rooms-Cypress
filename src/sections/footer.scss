@@ -1,6 +1,7 @@
 @use "./lib.scss" as *;
 
 .footer {
+  min-height: 200px;
   margin-top: 1.1rem;
   background-color: $dark;
   color: $white;

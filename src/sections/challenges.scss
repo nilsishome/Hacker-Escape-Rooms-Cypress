@@ -468,7 +468,7 @@
     justify-content: center;
 
     @include breakpoint($ultra-large-screen-breakpoint) {
-    grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -490,11 +490,14 @@
   .room__image-container {
     position: relative;
     width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
   }
 
   .room__img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
@@ -506,6 +509,7 @@
     align-items: center;
     gap: 0.2rem;
     padding: 0;
+    min-height: 1rem;
   }
   .room__stars i {
     color: $red;
@@ -516,6 +520,11 @@
     top: 0.7rem;
     right: 0.7rem;
     color: $red;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .room__heading {
@@ -606,23 +615,24 @@
     cursor: pointer;
   }
 }
-#loadingIndicator{
-  
-  margin-left:auto;
-  margin-right:auto;
-  
-  
+#loadingIndicator {
+  margin-left: auto;
+  margin-right: auto;
+
   width: 100px;
   height: 100px;
   border: 10px solid #36769d;
   border-radius: 100%;
   border-top: 10px solid #bd1408;
-  
-  
+
   animation: colorbump 0.5s linear infinite;
 }
 
 @keyframes colorbump {
-  0%{transform:rotate(10deg);}
-  100%{transform:rotate(360deg);}
+  0% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
