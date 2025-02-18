@@ -152,12 +152,14 @@ if (window.location.pathname.endsWith("/challenges.html")) {
 
   const challengesContainer = document.querySelector("#challenges__container");
   if (challengesContainer || document.querySelector(".content__rooms")) {
-    showLoadingIndicator();
-
-    setTimeout(() => {
-      generateRoom();
+    try {
+      showLoadingIndicator();
+      await generateRoom();
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
       hideLoadingIndicator();
-    }, 1000);
+    }
   }
 
   // Additional filters for #challenges__container
