@@ -16,6 +16,7 @@
     "sass": "^1.80.1"
   },
   "devDependencies": {
+    "cypress": "^14.0.3",
     "vite": "^6.0.3"
   }
 }
