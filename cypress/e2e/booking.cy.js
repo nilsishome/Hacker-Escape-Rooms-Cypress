@@ -1,4 +1,7 @@
 describe("Booking functionality.", () => {
+  //////
+  //For each test we setup the viewport and visits challenges.html
+  /////
   beforeEach(() => {
     cy.viewport(1920, 1080);
 
@@ -22,6 +25,9 @@ describe("Booking functionality.", () => {
 
     cy.get(".modal__content").should("be.visible");
 
+    //////
+    //Generates a date here for tomorrow, and transform to format YYYY-MM-DD
+    /////
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const dateString = tomorrow.toISOString().split("T")[0];
