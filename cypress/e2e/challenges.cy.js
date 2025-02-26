@@ -1,6 +1,5 @@
 describe("Challenges filter test", () => {
   it("Searches after a specific element in the filter section", () => {
-    // Ställ in viewport till 1920x1080 (desktop-storlek)
     cy.viewport(1920, 1080);
 
     cy.visit("/challenges.html");

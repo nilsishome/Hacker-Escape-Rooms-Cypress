@@ -1,8 +1,6 @@
 describe("Navigation tests", () => {
   beforeEach(() => {
-    // Ställ in viewport till desktop-storlek
     cy.viewport(1920, 1080);
-    // Besök startsidan
     cy.visit("/");
   });
 
