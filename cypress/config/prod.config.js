@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
     e2e: {
-        baseUrl:"http://google.com",
+        supportFile: false,
+        baseUrl:"https://nilsishome.github.io/Hacker-Escape-Rooms-Cypress/",
     },
 });
