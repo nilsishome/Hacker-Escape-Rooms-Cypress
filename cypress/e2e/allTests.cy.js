@@ -4,11 +4,11 @@
 describe("G-nivå", () => {
 
     it("checks if page is found and loaded", () => {
-        cy.visit("http://localhost:5173/");
+        cy.visit("/");
     });
 
     it("checks if it can find a link, named Online challenges", () => {
-        cy.visit("http://localhost:5173/");
+        cy.visit("/");
         cy.get(".introduction__button--online")
             .contains("Online challenges") 
             // contains is used instead of should because of syntax errors
@@ -19,21 +19,21 @@ describe("G-nivå", () => {
 describe("VG-nivå", () => {
 
      it("clicks on the Online challenges link", () => {
-        cy.visit("http://localhost:5173/");
+        cy.visit("/");
         cy.contains("Online challenges")
             .click();
     });
 
     it("checks after a specific web element, in Challenges filter", () => {
         cy.viewport(1920, 1080);
-        cy.visit("http://localhost:5173/challenges.html")
+        cy.visit("challenges.html")
         cy.get(".filter__tag")
             .find(":nth-child(3)");
     });
 
     it("navigating to different pages, by clicking on navbar links", () => {
         cy.viewport(1920, 1080);
-        cy.visit("http://localhost:5173/challenges.html");
+        cy.visit("challenges.html");
 
         cy.get(".header__menu")
             .find(":nth-child(3)")
@@ -49,7 +49,7 @@ describe("VG-nivå", () => {
     });
 
     it("fails a booking process", () => {
-        cy.visit("http://localhost:5173/challenges.html");
+        cy.visit("challenges.html");
         cy.get('.room__button--onsite')
             .first()
             .should("have.text", "Book this room")
@@ -62,7 +62,7 @@ describe("VG-nivå", () => {
     });
 
     it("makes a complete booking reservation", () => {
-        cy.visit("http://localhost:5173/challenges.html");
+        cy.visit("challenges.html");
         cy.get('.room__button--onsite')
             .first()
             .should("have.text", "Book this room")

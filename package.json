@@ -10,8 +10,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "cypress:local": "cypress open --env environment=local",
-    "cypress:prod": "cypress open --env environment=production"
+    "cypress:local": "cypress open --config-file cypress/config/local.config.js",
+    "cypress:prod": "cypress open --config-file cypress/config/prod.config.js"
   },
   "author": "",
   "license": "ISC",
